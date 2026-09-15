@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Extended Fig. 7C"
+  ],
+  "source_files": [
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md"
+    },
+    {
+      "role": "depmap_package_readme",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/README.md"
+    },
+    {
+      "role": "depmap_source_metadata",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/data/source_files.tsv"
+    },
+    {
+      "role": "depmap_documentation",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/docs/figure_accessibility_notes.md"
+    },
+    {
+      "role": "depmap_documentation",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/docs/source_urls_and_checksums.md"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.pdf"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.png"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.svg"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.pdf"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.png"
+    },
+    {
+      "role": "depmap_figure_export",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.svg"
+    },
+    {
+      "role": "depmap_package_index",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/index.html"
+    },
+    {
+      "role": "depmap_method_or_caption",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/methods/depmap_24q4_tpm_methods.md"
+    },
+    {
+      "role": "depmap_method_or_caption",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/methods/extended_fig7c_depmap_24q4_tpm_caption.md"
+    },
+    {
+      "role": "depmap_qc_artifact",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/figure_file_validation.tsv"
+    },
+    {
+      "role": "depmap_qc_artifact",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/qc_checks.tsv"
+    },
+    {
+      "role": "depmap_qc_artifact",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/qc_report.md"
+    },
+    {
+      "role": "depmap_source_run_manifest",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/run_manifest.json"
+    },
+    {
+      "role": "depmap_generation_script",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/scripts/generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py"
+    },
+    {
+      "role": "depmap_reported_or_qc_table",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_log2_tpm_plus1_matrix.tsv"
+    },
+    {
+      "role": "depmap_reported_or_qc_table",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_tpm_matrix.tsv"
+    },
+    {
+      "role": "depmap_reported_or_qc_table",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/gene_availability_provenance.tsv"
+    },
+    {
+      "role": "depmap_reported_or_qc_table",
+      "relative_local_path": "publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/sample_profile_mapping.tsv"
+    },
+    {
+      "role": "source_validation_script",
+      "relative_local_path": "scripts/validate_figure.py"
+    }
+  ],
+  "data_sources": [
+    {
+      "source_key": "expression",
+      "figshare_url": "https://ndownloader.figshare.com/files/51065360",
+      "figshare_file_id": "51065360",
+      "filename": "OmicsExpressionAllGenesTPMLogp1Profile.csv",
+      "size_bytes": 1016340354,
+      "sha256": "57aa034ec15c48109333aad9d09d31bf8080ce222c45f3b0465fe8e7e7b88d7a"
+    },
+    {
+      "source_key": "default_profiles",
+      "figshare_url": "https://ndownloader.figshare.com/files/51065339",
+      "figshare_file_id": "51065339",
+      "filename": "OmicsDefaultModelProfiles.csv",
+      "size_bytes": 90080,
+      "sha256": "096a96c39d88374cb7c37058816e6cde29d6617b820b8a14d33ae9dd821c6dc5"
+    }
+  ],
+  "expression_units": {
+    "DepMap_input": "log2(TPM + 1)",
+    "reported_values": "TPM",
+    "inverse_transform": "TPM = 2 ** source_value - 1"
+  },
+  "input_status": "Generation script downloads checksum-validated DepMap 24Q4 CSVs or accepts a local cache.",
+  "source_file_count": 24,
+  "folder_author": {
+    "name": "Mert Demirdizen",
+    "email": "mert@bmb.sdu.dk"
+  }
+}

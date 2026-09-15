@@ -1,0 +1,30 @@
+
+# Subset MKI67 Positive cells in the cancer cell cluster
+MKI67_cancer <- subset(P21_cancer, MKI67 > 0)
+
+Idents(MKI67_cancer) <- "category"
+
+table(Idents(MKI67_cancer))
+
+# DP TYMS  TK1   DN 
+#  29   21   25  100 
+
+Idents(object = MKI67_cancer) <- MKI67_cancer@meta.data$'category'
+
+
+markers_mki67_cat <- FindAllMarkers(object = MKI67_cancer, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_mki67_cat,file="FAMs_MKI67_cat.txt",sep="\t")
+
+
+Wil_MKI67_DN_DP<-(FindMarkers(MKI67_cancer, ident.1 = "DN", ident.2 = "DP",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_MKI67_DN_TYMS<-(FindMarkers(MKI67_cancer, ident.1 = "DN", ident.2 = "TYMS",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_MKI67_DN_TK1<-(FindMarkers(MKI67_cancer, ident.1 = "DN", ident.2 = "TK1",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+write.table(Wil_MKI67_DN_DP, file="Wilcoxon_MKI67_DN_DP.txt",sep="\t")
+write.table(Wil_MKI67_DN_TYMS, file="Wilcoxon_MKI67_DN_TYMS.txt",sep="\t")
+write.table(Wil_MKI67_DN_TK1, file="Wilcoxon_MKI67_DN_TK1.txt",sep="\t")

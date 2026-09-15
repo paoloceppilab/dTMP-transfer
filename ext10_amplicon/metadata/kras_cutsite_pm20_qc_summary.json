@@ -1,0 +1,36 @@
+{
+  "generated_at_utc": "2026-06-10T18:02:53.414733+00:00",
+  "output_files_present": true,
+  "primary_log_clean": true,
+  "summary_sample_count": 17,
+  "tumor_plot_sample_count": 15,
+  "all_r1_r2_counts_match": true,
+  "minimum_classifiable_pairs": 209754,
+  "all_samples_meet_min_classifiable_10000": true,
+  "figure_pct_sums_all_100": true,
+  "hdr_summary_counts_match_editing_summary": true,
+  "per_pair_reconstruction_matches_figure_ready": true,
+  "per_pair_reconstruction_matches_sample_summary": true,
+  "bin_rule_issues": {},
+  "both_indel_and_substitution_non_hdr_assignment": "All non-HDR classifiable rows with both cut-window indel and substitutions assigned to in_del; 3 HDR-priority rows with both event types remained HDR by hierarchy.",
+  "classifiable_rows_streamed": 10083609,
+  "both_indel_and_substitution_rows": 2443233,
+  "both_indel_and_substitution_as_indel": 2443230,
+  "tumor_aggregate_denominator": 8879920,
+  "tumor_aggregate_counts": {
+    "HDR": 900,
+    "WT": 13169,
+    "in_del": 2249639,
+    "other_substitution": 6616212
+  },
+  "tumor_aggregate_pct": {
+    "HDR": 0.010135226443481473,
+    "WT": 0.1483008855935639,
+    "in_del": 25.334000756763576,
+    "other_substitution": 74.50756313119938
+  },
+  "qc_flags_observed": [
+    "fail_high_ambiguous_rate"
+  ],
+  "maximum_ambiguous_low_confidence_pct_raw": 87.356844
+}

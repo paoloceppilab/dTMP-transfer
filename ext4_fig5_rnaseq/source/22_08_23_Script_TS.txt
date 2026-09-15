@@ -1,0 +1,162 @@
+ssh vramesh@solexa2.bmb.sdu.dk
+
+# FastQC analysis - fastqc_v0.11.9
+fastqc *.fastq.gz
+mkdir FastQC_Results
+mv *fastqc* FastQC_Results
+
+### STAR ASSEMBLY ###
+
+cd STAR_Ensembl
+mkdir STAR_Ensembl_Index
+STAR --runThreadN 15 --runMode genomeGenerate --genomeSAsparseD 12 --genomeSAindexNbases 12 --genomeChrBinNbits 14 --genomeDir STAR_Ensembl_Index --genomeFastaFiles Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa --sjdbGTFfile Homo_sapiens.GRCh38.105.gtf --sjdbOverhang 49
+
+### STAR Alignment ###
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn  B483_S17_R1_001.fastq	B483_S17_R2_001.fastq \
+--outFileNamePrefix gNTC1_R1_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B484_S18_R1_001.fastq	B484_S18_R2_001.fastq \
+--outFileNamePrefix gNTC1_R2_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B485_S19_R1_001.fastq	B485_S19_R2_001.fastq \
+--outFileNamePrefix gNTC1_R3_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn  B486_S20_R1_001.fastq	B486_S20_R2_001.fastq \
+--outFileNamePrefix gNTC1_CC_R1_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B487_S21_R1_001.fastq	B487_S21_R2_001.fastq \
+--outFileNamePrefix gNTC1_CC_R2_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B488_S22_R1_001.fastq	B488_S22_R2_001.fastq \
+--outFileNamePrefix gNTC1_CC_R3_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B489_S23_R1_001.fastq	B489_S23_R2_001.fastq \
+--outFileNamePrefix gTS2_R1_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B490_S24_R1_001.fastq	B490_S24_R2_001.fastq \
+--outFileNamePrefix gTS2_R2_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B491_S25_R1_001.fastq	B491_S25_R2_001.fastq \
+--outFileNamePrefix gTS2_R3_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B492_S26_R1_001.fastq	B492_S26_R2_001.fastq \
+--outFileNamePrefix gTS2_CC_R1_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B493_S27_R1_001.fastq	B493_S27_R2_001.fastq \
+--outFileNamePrefix gTS2_CC_R2_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Homo_sapiens.GRCh38.105.gtf \
+--readFilesIn B494_S28_R1_001.fastq	B494_S28_R2_001.fastq \
+--outFileNamePrefix gTS2_CC_R3_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+
+### For Featurecounts to include for Ensemble ###
+
+R
+library(Rsubread)
+getwd()
+aligned_Bam<-list.files(path=".",pattern="_Aligned.out.bam$")
+aligned_Bam
+counts <- featureCounts(aligned_Bam,isPairedEnd=TRUE,countMultiMappingReads=TRUE,nthreads=15,annot.ext="Homo_sapiens.GRCh38.105.gtf",isGTFAnnotationFile=TRUE,useMetaFeatures=TRUE,allowMultiOverlap=FALSE,GTF.featureType="exon",GTF.attrType="gene_id",GTF.attrType.extra="gene_name")
+write.table(cbind(counts$annotation$GeneID,counts$counts),"Aligned_Ensemble_featureCounts.txt",quote=F,sep="\t",row.names=F)
+
+### DEG analysis using DESeq2 ###
+
+library(DESeq2)
+setwd()
+fcc<-read.table("Input_DESeq2.txt",header=TRUE,sep="\t",row.names=1)
+ncol(fcc)
+nrow(fcc)
+dim(fcc)
+head(fcc)
+SI<-read.table("SI.txt",header=TRUE,sep="\t")
+ncol(SI)
+nrow(SI)
+dim(SI)
+head(SI)
+SI
+
+dds = DESeqDataSetFromMatrix(countData = fcc, colData = SI, design = ~ Type)
+
+dds = estimateSizeFactors(dds)
+sizeFactors(dds)
+
+par(mar=c(10,6,4,1))
+barplot(colSums(counts(dds)),las=2,cex.axis=1.5,cex.names=1.5,main="Sum of the Counts")
+par(mar=c(10,6,4,1))
+barplot(sizeFactors(dds),las=2,cex.names=1.5,cex.axis=1.5,main="Size Factors")
+
+par(mar=c(10,6,4,1))
+boxplot(log2(counts(dds)+1), ylim=c(-5,20),las=2,cex.names=1.5, main="Non-normalized read counts", ylab="log2(read counts)")
+par(mar=c(10,6,4,1))
+boxplot(log2(counts(dds,normalized=TRUE)+1), ylim=c(-5,20),las=2,cex.names=1.5,main="Size Factor Normalized read counts", ylab="log2(read counts)")
+
+dds = estimateDispersions(dds)
+plotDispEsts(dds)
+
+dds = nbinomWaldTest(dds)
+res_TS_NTC = results(dds,contrast=c("Type","TS","NTC"))
+res_TScc_NTCcc = results(dds,contrast=c("Type","TS_CC","NTC_CC"))
+res_TScc_TS = results(dds,contrast=c("Type","TS_CC","TS"))
+
+mcols(res_TS_NTC,use.names=TRUE)
+mcols(res_TScc_NTCcc,use.names=TRUE)
+mcols(res_TScc_TS,use.names=TRUE)
+
+plotMA(res_TS_NTC)
+plotMA(res_TScc_NTCcc)
+plotMA(res_TScc_TS)
+
+hist(res_TS_NTC$pvalue,breaks=20,col="grey")
+hist(res_TScc_NTCcc$pvalue,breaks=20,col="grey")
+hist(res_TScc_TS$pvalue,breaks=20,col="grey")
+
+vsd <- varianceStabilizingTransformation(dds, blind=TRUE)
+p = plotPCA(vsd,intgroup="Type")
+p
+
+sampleDists <- dist(t(assay(vsd)))
+library(pheatmap)
+library(RColorBrewer)
+sampleDistMatrix <- as.matrix(sampleDists)
+rownames(sampleDistMatrix) <- paste(vsd$Type, sep="-")
+colnames(sampleDistMatrix) <- NULL
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
+pheatmap(sampleDistMatrix,
+         clustering_distance_rows=sampleDists,
+         clustering_distance_cols=sampleDists,
+         col=colors)
+
+res_TS_NTC = res_TS_NTC[order(res_TS_NTC$padj),]
+write.table(res_TS_NTC, "res_TS_NTC.txt", row.name=T, quote=F, sep='\t')
+
+res_TScc_NTCcc = res_TScc_NTCcc[order(res_TScc_NTCcc$padj),]
+write.table(res_TScc_NTCcc, "res_TScc_NTCcc.txt", row.name=T, quote=F, sep='\t')
+
+res_TScc_TS = res_TScc_TS[order(res_TScc_TS$padj),]
+write.table(res_TScc_TS, "res_TScc_TS.txt", row.name=T, quote=F, sep='\t')
+

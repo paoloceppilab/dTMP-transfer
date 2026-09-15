@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Fig. 2A",
+    "Extended Fig. 3A",
+    "Extended Fig. 3B",
+    "Extended Fig. 3D",
+    "Extended Fig. 3E"
+  ],
+  "source_files": [
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P10_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P12_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P13_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P14_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P15_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P16_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P17_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P18_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P1_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P20_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P21_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P22_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P23_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P24_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P25_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P26_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P28_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P29_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P2_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P30_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P31_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P32_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P33_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P34_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P35_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P36_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P38_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P39_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P3_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P40_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P41_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P4_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P5_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P6_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P8_new.txt"
+    },
+    {
+      "role": "source_mixed_per_patient_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P9_new.txt"
+    },
+    {
+      "role": "extended_fig_3_pooled_scrnaseq_script",
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_Pooled_new.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P1.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P10.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P14.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P15.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P16.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P17.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P18.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P21.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P23.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P25.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P28.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P29.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P3.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P30.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P34.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P36.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P39.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P4.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P41.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P5.txt"
+    },
+    {
+      "role": "fig_2a_mki67_positive_cancer_cell_script",
+      "relative_local_path": "scripts/MKI67_P9.txt"
+    },
+    {
+      "role": "environment_record",
+      "relative_local_path": "scripts/Readme.txt"
+    }
+  ],
+  "data_sources": {
+    "accession": "GSE148071"
+  },
+  "included_patient_scripts": {
+    "fig_2a_mki67_gt_50_cancer_cell_scripts": [
+      "MKI67_P1.txt",
+      "MKI67_P10.txt",
+      "MKI67_P14.txt",
+      "MKI67_P15.txt",
+      "MKI67_P16.txt",
+      "MKI67_P17.txt",
+      "MKI67_P18.txt",
+      "MKI67_P21.txt",
+      "MKI67_P23.txt",
+      "MKI67_P25.txt",
+      "MKI67_P28.txt",
+      "MKI67_P29.txt",
+      "MKI67_P3.txt",
+      "MKI67_P30.txt",
+      "MKI67_P34.txt",
+      "MKI67_P36.txt",
+      "MKI67_P39.txt",
+      "MKI67_P4.txt",
+      "MKI67_P41.txt",
+      "MKI67_P5.txt",
+      "MKI67_P9.txt"
+    ],
+    "per_patient_scrnaseq_scripts": [
+      "24_05_16_scRNA_Mod_script_P10_new.txt",
+      "24_05_16_scRNA_Mod_script_P12_new.txt",
+      "24_05_16_scRNA_Mod_script_P13_new.txt",
+      "24_05_16_scRNA_Mod_script_P14_new.txt",
+      "24_05_16_scRNA_Mod_script_P15_new.txt",
+      "24_05_16_scRNA_Mod_script_P16_new.txt",
+      "24_05_16_scRNA_Mod_script_P17_new.txt",
+      "24_05_16_scRNA_Mod_script_P18_new.txt",
+      "24_05_16_scRNA_Mod_script_P1_new.txt",
+      "24_05_16_scRNA_Mod_script_P20_new.txt",
+      "24_05_16_scRNA_Mod_script_P21_new.txt",
+      "24_05_16_scRNA_Mod_script_P22_new.txt",
+      "24_05_16_scRNA_Mod_script_P23_new.txt",
+      "24_05_16_scRNA_Mod_script_P24_new.txt",
+      "24_05_16_scRNA_Mod_script_P25_new.txt",
+      "24_05_16_scRNA_Mod_script_P26_new.txt",
+      "24_05_16_scRNA_Mod_script_P28_new.txt",
+      "24_05_16_scRNA_Mod_script_P29_new.txt",
+      "24_05_16_scRNA_Mod_script_P2_new.txt",
+      "24_05_16_scRNA_Mod_script_P30_new.txt",
+      "24_05_16_scRNA_Mod_script_P31_new.txt",
+      "24_05_16_scRNA_Mod_script_P32_new.txt",
+      "24_05_16_scRNA_Mod_script_P33_new.txt",
+      "24_05_16_scRNA_Mod_script_P34_new.txt",
+      "24_05_16_scRNA_Mod_script_P35_new.txt",
+      "24_05_16_scRNA_Mod_script_P36_new.txt",
+      "24_05_16_scRNA_Mod_script_P38_new.txt",
+      "24_05_16_scRNA_Mod_script_P39_new.txt",
+      "24_05_16_scRNA_Mod_script_P3_new.txt",
+      "24_05_16_scRNA_Mod_script_P40_new.txt",
+      "24_05_16_scRNA_Mod_script_P41_new.txt",
+      "24_05_16_scRNA_Mod_script_P4_new.txt",
+      "24_05_16_scRNA_Mod_script_P5_new.txt",
+      "24_05_16_scRNA_Mod_script_P6_new.txt",
+      "24_05_16_scRNA_Mod_script_P8_new.txt",
+      "24_05_16_scRNA_Mod_script_P9_new.txt"
+    ]
+  },
+  "file_counts": {
+    "environment_records": 1,
+    "pooled_scripts": 1,
+    "mki67_fig_2a_scripts": 21,
+    "total_source_files": 59,
+    "per_patient_tyms_tk1_scripts": 36
+  },
+  "input_status": "Processed GSE148071 matrices are required; source scripts and a software record are included.",
+  "source_file_count": 59,
+  "folder_author": {
+    "name": "Vignesh Ramesh",
+    "email": "vramesh@bmb.sdu.dk"
+  }
+}

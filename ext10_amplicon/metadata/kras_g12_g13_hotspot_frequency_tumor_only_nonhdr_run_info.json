@@ -1,0 +1,303 @@
+{
+  "created_utc": "2026-06-14T18:40:12.605056+00:00",
+  "script": "source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py",
+  "analysis_goal": "Summarize non-HDR Kras codon 12/13 alleles for Extended Fig. 10E/F after excluding HDR-barcode-positive reads.",
+  "figure_title": "Frequencies of point mutations affecting Kras codons 12 and 13 among non-HDR alleles",
+  "denominator_type": "non-HDR tumor-only allele reads from codon13-window spectrum",
+  "categories": [
+    "WT",
+    "G12D",
+    "G12V",
+    "G12C",
+    "G12A",
+    "G12R",
+    "G12S",
+    "G13D",
+    "G13C",
+    "G13R",
+    "other"
+  ],
+  "filtering_rule": {
+    "include_tumor_samples_only": "cohort != Normal",
+    "exclude_hdr_barcode_positive": "strict_hdr_barcode == yes rows are excluded",
+    "include_nonhdr_rows": "strict_hdr_barcode == no"
+  },
+  "classification_rules": {
+    "WT": "exact WT codons at both codon 12 and codon 13",
+    "mutation_category": "exactly one selected G12/G13 residue change maps to that category",
+    "other": "compound selected mutations, unrequested residues, uncallable codons, indels/complex calls, or no selected mutation",
+    "selected_g12_residues": [
+      "A",
+      "C",
+      "D",
+      "R",
+      "S",
+      "V"
+    ],
+    "selected_g13_residues": [
+      "C",
+      "D",
+      "R"
+    ]
+  },
+  "inputs": {
+    "alleles": "kras_codon13_window_allele_counts.tsv"
+  },
+  "outputs": {
+    "figure_pdf": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
+    "figure_svg": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
+    "figure_png": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
+    "figure_ready_tsv": "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv",
+    "readme": "README.md",
+    "run_info": "metadata/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json"
+  },
+  "source_accounting": {
+    "normal_rows_excluded": 18121,
+    "normal_reads_excluded": 2263946,
+    "tumor_rows_seen": 161619,
+    "tumor_reads_seen": 19490107,
+    "tumor_nonhdr_rows_included": 161386,
+    "tumor_nonhdr_reads_included": 19487513,
+    "tumor_strict_hdr_yes_rows_excluded": 233,
+    "tumor_strict_hdr_yes_reads_excluded": 2594
+  },
+  "hdr_positive_removed": {
+    "tumor_strict_hdr_barcode_yes_reads": 2594,
+    "aggregate_counts": {
+      "WT": 0,
+      "G12D": 2589,
+      "G12V": 0,
+      "G12C": 0,
+      "G12A": 0,
+      "G12R": 0,
+      "G12S": 0,
+      "G13D": 0,
+      "G13C": 0,
+      "G13R": 0,
+      "other": 5
+    },
+    "aggregate_percent_of_old_denominator": {
+      "WT": 0,
+      "G12D": 0.013283662321607572,
+      "G12V": 0,
+      "G12C": 0,
+      "G12A": 0,
+      "G12R": 0,
+      "G12S": 0,
+      "G13D": 0,
+      "G13C": 0,
+      "G13R": 0,
+      "other": 2.5654040791053636e-05
+    }
+  },
+  "corrected_nonhdr": {
+    "aggregate_denominator_allele_reads": 19487513,
+    "aggregate_counts": {
+      "WT": 18730422,
+      "G12D": 12680,
+      "G12V": 50182,
+      "G12C": 34035,
+      "G12A": 7091,
+      "G12R": 9014,
+      "G12S": 18370,
+      "G13D": 13814,
+      "G13C": 8684,
+      "G13R": 6153,
+      "other": 597068
+    },
+    "aggregate_percentages": {
+      "WT": 96.11499425298652,
+      "G12D": 0.06506730745991035,
+      "G12V": 0.2575084876146074,
+      "G12C": 0.17465030042571364,
+      "G12A": 0.036387403564528735,
+      "G12R": 0.046255260997131856,
+      "G12S": 0.09426549195887643,
+      "G13D": 0.07088641839520518,
+      "G13C": 0.04456186892601432,
+      "G13R": 0.03157406488965524,
+      "other": 3.0638491427818417
+    },
+    "per_sample_denominators": {
+      "KP_376": 1155563,
+      "KP_378": 1062811,
+      "KP_398": 1378229,
+      "KP_703": 1179629,
+      "KP_751": 1290798,
+      "KP_768": 1145728,
+      "KP_811": 1132953,
+      "KP_848": 1306610,
+      "KP_850": 1150580,
+      "KP_875": 1666503,
+      "KPTT_613": 1799100,
+      "KPTT_617": 1371010,
+      "KPTT_637": 1181648,
+      "KPTT_646": 1441334,
+      "KPTT_655": 1225017
+    },
+    "compound_selected_g12_g13_reads": 2305,
+    "compound_selected_g12_g13_patterns": {
+      "G12V;G13C": 444,
+      "G12V;G13R": 268,
+      "G12C;G13C": 309,
+      "G12R;G13R": 204,
+      "G12A;G13R": 264,
+      "G12R;G13C": 163,
+      "G12C;G13R": 259,
+      "G12D;G13C": 14,
+      "G12A;G13C": 167,
+      "G12R;G13D": 7,
+      "G12S;G13R": 39,
+      "G12D;G13R": 20,
+      "G12D;G13D": 22,
+      "G12S;G13C": 47,
+      "G12V;G13D": 36,
+      "G12C;G13D": 22,
+      "G12S;G13D": 10,
+      "G12A;G13D": 10
+    },
+    "window_class_counts": {
+      "window_exact_wt": 17539910,
+      "window_complex_indel_plus_substitution": 744379,
+      "window_substitution_only": 1174782,
+      "window_indel": 28442
+    },
+    "top_codon12_codon13_effect_pairs": [
+      [
+        "exact_wt_codon|exact_wt_codon",
+        18730422
+      ],
+      [
+        "synonymous_noncanonical_codon|uncallable_indel_or_ambiguous",
+        423342
+      ],
+      [
+        "known_oncogenic_residue_change|exact_wt_codon",
+        121853
+      ],
+      [
+        "exact_wt_codon|known_oncogenic_residue_change",
+        56211
+      ],
+      [
+        "synonymous_noncanonical_codon|exact_wt_codon",
+        44611
+      ],
+      [
+        "exact_wt_codon|synonymous_noncanonical_codon",
+        41089
+      ],
+      [
+        "uncallable_indel_or_ambiguous|uncallable_indel_or_ambiguous",
+        13357
+      ],
+      [
+        "uncallable_indel_or_ambiguous|missense_unknown_significance",
+        9968
+      ],
+      [
+        "uncallable_indel_or_ambiguous|exact_wt_codon",
+        8576
+      ],
+      [
+        "synonymous_noncanonical_codon|missense_unknown_significance",
+        8102
+      ],
+      [
+        "known_oncogenic_residue_change|known_oncogenic_residue_change",
+        7189
+      ],
+      [
+        "exact_wt_codon|uncallable_indel_or_ambiguous",
+        5372
+      ],
+      [
+        "known_oncogenic_residue_change|synonymous_noncanonical_codon",
+        2156
+      ],
+      [
+        "missense_unknown_significance|exact_wt_codon",
+        1842
+      ],
+      [
+        "uncallable_indel_or_ambiguous|synonymous_noncanonical_codon",
+        1839
+      ],
+      [
+        "synonymous_noncanonical_codon|known_oncogenic_residue_change",
+        1669
+      ],
+      [
+        "synonymous_noncanonical_codon|synonymous_noncanonical_codon",
+        1340
+      ],
+      [
+        "known_oncogenic_residue_change|stop_gain",
+        1306
+      ],
+      [
+        "missense_unknown_significance|uncallable_indel_or_ambiguous",
+        1142
+      ],
+      [
+        "exact_wt_codon|missense_unknown_significance",
+        1034
+      ]
+    ],
+    "zoom_ylim": 12.5,
+    "interpretation_note": "Corrected G12D is non-HDR/unintended G12D only; HDR-derived Kras G12D remains represented by the separate HDR panel."
+  },
+  "expected_values_checked": {
+    "hdr_positive_g12d_removed_reads": 2589,
+    "expected_corrected_g12d_reads": 12680,
+    "expected_corrected_denominator": 19487513,
+    "g12d_before_hdr_exclusion_reads": 15269,
+    "g12d_before_hdr_exclusion_pct": 0.0783423097677196
+  },
+  "qc_checks": {
+    "no_strict_hdr_barcode_yes_reads_contribute_to_nonhdr_panel": true,
+    "normal_samples_excluded_from_nonhdr_panel": true,
+    "normal_458_and_normal_460_absent_from_nonhdr_panel": true,
+    "per_sample_counts_sum_to_nonhdr_denominator": true,
+    "per_sample_pct_sum_close_to_100": true,
+    "aggregate_counts_sum_to_nonhdr_denominator": true,
+    "aggregate_denominator_matches_expected": true,
+    "old_denominator_minus_hdr_positive_equals_corrected_denominator": true,
+    "old_g12d_minus_hdr_positive_g12d_equals_corrected_g12d": true
+  },
+  "software": {
+    "python_version": "3.9.6",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "matplotlib_version": "3.9.4",
+    "numpy_version": "2.0.2"
+  },
+  "before_hdr_exclusion": {
+    "tumor_denominator_allele_reads": 19490107,
+    "aggregate_counts": {
+      "WT": 18730422,
+      "G12D": 15269,
+      "G12V": 50182,
+      "G12C": 34035,
+      "G12A": 7091,
+      "G12R": 9014,
+      "G12S": 18370,
+      "G13D": 13814,
+      "G13C": 8684,
+      "G13R": 6153,
+      "other": 597073
+    },
+    "aggregate_percentages": {
+      "WT": 96.10220200432968,
+      "G12D": 0.0783423097677196,
+      "G12V": 0.2574742149953307,
+      "G12C": 0.1746270556647021,
+      "G12A": 0.03638256064987227,
+      "G12R": 0.046249104738111495,
+      "G12S": 0.09425294586633105,
+      "G13D": 0.07087698389752299,
+      "G13C": 0.04455593804590195,
+      "G13R": 0.031569862597470605,
+      "other": 3.0634670194473537
+    }
+  }
+}

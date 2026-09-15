@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Extended Fig. 4A-C",
+    "Fig. 5A"
+  ],
+  "source_files": [
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md"
+    },
+    {
+      "role": "figure_5a_prism_source",
+      "relative_local_path": "figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx"
+    },
+    {
+      "role": "deseq2_sample_metadata",
+      "relative_local_path": "metadata/upstream_deseq2_sample_info.txt"
+    },
+    {
+      "role": "source_upstream_script",
+      "relative_local_path": "source/22_08_23_Script_TS.txt"
+    },
+    {
+      "role": "figure_5a_source_workbook",
+      "relative_local_path": "tables/figure_5a_rnaseq_degs_source.xlsx"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_deseq2_results.xlsx"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_input_deseq2.txt"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_raw_count_table_ts.txt"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_res_ts_ntc.txt"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_res_tscc_ntccc.txt"
+    },
+    {
+      "role": "upstream_tyms_count_or_deseq2_table",
+      "relative_local_path": "tables/upstream_res_tscc_ts.txt"
+    }
+  ],
+  "data_sources": {
+    "study": "A549 TYMS/TS-KO bulk RNA-seq",
+    "genome_build": "GRCh38",
+    "annotation": "Ensembl release 105"
+  },
+  "method_summary": "Source command transcript includes FastQC, STAR, featureCounts and DESeq2. Original DESeq2 script is not included.",
+  "qc_expectations": {
+    "figure_5a_rnaseq_degs_source.xlsx": {
+      "required_sheets": [
+        "Raw_Counts",
+        "SI",
+        "TS vs NTC",
+        "TScc vs NTCcc",
+        "TScc vs TS"
+      ]
+    },
+    "upstream_deseq2_results.xlsx": {
+      "required_sheets": [
+        "Feature_Counts",
+        "Raw_Counts",
+        "SI",
+        "TS_NTC",
+        "TScc_NTCcc",
+        "TScc_TS"
+      ],
+      "expected_rows_for_count_and_contrast_sheets": 61542
+    },
+    "upstream_script_required_terms": [
+      "fastqc *.fastq.gz",
+      "fastqc_v0.11.9",
+      "Homo_sapiens.GRCh38.105.gtf",
+      "featureCounts",
+      "library(DESeq2)",
+      "results(dds,contrast=c(\"Type\",\"TS\",\"NTC\"))",
+      "results(dds,contrast=c(\"Type\",\"TS_CC\",\"NTC_CC\"))",
+      "results(dds,contrast=c(\"Type\",\"TS_CC\",\"TS\"))"
+    ]
+  },
+  "input_status": "Raw FASTQ, BAM and large intermediate files require separate access.",
+  "source_file_count": 11,
+  "folder_author": {
+    "name": "Vignesh Ramesh",
+    "email": "vramesh@bmb.sdu.dk"
+  }
+}

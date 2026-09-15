@@ -1,0 +1,69 @@
+{
+  "script": "source/analyze_kras_codon_window.py",
+  "argv": [
+    "source/analyze_kras_codon_window.py",
+    "--analysis-manifest",
+    "metadata/analysis_manifest.tsv",
+    "--amplicons",
+    "references/amplicons.tsv",
+    "--editing-summary",
+    "results/summary/editing_summary.tsv",
+    "--crispresso-dir",
+    "results/crispresso/kras_batch",
+    "--locus",
+    "Kras",
+    "--codon-number",
+    "13",
+    "--flank-bp",
+    "20",
+    "--min-classifiable-reads",
+    "10000",
+    "--outdir",
+    "results/kras_codon13_window_spectrum"
+  ],
+  "start_time_utc": "2026-06-10T14:42:18.568625+00:00",
+  "end_time_utc": "2026-06-10T14:42:30.063668+00:00",
+  "elapsed_seconds": 11.495,
+  "python": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+  "platform": "Linux-6.12.0-124.56.5.el10_1.x86_64-x86_64-with-glibc2.39",
+  "parameters": {
+    "locus": "Kras",
+    "codon_number": 13,
+    "codon_start": 24,
+    "flank_bp": 20,
+    "window_start": 4,
+    "window_end": 46,
+    "min_classifiable_reads": 10000
+  },
+  "inputs": {
+    "analysis_manifest": "metadata/analysis_manifest.tsv",
+    "amplicons": "references/amplicons.tsv",
+    "editing_summary": "results/summary/editing_summary.tsv",
+    "crispresso_dir": "results/crispresso/kras_batch",
+    "allele_table_paths": {
+      "Normal_458_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_Normal_458_Kras/Alleles_frequency_table.zip",
+      "Normal_460_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_Normal_460_Kras/Alleles_frequency_table.zip",
+      "KPTT_617_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KPTT_617_Kras/Alleles_frequency_table.zip",
+      "KPTT_637_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KPTT_637_Kras/Alleles_frequency_table.zip",
+      "KPTT_646_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KPTT_646_Kras/Alleles_frequency_table.zip",
+      "KPTT_613_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KPTT_613_Kras/Alleles_frequency_table.zip",
+      "KPTT_655_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KPTT_655_Kras/Alleles_frequency_table.zip",
+      "KP_398_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_398_Kras/Alleles_frequency_table.zip",
+      "KP_376_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_376_Kras/Alleles_frequency_table.zip",
+      "KP_850_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_850_Kras/Alleles_frequency_table.zip",
+      "KP_768_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_768_Kras/Alleles_frequency_table.zip",
+      "KP_751_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_751_Kras/Alleles_frequency_table.zip",
+      "KP_703_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_703_Kras/Alleles_frequency_table.zip",
+      "KP_875_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_875_Kras/Alleles_frequency_table.zip",
+      "KP_811_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_811_Kras/Alleles_frequency_table.zip",
+      "KP_848_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_848_Kras/Alleles_frequency_table.zip",
+      "KP_378_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_KP_378_Kras/Alleles_frequency_table.zip"
+    }
+  },
+  "outputs": {
+    "sample_summary": "results/kras_codon13_window_spectrum/summary/kras_codon13_window_sample_summary.tsv",
+    "allele_counts": "results/kras_codon13_window_spectrum/per_allele/kras_codon13_window_allele_counts.tsv",
+    "consequence_summary": "results/kras_codon13_window_spectrum/summary/kras_codon13_window_consequence_summary.tsv",
+    "figure_ready": "results/kras_codon13_window_spectrum/figures/kras_codon13_window_figure_ready.tsv"
+  }
+}

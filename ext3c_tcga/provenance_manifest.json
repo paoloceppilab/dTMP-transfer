@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Extended Fig. 3C"
+  ],
+  "source_files": [
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md"
+    },
+    {
+      "role": "curated_extended_3c_alteration_summary_table",
+      "relative_local_path": "data/alteration_summary.csv"
+    },
+    {
+      "role": "deterministic_base_r_summary_plot_script",
+      "relative_local_path": "source/plot_extended_3c.R"
+    },
+    {
+      "role": "regenerated_extended_3c_pie_svg",
+      "relative_local_path": "results/extended_3c_pie.svg"
+    }
+  ],
+  "data_sources": {
+    "source": "NCI Genomic Data Commons TCGA resource via cBioPortal",
+    "cohort": "TCGA-LUAD",
+    "access_date_from_paper": "2025-05-16",
+    "cases_with_cna_and_mutation_data": 496,
+    "tracked_summary_table": "data/alteration_summary.csv"
+  },
+  "method_parameters": {
+    "local_rscript_version_used_for_regeneration": "Rscript (R) version 4.6.1 (2026-06-24)",
+    "r_packages_required": [
+      "base R only"
+    ],
+    "seed": "not applicable; deterministic table validation and SVG geometry",
+    "classification_summary": "Patients are grouped by TYMS/TK1 copy-number amplification and missense mutation status; categories are mutually exclusive in the summary panel.",
+    "percent_rounding": "Percentages are computed as count / 496 * 100 and rounded to two decimal places."
+  },
+  "validation_expectations": {
+    "total_count": 496,
+    "category_counts": {
+      "Amplification in TYMS and TK1": 6,
+      "Amplification in TYMS": 10,
+      "Amplification in TK1": 17,
+      "Missense in TYMS": 1,
+      "Missense in TK1": 1,
+      "None": 461
+    },
+    "category_percentages": {
+      "Amplification in TYMS and TK1": 1.21,
+      "Amplification in TYMS": 2.02,
+      "Amplification in TK1": 3.43,
+      "Missense in TYMS": 0.2,
+      "Missense in TK1": 0.2,
+      "None": 92.94
+    },
+    "expected_result": "results/extended_3c_pie.svg"
+  },
+  "input_status": "Summary table and R script are included.",
+  "source_file_count": 4,
+  "folder_author": {
+    "name": "Mert Demirdizen",
+    "email": "mert@bmb.sdu.dk"
+  }
+}

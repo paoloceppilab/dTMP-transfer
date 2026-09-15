@@ -1,0 +1,711 @@
+library(tidyverse)
+library(dplyr)
+library(tibble)
+library(Seurat)
+library(data.table)
+library(reshape2) 
+library(stringr)
+
+P1_matrix <- read.table("GSM4453576_P1_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P2_matrix <- read.table("GSM4453577_P2_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P3_matrix <- read.table("GSM4453578_P3_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P4_matrix <- read.table("GSM4453579_P4_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P5_matrix <- read.table("GSM4453580_P5_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P6_matrix <- read.table("GSM4453581_P6_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P7_matrix <- read.table("GSM4453582_P7_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P8_matrix <- read.table("GSM4453583_P8_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P9_matrix <- read.table("GSM4453584_P9_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P10_matrix <- read.table("GSM4453585_P10_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P11_matrix <- read.table("GSM4453586_P11_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P12_matrix <- read.table("GSM4453587_P12_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P13_matrix <- read.table("GSM4453588_P13_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P14_matrix <- read.table("GSM4453589_P14_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P15_matrix <- read.table("GSM4453590_P15_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P16_matrix <- read.table("GSM4453591_P16_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P17_matrix <- read.table("GSM4453592_P17_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P18_matrix <- read.table("GSM4453593_P18_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P20_matrix <- read.table("GSM4453595_P20_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P21_matrix <- read.table("GSM4453596_P21_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P22_matrix <- read.table("GSM4453597_P22_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P23_matrix <- read.table("GSM4453598_P23_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P24_matrix <- read.table("GSM4453599_P24_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P25_matrix <- read.table("GSM4453600_P25_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P26_matrix <- read.table("GSM4453601_P26_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P28_matrix <- read.table("GSM4453603_P28_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P29_matrix <- read.table("GSM4453604_P29_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P30_matrix <- read.table("GSM4453605_P30_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P31_matrix <- read.table("GSM4453606_P31_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P32_matrix <- read.table("GSM4453607_P32_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P33_matrix <- read.table("GSM4453608_P33_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P34_matrix <- read.table("GSM4453609_P34_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P35_matrix <- read.table("GSM4453610_P35_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P36_matrix <- read.table("GSM4453611_P36_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P37_matrix <- read.table("GSM4453612_P37_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P38_matrix <- read.table("GSM4453613_P38_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P39_matrix <- read.table("GSM4453614_P39_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P40_matrix <- read.table("GSM4453615_P40_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P41_matrix <- read.table("GSM4453616_P41_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+P42_matrix <- read.table("GSM4453617_P42_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+
+patient1  <- CreateSeuratObject(counts = P1_matrix) 
+patient2  <- CreateSeuratObject(counts = P2_matrix)  
+patient3  <- CreateSeuratObject(counts = P3_matrix) 
+patient4  <- CreateSeuratObject(counts = P4_matrix) 
+patient5  <- CreateSeuratObject(counts = P5_matrix) 
+patient6  <- CreateSeuratObject(counts = P6_matrix)  
+patient7  <- CreateSeuratObject(counts = P7_matrix) 
+patient8  <- CreateSeuratObject(counts = P8_matrix) 
+patient9  <- CreateSeuratObject(counts = P9_matrix) 
+patient10 <- CreateSeuratObject(counts = P10_matrix)  
+patient11 <- CreateSeuratObject(counts = P11_matrix) 
+patient12 <- CreateSeuratObject(counts = P12_matrix) 
+patient13 <- CreateSeuratObject(counts = P13_matrix) 
+patient14 <- CreateSeuratObject(counts = P14_matrix)  
+patient15 <- CreateSeuratObject(counts = P15_matrix) 
+patient16 <- CreateSeuratObject(counts = P16_matrix) 
+patient17 <- CreateSeuratObject(counts = P17_matrix) 
+patient18 <- CreateSeuratObject(counts = P18_matrix) 
+patient20 <- CreateSeuratObject(counts = P20_matrix)  
+patient21 <- CreateSeuratObject(counts = P21_matrix) 
+patient22 <- CreateSeuratObject(counts = P22_matrix) 
+patient23 <- CreateSeuratObject(counts = P23_matrix) 
+patient24 <- CreateSeuratObject(counts = P24_matrix)  
+patient25 <- CreateSeuratObject(counts = P25_matrix) 
+patient26 <- CreateSeuratObject(counts = P26_matrix) 
+patient28 <- CreateSeuratObject(counts = P28_matrix) 
+patient29 <- CreateSeuratObject(counts = P29_matrix)  
+patient30 <- CreateSeuratObject(counts = P30_matrix) 
+patient31 <- CreateSeuratObject(counts = P31_matrix) 
+patient32 <- CreateSeuratObject(counts = P32_matrix) 
+patient33 <- CreateSeuratObject(counts = P33_matrix)  
+patient34 <- CreateSeuratObject(counts = P34_matrix) 
+patient35 <- CreateSeuratObject(counts = P35_matrix) 
+patient36 <- CreateSeuratObject(counts = P36_matrix) 
+patient37 <- CreateSeuratObject(counts = P37_matrix) 
+patient38 <- CreateSeuratObject(counts = P38_matrix) 
+patient39 <- CreateSeuratObject(counts = P39_matrix)  
+patient40 <- CreateSeuratObject(counts = P40_matrix) 
+patient41 <- CreateSeuratObject(counts = P41_matrix) 
+patient42 <- CreateSeuratObject(counts = P42_matrix) 
+
+patient_list <- list(patient1, patient2, patient3, patient4, patient5, patient6,
+                     patient7, patient8, patient9, patient10, patient11, patient12,
+                     patient13, patient14, patient15, patient16, patient17, patient18,
+                     patient20, patient21, patient22, patient23, patient24, patient25,
+                     patient26, patient28, patient29, patient30, patient31, patient32,
+                     patient33, patient34, patient35, patient36, patient37, patient38,
+                     patient39, patient40, patient41, patient42)
+
+merged_seurat <- merge(x = patient_list[[1]],
+                       y = patient_list[2:length(patient_list)],
+                       merge.data = TRUE)
+
+grep("^MT-",rownames(merged_seurat@assays$RNA$counts),value = TRUE)
+merged_seurat$percent.MT <- PercentageFeatureSet(merged_seurat,pattern="^MT-")
+head(merged_seurat$percent.MT)
+merged_seurat$mitoRatio <- merged_seurat$percent.MT/100
+head(merged_seurat)
+
+VlnPlot(merged_seurat, features=c("nFeature_RNA")) + scale_y_log10()+ geom_hline(yintercept = 30)
+VlnPlot(merged_seurat, features=c("nCount_RNA")) + scale_y_log10()+ geom_hline(yintercept = 30)
+VlnPlot(merged_seurat, features=c("percent.MT")) + scale_y_log10()+ geom_hline(yintercept = 30)
+
+plot1 <- FeatureScatter(merged_seurat,feature1 = "nCount_RNA", feature2 = "percent.MT")+ylab("Percent MT")+xlab("nGenes")
+plot2 <- FeatureScatter(merged_seurat,feature1 = "nCount_RNA", feature2 = "nFeature_RNA")+ylab("nUMI")+xlab("nGenes")
+plot1+plot2
+
+as_tibble(
+  merged_seurat[[c("nCount_RNA","nFeature_RNA","percent.MT","mitoRatio")]],
+  rownames="Cell.Barcode") -> qc.metrics
+qc.metrics$samples <- "Pool"
+write.table(qc.metrics,file="QC_metrics.txt",sep="\t")
+
+nGene<-qc.metrics %>% 
+  	ggplot(aes(color=samples, x=nFeature_RNA, fill= samples)) + 
+  	geom_density(alpha = 1.0) + 
+  	scale_x_log10() + 
+  	theme_classic() +
+	xlab("nGenes")+
+  	ylab("Cell Density (Log10)") +
+	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	geom_vline(xintercept = 200)+
+	geom_vline(xintercept = 5000)+
+  	ggtitle("No. of Genes per cell")
+
+nUMI<-qc.metrics %>% 
+  	ggplot(aes(color=samples, x=nCount_RNA, fill=samples)) + 
+  	geom_density(alpha = 1.0) + 
+  	theme_classic() +
+  	scale_x_log10() +
+	xlab("nUMIs")+
+  	ylab("Cell Density") +
+	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	geom_vline(xintercept = 30000)+
+  	ggtitle("No. of UMIs per cell")
+
+pMT<-qc.metrics %>%
+  ggplot(aes(percent.MT,color=samples,fill=samples)) + 
+  geom_density(alpha = 1.0) +
+  theme_classic() +
+  theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  ggtitle("Percentage MT content") +
+  geom_vline(xintercept = 30)+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+	xlab("Percent MT content") +
+  	ylab("Density")
+
+nGene+nUMI+pMT
+
+dim(merged_seurat)
+
+#[1] 29527  88727
+
+filtered_data <- subset(merged_seurat,nFeature_RNA > 200 &
+                          nFeature_RNA < 5000 &
+                          nCount_RNA < 30000 &
+                          mitoRatio < 0.30)
+
+dim(filtered_data)
+#[1] 29527 88672
+
+plot3 <- FeatureScatter(filtered_data, feature1 = "nCount_RNA", feature2 = "percent.MT")+ylab("Percent MT")+xlab("nGenes")
+plot4 <- FeatureScatter(filtered_data, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")+ylab("nUMI")+xlab("nGenes")
+plot3 + plot4
+
+Pooled <- filtered_data %>%
+  NormalizeData() %>%
+  FindVariableFeatures(selection.method = "vst", nfeatures = 600) %>% 
+  ScaleData()
+
+Pooled <- RunPCA(Pooled, features = VariableFeatures(object = Pooled))
+ElbowPlot(Pooled)
+
+Pooled <- FindNeighbors(Pooled, dims = 1:20)
+
+Pooled <- FindClusters(Pooled, resolution = 1.0, dims = 1:20)
+
+head(Idents(object = Pooled))
+
+Pooled <- RunUMAP(Pooled, dims = 1:20)
+
+DimPlot(Pooled, reduction = "umap",label=TRUE,label.size=5)
+
+DefaultAssay(Pooled) <- "RNA"
+Pooled <- NormalizeData(Pooled, verbose = FALSE)
+
+# Endothelial Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CLDN5", "VWF", "PECAM1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Fibroblasts Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("COL1A1", "COL1A2", "DCN"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Neutrophils Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CSF3R", "S100A8", "S100A9"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Mast_cells Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("GATA2", "TPSAB1", "TPSB2"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Alveolar Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CLDN18", "AQP4", "FOLR1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# T-cells Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CD2", "CD3D", "CD3E", "CD3G"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Epithelial Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CAPS", "SNTN"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Myeloid Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CD14", "LYZ"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# B-cells Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("CD79A", "CD79B"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+
+# Follicular_dendritic Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("FDCSP"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+# Cancer Markers
+FeaturePlot(Pooled, 
+            reduction = "umap", 
+            features = c("EPCAM"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=4)
+
+
+Pooled <- JoinLayers(Pooled) 
+
+markers <- FindAllMarkers(object = Pooled, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers,file="FAMs.txt",sep="\t")
+
+Endothelial<-markers %>% mutate(cell_type = str_replace(gene, '^CLDN5$|^VWF$|^PECAM1$', "Endothelial")) %>% filter(str_detect(gene,'^CLDN5$|^VWF$|^PECAM1$'))
+Fibroblasts<-markers %>% mutate(cell_type = str_replace_all(gene, '^COL1A1$|^COL1A2$|^DCN$', "Fibroblasts")) %>% filter(str_detect(gene,'^COL1A1$|^COL1A2$|^DCN$'))
+Neutrophils<-markers %>% mutate(cell_type = str_replace_all(gene, '^CSF3R$|^S100A8$|^S100A9$', "Neutrophils")) %>% filter(str_detect(gene,'^CSF3R$|^S100A8$|^S100A9$'))
+Mast<-markers %>% mutate(cell_type = str_replace_all(gene, '^GATA2$|^TPSAB1$|^TPSB2$', "Mast")) %>% filter(str_detect(gene,'^GATA2$|^TPSAB1$|^TPSB2$'))
+Epithelial<-markers %>% mutate(cell_type = str_replace_all(gene, '^CAPS$|^SNTN$', "Epithelial")) %>% filter(str_detect(gene,'^CAPS$|^SNTN$'))
+Alveolar<-markers %>% mutate(cell_type = str_replace_all(gene, '^CLDN18$|^AQP4$|^FLOR1$', "Alveolar")) %>% filter(str_detect(gene,'^CLDN18$|^AQP4$|^FLOR1$'))
+Myeloid<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD14$|^LYZ$', "Myeloid")) %>% filter(str_detect(gene,'^CD14$|^LYZ$'))
+Bcell<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD79A$|^CD79B$', "Bcell"))%>% filter(str_detect(gene,'^CD79A$|^CD79B$'))
+Tcell<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD2$|^CD3D$|^CD3E$|^CD3G$', "Tcell")) %>% filter(str_detect(gene,'^CD2$|^CD3D$|^CD3E$|^CD3G$'))
+Follicular<-markers %>% mutate(cell_type = str_replace_all(gene, '^FDCSP$', "Follicular")) %>% filter(str_detect(gene,'^FDCSP$'))
+Cancer<-markers %>% mutate(cell_type = str_replace_all(gene, '^EPCAM$', "Cancer")) %>% filter(str_detect(gene,'^EPCAM$'))
+
+Celltype_Identity<-rbind(Endothelial,Fibroblasts,Neutrophils,Mast,Epithelial,Alveolar,Myeloid,Bcell,Tcell,Follicular,Cancer)
+
+write.table(Celltype_Identity, file="CTMs.txt",sep="\t")
+
+table(Idents(Pooled))
+
+
+#   0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15 
+#7757 5069 4878 4628 3802 3646 3581 3487 3399 3108 3075 2899 2857 2846 2775 2514 
+#  16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31 
+#2511 2209 2046 1957 1795 1756 1641 1627 1470 1433 1290 1216 1163 1112  944  866 
+#  32   33   34   35   36   37   38 
+# 858  819  571  427  336  204  100 
+
+# Neutrophils = 11,14,16,17,24,25
+# Mast = 33
+# Tcells = 9,34,36
+# Bcells = 10
+# Endothelial = 28
+# Epithelial = 29
+# Myeloid = 1,3,13,27
+# Fibroblasts = 7,26,37; 18
+# Follicular = 31 (Expression - 70%)
+# Alveolar = 19,20
+# Cancer = 0,2,4,5,12,15,21,22,32; 6,8,23,30,35,38
+
+Pooled <- RenameIdents(object = Pooled, 
+                              "0" = "Cancer",
+                              "1" = "Myeloid",
+                              "2" = "Cancer",
+                              "3" = "Myeloid",
+                              "4" = "Cancer",
+                              "5" = "Cancer",
+                              "6" = "Cancer",
+                              "7" = "Fibroblasts",
+                              "8" = "Cancer",
+                              "9" = "Tcells",
+                              "10" = "Bcells",
+                              "11" = "Neutrophils",
+                              "12" = "Cancer",
+                              "13" = "Myeloid",
+                              "14" = "Neutrophils",
+                              "15" = "Cancer",
+                              "16" = "Neutrophils",
+                              "17" = "Neutrophils",
+                              "18" = "Fibroblasts",
+                              "19" = "Alveolar",
+                              "20" = "Alveolar",
+                              "21" = "Cancer",
+                              "22" = "Cancer",
+                              "23" = "Cancer",
+                              "24" = "Neutrophils",
+                              "25" = "Neutrophils",
+                              "26" = "Fibroblasts",
+                              "27" = "Myeloid",
+                              "28" = "Endothelial",
+                              "29" = "Epithelial",
+                              "30" = "Cancer",
+                              "31" = "Follicular",
+                              "32" = "Cancer",
+                              "33" = "Mast",
+                              "34" = "Tcells",
+                              "35" = "Cancer",
+                              "36" = "Tcells",
+                              "37" = "Fibroblasts",
+                              "38" = "Cancer")
+
+Dimplot_cell_types<-DimPlot(object = Pooled, 
+			reduction = "umap", 
+			label = FALSE,
+			label.size = 10,
+			repel = TRUE)
+
+table(Idents(Pooled))
+
+#    Cancer     Myeloid Fibroblasts      Tcells      Bcells Neutrophils 
+#      39787       13759        7027        4015        3075       13297 
+#   Alveolar Endothelial  Epithelial  Follicular        Mast 
+#       3752        1163        1112         866         819 
+
+library(svglite)
+#ggsave("Dimplot_cell_types.svg", plot= Dimplot_cell_types, width=10, height=10, dpi=300, bg = "transparent")
+
+Pooled_cancer <- subset(Pooled, idents = "Cancer", invert = FALSE)
+
+dim(Pooled_cancer)
+
+DimPlot(object = Pooled_cancer, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 6,
+        repel = TRUE)
+
+gene_expression <- FetchData(Pooled_cancer, vars = c("TYMS", "TK1","MKI67"))
+Pooled_cancer$category <- sapply(1:nrow(gene_expression), function(i) {
+  TYMS <- gene_expression[i, "TYMS"]
+  TK1 <- gene_expression[i, "TK1"]
+  MKI67 <- gene_expression[i, "MKI67"]
+    
+  if (TYMS == 0 & TK1 == 0 & MKI67 == 0) {
+    return("Non_Prol_DN")
+  } else if (TYMS == 0 & TK1 == 0 & MKI67 > 0) {
+    return("Prol_DN")
+  } else {
+    return("All")
+  }
+})
+
+Idents(Pooled_cancer) <- "category"
+table(Idents(Pooled_cancer))
+
+#        All Non_Prol_DN     Prol_DN 
+#       9092       26544        4151 
+
+Idents(object = Pooled_cancer) <- Pooled_cancer@meta.data$'category'
+
+
+markers_cat <- FindAllMarkers(object = Pooled_cancer, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_cat,file="FAMs_cat.txt",sep="\t")
+
+Wil_Prol_Nonprol<-(FindMarkers(Pooled_cancer, ident.1 = "Prol_DN", ident.2 = "Non_Prol_DN",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+write.table(Wil_Prol_Nonprol, file="Wilcoxon_Prol_Nonprol.txt",sep="\t")
+
+DimPlot(object = Pooled_cancer, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 8,
+        repel = TRUE)
+
+
+
+
+#   DP   TK1    DN  TYMS 
+# 2634  4493 30695  1965 
+
+Pooled_DN <- subset(Pooled_cancer, idents = "DN", invert = FALSE)
+
+DimPlot(object = Pooled_DN, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 6,
+        repel = TRUE)
+	
+# dim(Pooled_DN)
+# [1] 29527 30695
+
+Pooled_DN_log<-Pooled_DN[["RNA"]]$data
+
+# Gene List
+# "TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","MCM2","CCNE1","CDK2","CDK4"
+
+Pooled_DN_Gene_Exp_Final<-FetchData(object = Pooled_DN, vars = c("TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","MCM2","CCNE1","CDK2","CDK4"))
+
+write.table(Pooled_DN_Gene_Exp_Final,file="Pooled_DN_Gene_Exp_Final.txt",sep="\t")
+
+genes<-c("TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","MCM2","CCNE1","CDK2","CDK4")
+DoHeatmap(Pooled_DN,features=genes,slot="data")+ scale_fill_gradientn(colors = c("blue", "white", "red"))
+heatmap_final<-DoHeatmap(Pooled_DN,features=genes,slot="data")+ scale_fill_gradientn(colors = c("white", "red"))
+
+library(svglite)
+
+ggsave("Heatmap.svg", plot= heatmap_final, width=10, height=10, dpi=300, bg = "transparent")
+
+
+
+DimPlot(object = Pooled_cancer, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 6,
+        repel = TRUE)
+	
+# Gene List
+# "TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","RRM1","RRM2","MCM2","CCNE1","CDK2","CDK4"
+
+genes<-c("TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","RRM1","RRM2","MCM2","CCNE1","CDK2","CDK4")
+DoHeatmap(Pooled_cancer,features=genes,slot="data")+ scale_fill_gradientn(colors = c("blue", "white", "red"))
+heatmap_Pooled_cancer<-DoHeatmap(Pooled_cancer,features=genes,slot="data")+ scale_fill_gradientn(colors = c("white", "red"))
+
+library(svglite)
+
+Idents(Pooled_cancer) <- "category"
+
+my_levels <- c("DN","TYMS","TK1","DP")
+
+Idents(Pooled_cancer) <- factor(Pooled_cancer$category, levels = my_levels)
+table(Idents(Pooled_cancer))
+
+heatmap_Pooled_cancer_Final<-DoHeatmap(Pooled_cancer,features=genes,slot="data")+ scale_fill_gradientn(colors = c("white", "red"))
+
+ggsave("Heatmap_Pooled_cancer_Final.svg", plot= heatmap_Pooled_cancer_Final, width=10, height=10, dpi=300, bg = "transparent")
+
+Pooled_Metabolic_Gene_Exp_Ordered_Final<-FetchData(object = Pooled_cancer, vars = c("TYMS","TK1","ATIC","GMPS","PKM","MDH2","IDH1","SDHA","MKI67","CDK1","PCNA","RRM1","RRM2","MCM2","CCNE1","CDK2","CDK4"))
+
+write.table(Pooled_Metabolic_Gene_Exp_Ordered_Final,file="Pooled_Metabolic_Gene_Exp_Ordered_Final.txt",sep="\t")
+
+
+Idents(object = Pooled_cancer) <- Pooled_cancer@meta.data$'category'
+
+
+markers_cat <- FindAllMarkers(object = Pooled_cancer, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_cat,file="FAMs_cat.txt",sep="\t")
+
+
+Wil_DN_DP<-(FindMarkers(Pooled_cancer, ident.1 = "DN", ident.2 = "DP",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_DN_TYMS<-(FindMarkers(Pooled_cancer, ident.1 = "DN", ident.2 = "TYMS",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_DN_TK1<-(FindMarkers(Pooled_cancer, ident.1 = "DN", ident.2 = "TK1",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+write.table(Wil_DN_DP, file="Wilcoxon_DN_DP.txt",sep="\t")
+write.table(Wil_DN_TYMS, file="Wilcoxon_DN_TYMS.txt",sep="\t")
+write.table(Wil_DN_TK1, file="Wilcoxon_DN_TK1.txt",sep="\t")
+
+DimPlot(object = Pooled_cancer, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 8,
+        repel = TRUE)
+
+
+library(svglite)
+Idents(Pooled_cancer) <- "category"
+table(Idents(Pooled_cancer))
+
+
+Dimplot<-DimPlot(object = Pooled_cancer, 
+        reduction = "umap", 
+        label = FALSE,
+        label.size = 8,
+        repel = TRUE,
+	cols = c("#808184", "#F189F4", "#EC1C24","#DDDB94"))
+
+
+ggsave("Dimplot.svg", plot= Dimplot, width=10, height=10, dpi=300, bg = "transparent")
+
+tiff("try.tif", units="in", width=10, height=10, res=300)
+print(try)
+dev.off()
+
+DimPlot(object = Pooled_cancer, cols = c("#808184", "#F189F4", "#EC1C24","#DDDB94"))
+
+#   DP   TK1    DN  TYMS 
+# 2634  4493 30695  1965 
+
+# Subset MKI67 Positive cells in the cancer cell cluster
+MKI67_cancer <- subset(Pooled_cancer, MKI67 > 0)
+
+Idents(MKI67_cancer) <- "category"
+table(Idents(MKI67_cancer))
+
+#  DP  TK1   DN TYMS 
+# 2031 2438 4151  961 
+
+### Pooled_myeloid
+
+#Subset myeloid cluster
+Pooled_myeloid <- subset(Pooled, idents = "Myeloid", invert = FALSE)
+
+dim(Pooled_myeloid)
+
+# 29527 13759
+
+DefaultAssay(Pooled_myeloid)
+
+### Macrophage
+
+Pooled_myeloid <- Pooled_myeloid %>%
+	    FindVariableFeatures(selection.method = "vst", nfeatures = 600) %>% 
+	    ScaleData()
+
+Pooled_myeloid <- RunPCA(Pooled_myeloid, features = VariableFeatures(object = Pooled_myeloid))
+ElbowPlot(Pooled_myeloid)
+
+Pooled_myeloid <- FindNeighbors(Pooled_myeloid, dims = 1:20)
+
+Pooled_myeloid <- FindClusters(Pooled_myeloid, resolution = 0.6, dims = 1:20)
+
+Idents(object = Pooled_myeloid) <- "RNA_snn_res.0.6"
+head(Idents(object = Pooled_myeloid))
+
+Pooled_myeloid <- RunUMAP(Pooled_myeloid, dims = 1:20)
+
+DimPlot(Pooled_myeloid, reduction = "umap",label=TRUE,label.size=6)
+
+DefaultAssay(Pooled_myeloid) <- "RNA"
+Pooled_myeloid <- NormalizeData(Pooled_myeloid, verbose = FALSE)
+
+DimPlot(object = Pooled_myeloid, 
+        reduction = "umap", 
+        label = TRUE,
+        label.size = 6,
+        repel = TRUE)
+
+# Macrophage canonical Markers
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = c("CD68"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# M1-like Macrophage canonical Markers
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = c("NOS2","HLA-DRA"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# M2-like Macrophage canonical Markers
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = c("CD163","MRC1","MSR1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# Find markers for every cluster compared to all remaining cells, report only the positive ones
+markers_myeloid <- FindAllMarkers(object = Pooled_myeloid, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_myeloid,file="FAMs_myeloid.txt",sep="\t")
+
+Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^CD68$', "Macrophage")) %>% filter(str_detect(gene,'^CD68$'))
+M1_Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^NOS2$|^HLA-DRA$', "M1_Macrophage")) %>% filter(str_detect(gene,'^NOS2$|^HLA-DRA$'))
+M2_Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^CD163$|^MRC1$|^MSR1$', "M2_Macrophage")) %>% filter(str_detect(gene,'^CD163$|^MRC1$|^MSR1$'))
+
+Myeloid_Identity<-rbind(Macrophage_mark,M1_Macrophage_mark,M2_Macrophage_mark)
+
+write.table(Myeloid_Identity, file="MTMs.txt",sep="\t")
+
+# Calculate Canonical Macrophage score
+Macrophage <- list(c("CD68"))
+Pooled_myeloid <- AddModuleScore(object = Pooled_myeloid, features = Macrophage, ctrl = 5, name = 'Macrophage')
+names(x = Pooled_myeloid[[]])
+
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = 'Macrophage1',
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q10',
+            label = TRUE)
+
+# Calculate M1 Macrophage score
+M1_Macrophage <- list(c("NOS2","HLA-DRA"))
+Pooled_myeloid <- AddModuleScore(object = Pooled_myeloid, features = M1_Macrophage, ctrl = 5, name = 'M1_Macrophage')
+names(x = Pooled_myeloid[[]])
+
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = 'M1_Macrophage1',
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q10',
+            label = TRUE)
+
+# Calculate M2 Macrophage score
+M2_Macrophage <- list(c("CD163","MRC1","MSR1"))
+Pooled_myeloid <- AddModuleScore(object = Pooled_myeloid, features = M2_Macrophage, ctrl = 5, name = 'M2_Macrophage')
+names(x = Pooled_myeloid[[]])
+
+FeaturePlot(Pooled_myeloid, 
+            reduction = "umap", 
+            features = 'M2_Macrophage1',
+            pt.size = 0.4, 
+            order = TRUE,
+            min.cutoff = 'q10',
+            label = TRUE)
+
+
+Pooled_Macrophage <- subset(Pooled_myeloid, Macrophage1 > 0)
+
+Pooled_Macrophage$Max <- pmax(Pooled_Macrophage$M1_Macrophage1,Pooled_Macrophage$M2_Macrophage1)
+
+Pooled_Macrophage$Macrophage_type <- ifelse(Pooled_Macrophage$Max <= 0, "Negative",
+    ifelse(Pooled_Macrophage$Max == Pooled_Macrophage$M2_Macrophage1, "M2","M1"))
+
+
+Idents(Pooled_Macrophage) <- "Macrophage_type"
+table(Idents(Pooled_Macrophage))
+
+#      M1       M2 Negative 
+#    3335      143       39

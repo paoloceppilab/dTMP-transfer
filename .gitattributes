@@ -1,0 +1,10 @@
+# Preserve original CRLF formatting in source and result files.
+fig2b_d_ext3f_visium/source/analysis.R -whitespace
+fig2b_d_ext3f_visium/results/** -whitespace
+ext10_amplicon/**/*.svg -whitespace
+ext10_amplicon/**/*.tsv -whitespace
+ext10_amplicon/**/*.csv -whitespace
+ext4_fig5_rnaseq/source/** -whitespace
+ext4_fig5_rnaseq/metadata/** -whitespace
+ext4_fig5_rnaseq/tables/** -whitespace
+ext4_fig5_rnaseq/figures_or_prism/** -whitespace

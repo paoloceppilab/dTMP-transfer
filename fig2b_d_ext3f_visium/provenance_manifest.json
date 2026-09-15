@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Fig. 2B",
+    "Fig. 2D",
+    "Extended Fig. 3F"
+  ],
+  "source_files": [
+    {
+      "role": "main_verbatim_r_source_for_fig_2b_fig_2d_extended_fig_3f",
+      "relative_local_path": "source/analysis.R"
+    },
+    {
+      "role": "fig_2b_spot_state_counts",
+      "relative_local_path": "results/tyms_tk1_counts.csv"
+    },
+    {
+      "role": "fig_2d_neighborhood_data_points",
+      "relative_local_path": "results/neighborhood_data_points.csv"
+    },
+    {
+      "role": "fig_2b_combined_spatial_map_svg",
+      "relative_local_path": "results/spatial_plot.svg"
+    },
+    {
+      "role": "fig_2d_neighborhood_plot_svg",
+      "relative_local_path": "results/neighborhood_plot.svg"
+    },
+    {
+      "role": "extended_fig_3f_tyms_negative_tk1_negative_svg",
+      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_neg.svg"
+    },
+    {
+      "role": "extended_fig_3f_tyms_negative_tk1_positive_svg",
+      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_pos.svg"
+    },
+    {
+      "role": "extended_fig_3f_tyms_positive_tk1_negative_svg",
+      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_neg.svg"
+    },
+    {
+      "role": "extended_fig_3f_tyms_positive_tk1_positive_svg",
+      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_pos.svg"
+    }
+  ],
+  "data_sources": {
+    "name": "10x Genomics public Visium dataset CytAssist_FFPE_Human_Lung_Squamous_Cell_Carcinoma",
+    "url": "https://www.10xgenomics.com/datasets/human-lung-cancer-ffpe-2-standard",
+    "input_filename": "CytAssist_FFPE_Human_Lung_Squamous_Cell_Carcinoma_filtered_feature_bc_matrix.h5",
+    "size_bytes": 25534691,
+    "sha256": "2a50f60f7ecd86cb9fbb9d55cb89f9c7d938b3951f082b01bc81acf036642cbf"
+  },
+  "method_parameters": {
+    "r_version_from_paper": "4.4.0",
+    "r_packages_used_by_script": [
+      "Seurat",
+      "tidyverse",
+      "dbscan",
+      "magrittr",
+      "multcompView"
+    ],
+    "seed": 123,
+    "spot_state_rule": "Positive if raw count for TYMS or TK1 is greater than zero; negative if count equals zero.",
+    "neighborhood_method": "dbscan::frNN over Seurat low-resolution tissue coordinates for radii 1 through 10; spots retained when observed neighbor count equals the modal neighbor count at that radius.",
+    "paper_theoretical_hex_neighbor_count": "3 * radius * (radius + 1), excluding the central spot.",
+    "observed_modal_neighbor_counts": {
+      "1": 6,
+      "2": 18,
+      "3": 36,
+      "4": 60,
+      "5": 90,
+      "6": 138,
+      "7": 186,
+      "8": 240,
+      "9": 300,
+      "10": 366
+    }
+  },
+  "validation_expectations": {
+    "tyms_tk1_counts": {
+      "TYMS_pos_TK1_pos": 1707,
+      "TYMS_pos_TK1_neg": 549,
+      "TYMS_neg_TK1_neg": 1273,
+      "TYMS_neg_TK1_pos": 329
+    },
+    "neighborhood_data_rows": 160,
+    "radii": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "neighbor_statuses": [
+      "Double_Neg",
+      "Double_Pos",
+      "TK1_Pos",
+      "TYMS_Pos"
+    ],
+    "center_statuses": [
+      "Double_Neg",
+      "Double_Pos",
+      "TK1_Pos",
+      "TYMS_Pos"
+    ],
+    "observed_modal_neighbor_counts": {
+      "1": 6,
+      "2": 18,
+      "3": 36,
+      "4": 60,
+      "5": 90,
+      "6": 138,
+      "7": 186,
+      "8": 240,
+      "9": 300,
+      "10": 366
+    },
+    "paper_theoretical_hex_neighbor_count_formula": "3 * radius * (radius + 1)"
+  },
+  "input_status": "Public Visium H5 input is required to rerun the source script.",
+  "source_file_count": 9,
+  "folder_author": {
+    "name": "Mert Demirdizen",
+    "email": "mert@bmb.sdu.dk"
+  }
+}

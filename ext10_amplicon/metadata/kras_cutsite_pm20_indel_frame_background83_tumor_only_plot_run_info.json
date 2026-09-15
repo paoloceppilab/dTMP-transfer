@@ -1,0 +1,109 @@
+{
+  "created_utc": "2026-06-11T11:36:00.895258+00:00",
+  "script": "source/plot_kras_cutsite_pm20_indel_frame_background83.py",
+  "argv": [
+    "source/plot_kras_cutsite_pm20_indel_frame_background83.py",
+    "--per-pair",
+    "kras_cutsite_pair_calls.tsv.gz",
+    "--outdir",
+    "figures",
+    "--prefix",
+    "kras_cutsite_pm20_indel_frame_background83_tumor_only",
+    "--cut-site",
+    "91",
+    "--flank-bp",
+    "20",
+    "--min-window-baseq",
+    "20",
+    "--background-substitution",
+    "sub:83:T>C",
+    "--tumor-only"
+  ],
+  "window": {
+    "start": 71,
+    "end": 111,
+    "cut_after": 91
+  },
+  "min_window_baseq": 20,
+  "background_substitution": "sub:83:T>C",
+  "displayed_denominator": "classifiable non-HDR reads",
+  "inputs": {
+    "per_pair": "kras_cutsite_pair_calls.tsv.gz"
+  },
+  "outputs": {
+    "figure_pdf": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf",
+    "figure_svg": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg",
+    "figure_png": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png",
+    "figure_ready": "tables/extended_10d_indel_frame_background83_tumor_only_figure_ready.tsv",
+    "run_info": "metadata/kras_cutsite_pm20_indel_frame_background83_tumor_only_plot_run_info.json"
+  },
+  "aggregate_counts": {
+    "frameshift_indel": 1716047,
+    "in_frame_indel": 533592,
+    "other_indel_frame_status": 0
+  },
+  "aggregate_percentages_of_displayed_nonhdr_classifiable": {
+    "frameshift_indel": 19.326986536802487,
+    "in_frame_indel": 6.009582138569346,
+    "other_indel_frame_status": 0.0
+  },
+  "aggregate_percentages_of_indel_reads": {
+    "frameshift_indel": 76.28099441732651,
+    "in_frame_indel": 23.719005582673486,
+    "other_indel_frame_status": 0.0
+  },
+  "aggregate_qc": {
+    "plot_sample_count": 15,
+    "displayed_nonhdr_classifiable_pairs": 8879020,
+    "indel_pairs": 2249639,
+    "indel_pct_of_displayed_nonhdr_classifiable": 25.336568675371833,
+    "hdr_excluded_pairs": 900,
+    "other_indel_frame_status_pairs": 0,
+    "g12_status_by_frame": {
+      "frameshift_indel": {
+        "not_covered_by_selected_read": 1716047
+      },
+      "in_frame_indel": {
+        "not_covered_by_selected_read": 533592
+      },
+      "other_indel_frame_status": {}
+    },
+    "g13_status_by_frame": {
+      "frameshift_indel": {
+        "not_covered_by_selected_read": 1716047
+      },
+      "in_frame_indel": {
+        "not_covered_by_selected_read": 533592
+      },
+      "other_indel_frame_status": {}
+    },
+    "known_oncogenic_status_by_frame": {
+      "frameshift_indel": {
+        "not_known_oncogenic": 1716047
+      },
+      "in_frame_indel": {
+        "not_known_oncogenic": 533592
+      },
+      "other_indel_frame_status": {}
+    }
+  },
+  "qc_checks": {
+    "hdr_denominators_consistent": true,
+    "indel_counts_equal_frame_split": true,
+    "aggregate_counts_equal_indel_denominator": true,
+    "plotted_indel_pct_matches_frame_split_pct": true,
+    "g12_status_counts_match_frame_counts": true,
+    "g13_status_counts_match_frame_counts": true,
+    "known_oncogenic_status_counts_match_frame_counts": true
+  },
+  "method_note": "This independent plot splits the three-bin plot's in/del group into frameshift and in-frame indels using the parser-provided frameshift_status field. The plotted denominator remains all classifiable non-HDR tumor reads, matching the parent plot's orange in/del segment. G12/G13 and known-oncogenic statuses are captured in run metadata for annotation planning.",
+  "python_version": "3.9.6",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "matplotlib_version": "3.9.4",
+  "numpy_version": "2.0.2",
+  "cohort_order": {
+    "Normal": 0,
+    "KP": 1,
+    "KPTT": 2
+  }
+}

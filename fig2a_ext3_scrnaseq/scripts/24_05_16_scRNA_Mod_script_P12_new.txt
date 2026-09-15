@@ -1,0 +1,436 @@
+library(tidyverse)
+library(dplyr)
+library(tibble)
+library(Seurat)
+library(data.table)
+library(reshape2) 
+library(stringr)
+
+raw_data <- read.table("GSM4453587_P12_exp.txt", header = TRUE, stringsAsFactors = FALSE,row.names=1)
+
+raw_data <- CreateSeuratObject(counts = raw_data, project = "P12")
+
+grep("^MT-",rownames(raw_data@assays$RNA$counts),value = TRUE)
+raw_data$percent.MT <- PercentageFeatureSet(raw_data,pattern="^MT-")
+head(raw_data$percent.MT)
+raw_data$mitoRatio <- raw_data$percent.MT/100
+head(raw_data)
+
+VlnPlot(raw_data, features=c("nFeature_RNA","nCount_RNA","percent.MT")) + scale_y_log10()+ geom_hline(yintercept = 30)
+
+plot1 <- FeatureScatter(raw_data,feature1 = "nCount_RNA", feature2 = "percent.MT")+ylab("Percent MT")+xlab("nGenes")
+plot2 <- FeatureScatter(raw_data,feature1 = "nCount_RNA", feature2 = "nFeature_RNA")+ylab("nUMI")+xlab("nGenes")
+plot1+plot2
+
+as_tibble(
+  raw_data[[c("nCount_RNA","nFeature_RNA","percent.MT","mitoRatio")]],
+  rownames="Cell.Barcode") -> qc.metrics
+qc.metrics$samples <- "P12"
+write.table(qc.metrics,file="QC_metrics.txt",sep="\t")
+
+nGene<-qc.metrics %>% 
+  	ggplot(aes(color=samples, x=nFeature_RNA, fill= samples)) + 
+  	geom_density(alpha = 1.0) + 
+  	scale_x_log10() + 
+  	theme_classic() +
+	xlab("nGenes")+
+  	ylab("Cell Density (Log10)") +
+	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	geom_vline(xintercept = 200)+
+	geom_vline(xintercept = 5000)+
+  	ggtitle("No. of Genes per cell")
+
+nUMI<-qc.metrics %>% 
+  	ggplot(aes(color=samples, x=nCount_RNA, fill=samples)) + 
+  	geom_density(alpha = 1.0) + 
+  	theme_classic() +
+  	scale_x_log10() +
+	xlab("nUMIs")+
+  	ylab("Cell Density") +
+	theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  	geom_vline(xintercept = 30000)+
+  	ggtitle("No. of UMIs per cell")
+
+pMT<-qc.metrics %>%
+  ggplot(aes(percent.MT,color=samples,fill=samples)) + 
+  geom_density(alpha = 1.0) +
+  theme_classic() +
+  theme(plot.title = element_text(hjust=0.5, face="bold")) +
+  ggtitle("Percentage MT content") +
+  geom_vline(xintercept = 30)+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+	xlab("Percent MT content") +
+  	ylab("Density")
+
+nGene+nUMI+pMT
+
+dim(raw_data)
+
+#[1] 29527  891
+
+filtered_data <- subset(raw_data,nFeature_RNA > 200 &
+                          nFeature_RNA < 5000 &
+                          nCount_RNA < 30000 &
+                          mitoRatio < 0.30)
+
+dim(filtered_data)
+
+plot3 <- FeatureScatter(filtered_data, feature1 = "nCount_RNA", feature2 = "percent.MT")+ylab("Percent MT")+xlab("nGenes")
+plot4 <- FeatureScatter(filtered_data, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")+ylab("nUMI")+xlab("nGenes")
+plot3 + plot4
+
+patient12 <- filtered_data %>%
+  NormalizeData() %>%
+  FindVariableFeatures(selection.method = "vst", nfeatures = 600) %>% 
+  ScaleData()
+
+patient12 <- RunPCA(patient12, features = VariableFeatures(object = patient12))
+ElbowPlot(patient12)
+
+patient12 <- FindNeighbors(patient12, dims = 1:20)
+
+patient12 <- FindClusters(patient12, resolution = 1.0, dims = 1:20)
+
+head(Idents(object = patient12))
+
+patient12 <- RunUMAP(patient12, dims = 1:20)
+
+DimPlot(patient12, reduction = "umap",label=TRUE,label.size=6)
+
+DefaultAssay(patient12) <- "RNA"
+patient12 <- NormalizeData(patient12, verbose = FALSE)
+
+# Endothelial Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CLDN5", "VWF", "PECAM1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Fibroblasts Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("COL1A1", "COL1A2", "DCN"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Neutrophils Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CSF3R", "S100A8", "S100A9"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Mast_cells Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("GATA2", "TPSAB1", "TPSB2"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Alveolar Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CLDN18", "AQP4", "FOLR1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# T-cells Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CD2", "CD3D", "CD3E", "CD3G"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Epithelial Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CAPS", "SNTN"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Myeloid Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CD14", "LYZ"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# B-cells Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("CD79A", "CD79B"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+
+# Follicular_dendritic Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("FDCSP"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+# Cancer Markers
+FeaturePlot(patient12, 
+            reduction = "umap", 
+            features = c("EPCAM"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=5)
+
+
+markers <- FindAllMarkers(object = patient12, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers,file="FAMs.txt",sep="\t")
+
+Endothelial<-markers %>% mutate(cell_type = str_replace(gene, '^CLDN5$|^VWF$|^PECAM1$', "Endothelial")) %>% filter(str_detect(gene,'^CLDN5$|^VWF$|^PECAM1$'))
+Fibroblasts<-markers %>% mutate(cell_type = str_replace_all(gene, '^COL1A1$|^COL1A2$|^DCN$', "Fibroblasts")) %>% filter(str_detect(gene,'^COL1A1$|^COL1A2$|^DCN$'))
+Neutrophils<-markers %>% mutate(cell_type = str_replace_all(gene, '^CSF3R$|^S100A8$|^S100A9$', "Neutrophils")) %>% filter(str_detect(gene,'^CSF3R$|^S100A8$|^S100A9$'))
+Mast<-markers %>% mutate(cell_type = str_replace_all(gene, '^GATA2$|^TPSAB1$|^TPSB2$', "Mast")) %>% filter(str_detect(gene,'^GATA2$|^TPSAB1$|^TPSB2$'))
+Epithelial<-markers %>% mutate(cell_type = str_replace_all(gene, '^CAPS$|^SNTN$', "Epithelial")) %>% filter(str_detect(gene,'^CAPS$|^SNTN$'))
+Alveolar<-markers %>% mutate(cell_type = str_replace_all(gene, '^CLDN18$|^AQP4$|^FLOR1$', "Alveolar")) %>% filter(str_detect(gene,'^CLDN18$|^AQP4$|^FLOR1$'))
+Myeloid<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD14$|^LYZ$', "Myeloid")) %>% filter(str_detect(gene,'^CD14$|^LYZ$'))
+Bcell<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD79A$|^CD79B$', "Bcell"))%>% filter(str_detect(gene,'^CD79A$|^CD79B$'))
+Tcell<-markers %>% mutate(cell_type = str_replace_all(gene, '^CD2$|^CD3D$|^CD3E$|^CD3G$', "Tcell")) %>% filter(str_detect(gene,'^CD2$|^CD3D$|^CD3E$|^CD3G$'))
+Follicular<-markers %>% mutate(cell_type = str_replace_all(gene, '^FDCSP$', "Follicular")) %>% filter(str_detect(gene,'^FDCSP$'))
+Cancer<-markers %>% mutate(cell_type = str_replace_all(gene, '^EPCAM$', "Cancer")) %>% filter(str_detect(gene,'^EPCAM$'))
+
+Celltype_Identity<-rbind(Endothelial,Fibroblasts,Neutrophils,Mast,Epithelial,Alveolar,Myeloid,Bcell,Tcell,Follicular,Cancer)
+
+write.table(Celltype_Identity, file="CTMs.txt",sep="\t")
+
+table(Idents(patient12))
+
+#  0   1   2   3   4   5   6   7   8   9  10  11  12 
+#191 162  77  71  63  61  46  45  42  41  38  32  22 
+
+
+# Neutrophils = 
+# Mast = 7
+# Tcells = 8
+# Bcells = 2,4
+# Endothelial = 12
+# Epithelial = 6
+# Myeloid = 3,5
+# Fibroblasts = 11
+# Follicular = 
+# Alveolar = 0,1
+# Cancer = 9,10
+
+# Rename the cell types
+patient12 <- RenameIdents(object = patient12, 
+                              "0" = "Alveolar",
+                              "1" = "Alveolar",
+                              "2" = "Bcells",
+                              "3" = "Myeloid",
+                              "4" = "Bcells",
+                              "5" = "Myeloid",
+                              "6" = "Epithelial",
+                              "7" = "Mast",
+                              "8" = "Tcells",
+                              "9" = "Cancer",
+                              "10" = "Cancer",
+                              "11" = "Fibroblasts",
+                              "12" = "Endothelial")
+
+DimPlot(object = patient12, 
+        reduction = "umap", 
+        label = TRUE,
+        label.size = 5,
+        repel = TRUE)
+
+table(Idents(patient12))
+
+#   Alveolar      Bcells     Myeloid  Epithelial        Mast      Tcells 
+ #       353         140         132          46          45          42 
+ #    Cancer Fibroblasts Endothelial 
+ #        79          32          22 
+
+# Subset cancer cells
+P12_cancer <- subset(patient12, idents = "Cancer", invert = FALSE)
+
+dim(P12_cancer)
+
+DimPlot(object = P12_cancer, 
+        reduction = "umap", 
+        label = TRUE,
+        label.size = 3,
+        repel = TRUE)
+
+# Categorize the cancer cells based on TYMS and TK1 expression
+
+gene_expression <- FetchData(P12_cancer, vars = c("TYMS", "TK1"))
+
+P12_cancer$category <- sapply(1:nrow(gene_expression), function(i) {
+  TYMS <- gene_expression[i, "TYMS"]
+  TK1 <- gene_expression[i, "TK1"]
+  if (TYMS == 0 & TK1 == 0) {
+    return("DN")
+  } else if (TYMS > 0 & TK1 > 0) {
+    return("DP")
+  } else if (TYMS > 0 & TK1 == 0) {
+    return("TYMS")
+  } else {
+    return("TK1")
+  }
+})
+
+View(P12_cancer[[]])
+
+# Subset MKI67 Positive cells in the cancer cell cluster
+#MKI67_cancer <- subset(P12_cancer, MKI67 > 0)
+
+#Idents(MKI67_cancer) <- "category"
+#table(Idents(MKI67_cancer))
+
+
+#TK1  DN  DP 
+#  2   2   4 
+
+
+Idents(object = P12_cancer) <- P12_cancer@meta.data$'category'
+
+
+markers_cat <- FindAllMarkers(object = P12_cancer, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_cat,file="FAMs_cat.txt",sep="\t")
+
+
+Wil_DN_DP<-(FindMarkers(P12_cancer, ident.1 = "DN", ident.2 = "DP",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_DN_TYMS<-(FindMarkers(P12_cancer, ident.1 = "DN", ident.2 = "TYMS",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+Wil_DN_TK1<-(FindMarkers(P12_cancer, ident.1 = "DN", ident.2 = "TK1",logfc.threshold = 0.25,min.diff.pct=0.15))
+
+write.table(Wil_DN_DP, file="Wilcoxon_DN_DP.txt",sep="\t")
+write.table(Wil_DN_TYMS, file="Wilcoxon_DN_TYMS.txt",sep="\t")
+write.table(Wil_DN_TK1, file="Wilcoxon_DN_TK1.txt",sep="\t")
+
+
+
+Idents(P12_cancer) <- "category"
+table(Idents(P12_cancer))
+
+
+# DN   DP  TK1 TYMS 
+#  71    5    2    1 
+
+View(P12_cancer[[]])
+
+P12_myeloid <- subset(patient12, idents = "Myeloid", invert = FALSE)
+
+dim(P12_myeloid)
+
+# 29527 809
+
+DefaultAssay(P12_myeloid)
+
+P12_myeloid <- P12_myeloid %>%
+	    FindVariableFeatures(selection.method = "vst", nfeatures = 600) %>% 
+	    ScaleData()
+
+P12_myeloid <- RunPCA(P12_myeloid, features = VariableFeatures(object = P12_myeloid))
+ElbowPlot(P12_myeloid)
+
+P12_myeloid <- FindNeighbors(P12_myeloid, dims = 1:20)
+
+P12_myeloid <- FindClusters(P12_myeloid, resolution = 0.6, dims = 1:20)
+
+Idents(object = P12_myeloid) <- "RNA_snn_res.0.6"
+head(Idents(object = P12_myeloid))
+
+P12_myeloid <- RunUMAP(P12_myeloid, dims = 1:20)
+
+DimPlot(P12_myeloid, reduction = "umap",label=TRUE,label.size=6)
+
+DefaultAssay(P12_myeloid) <- "RNA"
+P12_myeloid <- NormalizeData(P12_myeloid, verbose = FALSE)
+
+DimPlot(object = P12_myeloid, 
+        reduction = "umap", 
+        label = TRUE,
+        label.size = 6,
+        repel = TRUE)
+
+# Macrophage canonical Markers
+FeaturePlot(P12_myeloid, 
+            reduction = "umap", 
+            features = c("CD68"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# M1-like Macrophage canonical Markers
+FeaturePlot(P12_myeloid, 
+            reduction = "umap", 
+            features = c("NOS2","HLA-DRA"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# M2-like Macrophage canonical Markers
+FeaturePlot(P12_myeloid, 
+            reduction = "umap", 
+            features = c("CD163","MRC1","MSR1"), 
+            order = TRUE,
+            min.cutoff = 'q10', 
+            label = TRUE,
+	    label.size=6)
+
+# Find markers for every cluster compared to all remaining cells, reported only the positive ones
+markers_myeloid <- FindAllMarkers(object = P12_myeloid, 
+                          only.pos = TRUE,
+                          logfc.threshold = 0.25,min.diff.pct=0.15)   
+
+write.table(markers_myeloid,file="FAMs_myeloid.txt",sep="\t")
+
+Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^CD68$', "Macrophage")) %>% filter(str_detect(gene,'^CD68$'))
+M1_Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^NOS2$|^HLA-DRA$', "M1_Macrophage")) %>% filter(str_detect(gene,'^NOS2$|^HLA-DRA$'))
+M2_Macrophage_mark<-markers_myeloid %>% mutate(cell_type = str_replace(gene, '^CD163$|^MRC1$|^MSR1$', "M2_Macrophage")) %>% filter(str_detect(gene,'^CD163$|^MRC1$|^MSR1$'))
+
+Myeloid_Identity<-rbind(Macrophage_mark,M1_Macrophage_mark,M2_Macrophage_mark)
+
+write.table(Myeloid_Identity, file="MTMs.txt",sep="\t")
+
+# Subset Macrophage Positive cells in the myeloid cell cluster
+P12_Macrophage <- subset(P12_myeloid, Macrophage1 > 0)
+
+P12_Macrophage$Max <- pmax(P12_Macrophage$M1_Macrophage1,P12_Macrophage$M2_Macrophage1)
+
+P12_Macrophage$Macrophage_type <- ifelse(P12_Macrophage$Max <= 0, "Negative",
+    ifelse(P12_Macrophage$Max == P12_Macrophage$M2_Macrophage1, "M2","M1"))
+
+
+Idents(P12_Macrophage) <- "Macrophage_type"
+table(Idents(P12_Macrophage))
+
+# M1 
+# 28 

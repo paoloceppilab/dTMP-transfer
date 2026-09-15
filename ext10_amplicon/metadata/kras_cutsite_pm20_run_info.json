@@ -1,0 +1,9 @@
+{
+  "generated_at_utc": "2026-06-10T17:50:09.989661+00:00",
+  "elapsed_seconds": 819.835,
+  "platform": "Linux-6.12.0-124.56.5.el10_1.x86_64-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Mar  3 2026, 12:15:18) [GCC 13.3.0]",
+  "git_head": "NA (CalledProcessError: Command '['git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.)",
+  "python_freeze": "blinker==1.7.0\nclick==8.1.6\ncolorama==0.4.6\ncryptography==41.0.7\ndbus-python==1.3.2\ndistro==1.9.0\neasybuild==5.2.1\neasybuild-easyblocks==5.2.1\neasybuild-easyconfigs==5.2.1\neasybuild-framework==5.2.1\ngyp==0.1\nhttplib2==0.20.4\nlaunchpadlib==1.11.0\nlazr.restfulclient==0.14.6\nlazr.uri==1.0.6\nMako==1.3.2.dev0\nMarkdown==3.5.2\nMarkupSafe==2.1.5\noauthlib==3.2.2\npackaging==24.0\nply==3.11\nPyGObject==3.48.2\nPyJWT==2.7.0\npyparsing==3.1.1\npython-apt==2.7.7+ubuntu5.2\nsetuptools==68.1.2\nsix==1.16.0\nubuntu-drivers-common==0.0.0\nwadllib==1.3.6\nwheel==0.42.0\nxkit==0.0.0\nxonsh==0.14.4",
+  "sample_count": 17
+}

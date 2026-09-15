@@ -1,0 +1,80 @@
+{
+  "created_utc": "2026-06-11T11:33:18.213016+00:00",
+  "script": "source/plot_kras_cutsite_pm20_threebin_background83.py",
+  "argv": [
+    "source/plot_kras_cutsite_pm20_threebin_background83.py",
+    "--per-pair",
+    "kras_cutsite_pair_calls.tsv.gz",
+    "--amplicons",
+    "amplicons.tsv",
+    "--outdir",
+    "figures",
+    "--prefix",
+    "kras_cutsite_pm20_threebin_background83_tumor_only",
+    "--cut-site",
+    "91",
+    "--flank-bp",
+    "20",
+    "--min-window-baseq",
+    "20",
+    "--background-substitution",
+    "sub:83:T>C",
+    "--tumor-only"
+  ],
+  "window": {
+    "start": 71,
+    "end": 111,
+    "cut_after": 91
+  },
+  "min_window_baseq": 20,
+  "background_substitution": "sub:83:T>C",
+  "displayed_bins": {
+    "WT_background": "WT",
+    "in_del": "in/del",
+    "other_substitution": "other substitutions"
+  },
+  "inputs": {
+    "per_pair": "kras_cutsite_pair_calls.tsv.gz",
+    "amplicons": "amplicons.tsv"
+  },
+  "outputs": {
+    "figure_pdf": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf",
+    "figure_svg": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg",
+    "figure_png": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png",
+    "figure_ready": "tables/extended_10d_threebin_background83_tumor_only_figure_ready.tsv",
+    "run_info": "metadata/kras_cutsite_pm20_threebin_background83_tumor_only_plot_run_info.json"
+  },
+  "aggregate_counts": {
+    "WT_background": 5907441,
+    "in_del": 2249639,
+    "other_substitution": 721940
+  },
+  "aggregate_percentages": {
+    "WT_background": 66.5325790458857,
+    "in_del": 25.336568675371833,
+    "other_substitution": 8.130852278742474
+  },
+  "aggregate_qc": {
+    "plot_sample_count": 15,
+    "displayed_nonhdr_classifiable_pairs": 8879020,
+    "full_pm20_classifiable_pairs_including_HDR": 8879920,
+    "hdr_excluded_pairs": 900,
+    "background_substitution_nonhdr_classifiable_pairs": 7867500,
+    "moved_other_substitution_to_WT_background_pairs": 5894272,
+    "background_substitution_plus_other_sub_no_indel_pairs": 369458,
+    "background_substitution_in_indel_pairs": 1603770,
+    "background_substitution_nonhdr_classifiable_pct": 88.60775175638753,
+    "moved_other_substitution_to_WT_background_pct": 66.38426312813802,
+    "three_bin_pct_sum": 100.0
+  },
+  "qc_checks": {
+    "plot_rows_pct_sum_close_to_100": true,
+    "hdr_denominators_consistent": true,
+    "aggregate_counts_equal_displayed_denominator": true
+  },
+  "method_note": "Uses per-pair cut-site alignments from the existing +/-20 bp parser output; includes only non-ambiguous aligned reads spanning bases 71-111 with Q20 over the window. HDR reads are excluded from the displayed denominator. For non-HDR reads, exact sub:83:T>C is treated as background for display classification; any overlapping indel takes priority over substitutions.",
+  "python_version": "3.9.6",
+  "platform": "macOS-26.5.1-arm64-arm-64bit",
+  "matplotlib_version": "3.9.4",
+  "numpy_version": "2.0.2"
+}

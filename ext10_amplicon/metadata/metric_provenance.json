@@ -1,0 +1,25 @@
+{
+  "generated_at_utc": "2026-04-22T16:34:29.334482+00:00",
+  "prefix_length": 67,
+  "kras": {
+    "metric_name": "kras_hdr_exact_pct",
+    "informative_positions_1based": [
+      11,
+      14,
+      17,
+      20,
+      22,
+      23,
+      29,
+      41
+    ],
+    "wt_bases": "GTATGTAC",
+    "hdr_bases": "CGCCACGT",
+    "description": "Percent of processed forward-oriented reads spanning all informative positions that exactly match the 8-base HDR barcode pattern."
+  },
+  "trp53": {
+    "metric_name": "trp53_indel_pct",
+    "description": "Percent of reads in the guide-centered allele table with indels after excluding pure right-edge truncation artifacts.",
+    "truncation_rule": "No insertions, at least one deletion, and the aligned sequence consists only of a trailing right-edge deletion with no internal gaps."
+  }
+}

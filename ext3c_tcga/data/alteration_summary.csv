@@ -1,0 +1,7 @@
+category,count,expected_percent,display_label,color
+Amplification in TYMS and TK1,6,1.21,Amplification in TYMS and TK1 (1.21%),#4E79A7
+Amplification in TYMS,10,2.02,Amplification in TYMS (2.02%),#F28E2B
+Amplification in TK1,17,3.43,Amplification in TK1 (3.43%),#59A14F
+Missense in TYMS,1,0.20,Missense in TYMS (0.20%),#E15759
+Missense in TK1,1,0.20,Missense in TK1 (0.20%),#B07AA1
+None,461,92.94,None (92.94%),#D9D9D9

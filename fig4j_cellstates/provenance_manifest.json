@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Fig. 4J"
+  ],
+  "source_files": [
+    {
+      "role": "Three epithelial source populations to four TYMS/TK1 detection states",
+      "relative_local_path": "source/MalignantCellClassification_TYMS_TK1_cycling.ipynb"
+    },
+    {
+      "role": "Reference label column, excluded cell populations, and tumor section list",
+      "relative_local_path": "source/config.py"
+    },
+    {
+      "role": "Negative-binomial reference signature training",
+      "relative_local_path": "source/estimate_expression_signatures.py"
+    },
+    {
+      "role": "Spatial mapping and posterior export",
+      "relative_local_path": "source/run_cell2location.py"
+    },
+    {
+      "role": "Shared Visium reader and QC metadata helper",
+      "relative_local_path": "source/visium_qc_and_visualisation.py"
+    },
+    {
+      "role": "Attach aligned spatial coordinates and images to posterior",
+      "relative_local_path": "source/save_all_samples_merged.py"
+    },
+    {
+      "role": "Restricted-gene count filter, NMF factor sweep and package-generated plots",
+      "relative_local_path": "source/colocation.py"
+    }
+  ],
+  "data_sources": {
+    "repository": "https://gitlab.com/cvejic-group/lung",
+    "comparison_commit": "51a8997ebffc8a5b529736f45b71f06d16af31ac",
+    "study_doi": "10.1038/s41467-024-48700-8",
+    "scrna_accession": "E-MTAB-13526",
+    "visium_accession": "E-MTAB-13530"
+  },
+  "method_parameters": {
+    "annotation": {
+      "environment": "Tumour",
+      "source_labels": [
+        "AT2 cells",
+        "Cycling AT2 cells",
+        "Atypical epithelial cells"
+      ],
+      "matrix": "X",
+      "positive_if": "count > 0",
+      "markers": [
+        "TYMS",
+        "TK1"
+      ],
+      "overwritten_column": "Cell types v25"
+    },
+    "regression": {
+      "batch_key": "patient_sample",
+      "labels_key": "Cell types",
+      "max_epochs": 100,
+      "batch_size": 2500,
+      "train_size": 1,
+      "learning_rate": 0.002
+    },
+    "mapping": {
+      "N_cells_per_location": 8,
+      "detection_alpha": 200,
+      "max_epochs": 3000,
+      "batch_size": 2500,
+      "posterior_samples_requested": 1000,
+      "posterior_batch_size": 2500
+    },
+    "merging_reconstructed": {
+      "min_counts": 0,
+      "keep_img": "lowres"
+    },
+    "nmf": {
+      "model": "CoLocatedGroupsSklearnNMF",
+      "posterior_summary": "q05_cell_abundance_w_sf",
+      "count_filter": ">= 800",
+      "count_matrix": "X after mitochondrial exclusion and reference/spatial gene intersection",
+      "factor_sweep": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "n_restarts": 5,
+      "selected_factor_count": 7
+    },
+    "explicit_seed_calls": {
+      "estimate_expression_signatures.py": {
+        "torch.manual_seed": 42
+      },
+      "run_cell2location.py": {
+        "torch.manual_seed": 42
+      },
+      "colocation.py": {
+        "torch.manual_seed": 42
+      }
+    },
+    "determinism_limit": "These seed calls do not establish complete NumPy, scvi/Pyro or NMF seed control. Package defaults and exact cell2location version remain to be determined."
+  },
+  "software_versions": {
+    "scvi-tools": "1.4.0.post1 (saved model registry)",
+    "cell2location": "not independently verified; manuscript reports 0.1.4"
+  },
+  "input_status": "Source scripts are included; processed reference, Visium data and trained models require separate access.",
+  "source_file_count": 7,
+  "folder_author": {
+    "name": "Mert Demirdizen",
+    "email": "mert@bmb.sdu.dk"
+  }
+}

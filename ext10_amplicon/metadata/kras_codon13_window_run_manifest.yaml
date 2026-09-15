@@ -1,0 +1,15 @@
+record_type: public_rerun_parameters
+script: source/analyze_kras_codon_window.py
+locus: Kras
+target_codon_number: 13
+target_codon_start_1based: 24
+target_codon_end_1based: 26
+flank_bp: 20
+window_start_1based: 4
+window_end_1based: 46
+analysis_manifest: metadata/analysis_manifest.tsv
+amplicons: references/amplicons.tsv
+editing_summary: results/summary/editing_summary.tsv
+crispresso_dir: results/crispresso/kras_batch
+method: existing CRISPResso prefix67 allele-table parsing; valid because requested window is within bases 1-67
+codon61_status: not_assayed_by_this_amplicon

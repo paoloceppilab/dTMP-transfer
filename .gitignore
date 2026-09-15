@@ -1,0 +1,56 @@
+# macOS and editor files
+.DS_Store
+._*
+*~
+.vscode/
+.idea/
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+/.venv/
+/venv/
+/env/
+
+# Local and generated logs
+*.log
+*.out
+logs/
+
+# Raw datasets, trained models, and large analysis intermediates
+*.h5ad
+*.h5
+*.hdf5
+*.loom
+*.mtx
+*.rds
+*.RData
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.joblib
+*.zarr/
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.secret
+
+# Unrelated or unpublished local materials
+/NSCLC/
+/paper/
+/references/
+
+# Keep the curated Figure 4J archive and small provenance records tracked.

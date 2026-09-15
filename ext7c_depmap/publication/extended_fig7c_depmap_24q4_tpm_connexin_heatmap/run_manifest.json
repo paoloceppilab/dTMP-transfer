@@ -1,0 +1,169 @@
+{
+  "created_utc": "2026-09-15T22:42:52.273260+00:00",
+  "script_path": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/scripts/generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py",
+  "script_sha256": "c01bf543413293df358588aa8e7f2e1e0288b88850466f85c4741954e0ff67d7",
+  "project_root": ".",
+  "git_commit": null,
+  "rerun_command_from_project_root": "python3 ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/scripts/generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py --force",
+  "arguments": {
+    "force": true,
+    "keep_raw": false,
+    "raw_cache_dir": null,
+    "external_validated_cache_used": true
+  },
+  "release": {
+    "name": "DepMap 24Q4 Public",
+    "figshare_article_url": "https://plus.figshare.com/articles/dataset/DepMap_24Q4_Public/27993248",
+    "figshare_article_id": "27993248"
+  },
+  "source_urls": {
+    "expression": "https://ndownloader.figshare.com/files/51065360",
+    "default_model_profiles": "https://ndownloader.figshare.com/files/51065339"
+  },
+  "source_files": {
+    "expression": {
+      "path": null,
+      "expected_size_bytes": 1016340354,
+      "expected_sha256": "57aa034ec15c48109333aad9d09d31bf8080ce222c45f3b0465fe8e7e7b88d7a",
+      "size_bytes": 1016340354,
+      "sha256": "57aa034ec15c48109333aad9d09d31bf8080ce222c45f3b0465fe8e7e7b88d7a",
+      "valid": true,
+      "label": "DepMap 24Q4 all-gene RNA expression profile matrix",
+      "source_url": "https://ndownloader.figshare.com/files/51065360",
+      "figshare_file_id": "51065360",
+      "expected_filename": "OmicsExpressionAllGenesTPMLogp1Profile.csv",
+      "acquisition": "validated_local_cache",
+      "retained_raw": false,
+      "exists_at_run": true
+    },
+    "default_profiles": {
+      "path": null,
+      "expected_size_bytes": 90080,
+      "expected_sha256": "096a96c39d88374cb7c37058816e6cde29d6617b820b8a14d33ae9dd821c6dc5",
+      "size_bytes": 90080,
+      "sha256": "096a96c39d88374cb7c37058816e6cde29d6617b820b8a14d33ae9dd821c6dc5",
+      "valid": true,
+      "label": "DepMap 24Q4 default model profiles",
+      "source_url": "https://ndownloader.figshare.com/files/51065339",
+      "figshare_file_id": "51065339",
+      "expected_filename": "OmicsDefaultModelProfiles.csv",
+      "acquisition": "validated_local_cache",
+      "retained_raw": false,
+      "exists_at_run": true
+    }
+  },
+  "source_expression_unit": "log2(TPM + 1)",
+  "reported_expression_unit": "TPM",
+  "source_to_reported_transform": "TPM = 2 ** log2_tpm_plus_1 - 1",
+  "n_expression_profiles_read": 1690,
+  "cell_lines": [
+    "A549",
+    "Calu-1",
+    "NCI-H23",
+    "SK-MES-1",
+    "NCI-H520",
+    "NCI-H1299",
+    "BEN",
+    "NCI-H838"
+  ],
+  "depmap_model_ids": {
+    "A549": "ACH-000681",
+    "Calu-1": "ACH-000511",
+    "NCI-H23": "ACH-000900",
+    "SK-MES-1": "ACH-000665",
+    "NCI-H520": "ACH-000395",
+    "NCI-H1299": "ACH-000510",
+    "BEN": "ACH-000603",
+    "NCI-H838": "ACH-000416"
+  },
+  "genes": [
+    "GJA1",
+    "GJA10",
+    "GJA3",
+    "GJA5",
+    "GJA8",
+    "GJA9",
+    "GJB2",
+    "GJB4",
+    "GJB5",
+    "GJB6",
+    "GJB7",
+    "GJC1",
+    "GJC2",
+    "GJC3",
+    "GJD2",
+    "GJD3",
+    "GJD4"
+  ],
+  "required_gjd3_column": "GJD3 (ENSG00000183153)",
+  "outputs": {
+    "tables": {
+      "depmap_tpm_matrix": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_tpm_matrix.tsv",
+      "source_log2_matrix": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_log2_tpm_plus1_matrix.tsv",
+      "gene_availability": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/gene_availability_provenance.tsv",
+      "sample_profile_mapping": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/sample_profile_mapping.tsv"
+    },
+    "figures": {
+      "primary_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.png",
+      "primary_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.pdf",
+      "primary_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.svg",
+      "primary_no_title_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.png",
+      "primary_no_title_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.pdf",
+      "primary_no_title_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.svg"
+    },
+    "methods": {
+      "methods": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/methods/depmap_24q4_tpm_methods.md",
+      "caption": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/methods/extended_fig7c_depmap_24q4_tpm_caption.md"
+    },
+    "qc": {
+      "qc_report": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/qc_report.md",
+      "qc_checks": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/qc_checks.tsv",
+      "figure_file_validation": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/qc/figure_file_validation.tsv"
+    },
+    "docs": {
+      "readme": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/README.md",
+      "index": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/index.html",
+      "source_urls_and_checksums": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/docs/source_urls_and_checksums.md",
+      "figure_accessibility_notes": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/docs/figure_accessibility_notes.md"
+    }
+  },
+  "color_scales": {
+    "primary_tpm_native": {
+      "vmin": 0.0,
+      "vmax": 91.71,
+      "vmax_source": "observed maximum in DepMap 24Q4 TPM matrix",
+      "vmax_position": {
+        "cell_line": "Calu-1",
+        "gene": "GJA1"
+      },
+      "cmap": "white_to_red",
+      "no_depmap_clipping": true
+    }
+  },
+  "qc": {
+    "all_17_genes_present": true,
+    "gjd3_exact_column_present": true,
+    "all_8_cell_lines_map_to_default_rna_profiles": true,
+    "final_tpm_matrix_shape_is_8_by_17": true,
+    "final_tpm_matrix_has_no_missing_values": true,
+    "tpm_native_color_scale_vmin_is_0": true,
+    "tpm_native_color_scale_vmax_is_observed_depmap_maximum": true,
+    "depmap_tpm_values_not_clipped_in_primary_figure": true,
+    "png_pdf_svg_files_non_empty_and_renderable": true
+  },
+  "assumptions": [
+    "Raw DepMap downloads are not retained in the repository unless --keep-raw is used.",
+    "DepMap source values are log2(TPM + 1) and are inverse-transformed before reporting or plotting.",
+    "GJD3 is treated as the current HGNC symbol and must match ENSG00000183153.",
+    "No RPKM source and no protein-coding-only TPM source is used for the final figure."
+  ],
+  "software_versions": {
+    "python": "3.9.6 (default, Aug 25 2026, 21:26:21)  [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "pandas": "2.3.3",
+    "numpy": "2.0.2",
+    "matplotlib": "3.9.4",
+    "pillow": "11.3.0",
+    "pypdf": "6.7.5"
+  }
+}

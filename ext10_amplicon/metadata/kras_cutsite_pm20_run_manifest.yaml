@@ -1,0 +1,62 @@
+record_type: public_rerun_parameters
+command: source/analyze_kras_cutsite_spectrum.py --analysis-manifest metadata/analysis_manifest.tsv --amplicons references/amplicons.tsv --editing-summary results/summary/editing_summary.tsv --locus Kras --cut-site 91 --cut-window-start 71 --cut-window-end 111 --context-window-start 71 --context-window-end 111 --primer-kmer-len 10 --primer-search-window 5 --min-window-baseq 20 --min-classifiable-pairs 10000 --outdir results/kras_cutsite_pm20_spectrum
+parameters:
+  analysis_manifest: metadata/analysis_manifest.tsv
+  amplicons: references/amplicons.tsv
+  editing_summary: results/summary/editing_summary.tsv
+  locus: Kras
+  cut_site: 91
+  cut_window_start: 71
+  cut_window_end: 111
+  context_window_start: 71
+  context_window_end: 111
+  primer_kmer_len: 10
+  primer_search_window: 5
+  prefix_length: 67
+  min_window_baseq: 20
+  min_classifiable_pairs: 10000
+  max_alignment_score: 35
+  gap_cost: 2
+  mismatch_cost: 1
+  alignment_upstream_padding: 35
+  outdir: results/kras_cutsite_pm20_spectrum
+  max_pairs_per_sample: null
+  log_level: INFO
+inputs:
+  analysis_manifest: metadata/analysis_manifest.tsv
+  amplicons: references/amplicons.tsv
+  editing_summary: results/summary/editing_summary.tsv
+outputs:
+  per_pair: results/kras_cutsite_pm20_spectrum/per_pair/kras_cutsite_pair_calls.tsv.gz
+  per_allele: results/kras_cutsite_pm20_spectrum/per_allele/kras_cutsite_allele_counts.tsv
+  sample_summary: results/kras_cutsite_pm20_spectrum/summary/kras_cutsite_sample_summary.tsv
+  consequence_summary: results/kras_cutsite_pm20_spectrum/summary/kras_cutsite_consequence_summary.tsv
+  figure_ready: results/kras_cutsite_pm20_spectrum/figures/kras_cutsite_figure_ready.tsv
+amplicon:
+  locus: Kras
+  wt_amplicon_length: 134
+  cut_site_after_base_1based: 91
+  cut_window_1based_inclusive:
+    - 71
+    - 111
+  context_window_1based_inclusive:
+    - 71
+    - 111
+  guide_seq: gcagcgttacctctatcgta
+  guide_orientation_in_amplicon: reverse_complement
+  coding_frame_start_1based: 3
+  codon_map:
+    12:
+      - 21
+      - 23
+    13:
+      - 24
+      - 26
+    61:
+      - null
+      - null
+method_notes:
+  - Reverse-primer-side reads are reverse-complemented into amplicon-forward coordinates.
+  - One cut-site-covering read is selected per pair, preferring longer reads then higher nominal cut-window quality.
+  - Alignment is anchored to the right amplicon end with a free reference prefix to avoid terminal truncation overcalling.
+  - Existing 67 bp Kras HDR barcode percentages are retained as the primary HDR metric.

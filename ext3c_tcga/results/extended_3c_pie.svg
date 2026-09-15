@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480" role="img" aria-label="TCGA-LUAD TYMS and TK1 alteration status pie chart">
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<g id="pie">
+<path d="M 220.000 240.000 L 220.000 75.000 A 165.000 165.000 0 0 1 232.529 75.476 Z" fill="#4E79A7" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M 220.000 240.000 L 232.529 75.476 A 165.000 165.000 0 0 1 253.214 78.378 Z" fill="#F28E2B" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M 220.000 240.000 L 253.214 78.378 A 165.000 165.000 0 0 1 286.984 89.208 Z" fill="#59A14F" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M 220.000 240.000 L 286.984 89.208 A 165.000 165.000 0 0 1 288.889 90.069 Z" fill="#E15759" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M 220.000 240.000 L 288.889 90.069 A 165.000 165.000 0 0 1 290.783 90.954 Z" fill="#B07AA1" stroke="#FFFFFF" stroke-width="2"/>
+<path d="M 220.000 240.000 L 290.783 90.954 A 165.000 165.000 0 1 1 220.000 75.000 Z" fill="#D9D9D9" stroke="#FFFFFF" stroke-width="2"/>
+</g>
+<g id="legend">
+<rect x="440" y="116" width="18" height="18" fill="#4E79A7" stroke="none"/>
+<text x="470" y="130" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Amplification in TYMS and TK1 (1.21%)</text>
+<rect x="440" y="154" width="18" height="18" fill="#F28E2B" stroke="none"/>
+<text x="470" y="168" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Amplification in TYMS (2.02%)</text>
+<rect x="440" y="192" width="18" height="18" fill="#59A14F" stroke="none"/>
+<text x="470" y="206" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Amplification in TK1 (3.43%)</text>
+<rect x="440" y="230" width="18" height="18" fill="#E15759" stroke="none"/>
+<text x="470" y="244" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Missense in TYMS (0.20%)</text>
+<rect x="440" y="268" width="18" height="18" fill="#B07AA1" stroke="none"/>
+<text x="470" y="282" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">Missense in TK1 (0.20%)</text>
+<rect x="440" y="306" width="18" height="18" fill="#D9D9D9" stroke="none"/>
+<text x="470" y="320" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222222">None (92.94%)</text>
+</g>
+</svg>

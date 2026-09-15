@@ -1,0 +1,279 @@
+{
+  "schema_version": "1.1",
+  "panels": [
+    "Extended Fig. 10B",
+    "Extended Fig. 10D",
+    "Extended Fig. 10E",
+    "Extended Fig. 10F"
+  ],
+  "source_files": [
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md"
+    },
+    {
+      "role": "extended_10b_exported_figure",
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.pdf"
+    },
+    {
+      "role": "extended_10b_exported_figure",
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.png"
+    },
+    {
+      "role": "extended_10b_exported_figure",
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.svg"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png"
+    },
+    {
+      "role": "extended_10d_exported_figure",
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg"
+    },
+    {
+      "role": "extended_10e_10f_exported_figure",
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf"
+    },
+    {
+      "role": "extended_10e_10f_exported_figure",
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png"
+    },
+    {
+      "role": "extended_10e_10f_exported_figure",
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg"
+    },
+    {
+      "role": "alignment_analysis_manifest",
+      "relative_local_path": "metadata/analysis_manifest.tsv"
+    },
+    {
+      "role": "kras_crispresso_batch_settings",
+      "relative_local_path": "metadata/crispresso_kras_batch.tsv"
+    },
+    {
+      "role": "trp53_crispresso_batch_settings",
+      "relative_local_path": "metadata/crispresso_trp53_batch.tsv"
+    },
+    {
+      "role": "extended_10e_10f_codon_window_workflow_run_info",
+      "relative_local_path": "metadata/kras_codon13_window_run_info.json"
+    },
+    {
+      "role": "extended_10e_10f_codon_window_workflow_run_manifest",
+      "relative_local_path": "metadata/kras_codon13_window_run_manifest.yaml"
+    },
+    {
+      "role": "extended_10d_indel_frame_plot_run_info",
+      "relative_local_path": "metadata/kras_cutsite_pm20_indel_frame_background83_tumor_only_plot_run_info.json"
+    },
+    {
+      "role": "extended_10d_cutsite_workflow_qc_summary",
+      "relative_local_path": "metadata/kras_cutsite_pm20_qc_summary.json"
+    },
+    {
+      "role": "extended_10d_cutsite_workflow_run_info",
+      "relative_local_path": "metadata/kras_cutsite_pm20_run_info.json"
+    },
+    {
+      "role": "extended_10d_cutsite_workflow_run_manifest",
+      "relative_local_path": "metadata/kras_cutsite_pm20_run_manifest.yaml"
+    },
+    {
+      "role": "extended_10d_three_bin_plot_run_info",
+      "relative_local_path": "metadata/kras_cutsite_pm20_threebin_background83_tumor_only_plot_run_info.json"
+    },
+    {
+      "role": "extended_10e_10f_corrected_nonhdr_plot_run_info",
+      "relative_local_path": "metadata/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json"
+    },
+    {
+      "role": "extended_10b_metric_provenance",
+      "relative_local_path": "metadata/metric_provenance.json"
+    },
+    {
+      "role": "extended_10b_clean_metric_qc_table",
+      "relative_local_path": "metadata/qc_metrics.tsv"
+    },
+    {
+      "role": "alignment_sample_manifest",
+      "relative_local_path": "metadata/sample_manifest.tsv"
+    },
+    {
+      "role": "amplicon_reference_notes",
+      "relative_local_path": "references/README.md"
+    },
+    {
+      "role": "amplicon_reference_sequences",
+      "relative_local_path": "references/amplicons.tsv"
+    },
+    {
+      "role": "extended_10e_10f_kras_codon_window_analysis_source",
+      "relative_local_path": "source/analyze_kras_codon_window.py"
+    },
+    {
+      "role": "extended_10d_kras_cutsite_window_analysis_source",
+      "relative_local_path": "source/analyze_kras_cutsite_spectrum.py"
+    },
+    {
+      "role": "alignment_helper_expected_hdr_from_reads",
+      "relative_local_path": "source/derive_kras_expected_hdr_from_reads.py"
+    },
+    {
+      "role": "alignment_helper_forward_informative_reads",
+      "relative_local_path": "source/extract_forward_informative_reads.py"
+    },
+    {
+      "role": "extended_10b_kras_trp53_plot_source",
+      "relative_local_path": "source/plot_figure7b_like.py"
+    },
+    {
+      "role": "extended_10d_background_adjusted_indel_frame_plot_source",
+      "relative_local_path": "source/plot_kras_cutsite_pm20_indel_frame_background83.py"
+    },
+    {
+      "role": "extended_10d_background_adjusted_three_bin_plot_source",
+      "relative_local_path": "source/plot_kras_cutsite_pm20_threebin_background83.py"
+    },
+    {
+      "role": "extended_10e_10f_corrected_nonhdr_g12_g13_plot_source",
+      "relative_local_path": "source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py"
+    },
+    {
+      "role": "alignment_crispresso_input_preparation",
+      "relative_local_path": "source/prepare_crispresso_inputs.py"
+    },
+    {
+      "role": "alignment_crispresso_workflow_runner",
+      "relative_local_path": "source/run_crispresso_workflow.sh"
+    },
+    {
+      "role": "extended_10b_editing_metric_summary_source",
+      "relative_local_path": "source/summarize_clean_editing_metrics.py"
+    },
+    {
+      "role": "extended_10b_wide_editing_summary_table",
+      "relative_local_path": "tables/extended_10b_editing_summary.tsv"
+    },
+    {
+      "role": "extended_10b_long_editing_summary_table",
+      "relative_local_path": "tables/extended_10b_editing_summary_long.tsv"
+    },
+    {
+      "role": "extended_10b_graphpad_ready_export",
+      "relative_local_path": "tables/extended_10b_graphpad_grouped_two_gene.csv"
+    },
+    {
+      "role": "extended_10d_indel_frame_figure_ready_table",
+      "relative_local_path": "tables/extended_10d_indel_frame_background83_tumor_only_figure_ready.tsv"
+    },
+    {
+      "role": "extended_10d_cutsite_consequence_summary",
+      "relative_local_path": "tables/extended_10d_kras_cutsite_consequence_summary.tsv"
+    },
+    {
+      "role": "extended_10d_cutsite_sample_summary",
+      "relative_local_path": "tables/extended_10d_kras_cutsite_sample_summary.tsv"
+    },
+    {
+      "role": "extended_10d_three_bin_figure_ready_table",
+      "relative_local_path": "tables/extended_10d_threebin_background83_tumor_only_figure_ready.tsv"
+    },
+    {
+      "role": "extended_10e_10f_codon_window_consequence_summary",
+      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_consequence_summary.tsv"
+    },
+    {
+      "role": "extended_10e_10f_codon_window_sample_summary",
+      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_sample_summary.tsv"
+    },
+    {
+      "role": "extended_10e_10f_corrected_nonhdr_figure_ready_table",
+      "relative_local_path": "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv"
+    }
+  ],
+  "method_summary": [
+    "Extended Fig. 10B uses clean editing metrics summarized from KRAS HDR and Trp53 indel analyses, with KP_811 Trp53 retained as missing after QC.",
+    "Extended Fig. 10D uses tumor-only KRAS cut-site +/-20 bp per-pair classification outputs with HDR-positive pairs excluded from displayed non-HDR denominators and sub:83:T>C background reassignment documented in run-info JSON files.",
+    "Extended Fig. 10E/F uses the corrected non-HDR G12/G13 package: strict HDR-barcode positive reads are removed before calculating tumor-only allele-read percentages."
+  ],
+  "validation_expectations": {
+    "extended_10b": {
+      "expected_specimen_rows": 17,
+      "expected_specimen_rows_target": 17,
+      "trp53_quantified_sample_count_target": 16,
+      "kp_811_trp53_value": "NA",
+      "kp_811_trp53_qc_flag": "missing_after_qc",
+      "expected_fields": [
+        "specimen_id",
+        "cohort",
+        "kras_hdr_exact_pct",
+        "trp53_indel_pct",
+        "trp53_qc_flag"
+      ]
+    },
+    "extended_10d": {
+      "tumor_only_plot_sample_count_target": 15,
+      "three_bin_displayed_nonhdr_classifiable_pairs_target": 8879020,
+      "indel_frame_displayed_nonhdr_classifiable_pairs_target": 8879020,
+      "indel_pairs_target": 2249639,
+      "aggregate_percentages_of_displayed_nonhdr_classifiable": {
+        "frameshift_indel": 19.326986536802487,
+        "in_frame_indel": 6.009582138569346,
+        "other_indel_frame_status": 0.0
+      },
+      "background_substitution": "sub:83:T>C",
+      "cutsite_workflow_tumor_plot_sample_count": 15
+    },
+    "extended_10e_10f": {
+      "corrected_nonhdr_denominator_target": 19487513,
+      "strict_hdr_positive_reads_removed_target": 2594,
+      "corrected_g12d_reads_target": 12680,
+      "corrected_g12d_pct_target": 0.06506730745991035,
+      "per_sample_category_pct_sum_min": 99.99999999999997,
+      "per_sample_category_pct_sum_max": 100.00000000000003
+    }
+  },
+  "large_external_inputs": [
+    {
+      "filename": "kras_cutsite_pair_calls.tsv.gz",
+      "purpose": "Extended 10D KRAS cut-site per-pair calls; excluded from git because it is a large regenerable intermediate.",
+      "size_bytes": 321559520,
+      "sha256": "403b7ed9884eae92dac710fc8384eab8e8dd73c4aafab30532dd0a4ebe02a278"
+    },
+    {
+      "filename": "kras_codon13_window_allele_counts.tsv",
+      "purpose": "Extended 10E/F KRAS codon-window per-allele counts; excluded from git because it is a large regenerable intermediate.",
+      "size_bytes": 42873332,
+      "sha256": "4d4f7b3325345b434c649c5ad069a12aed4eeb77a41ef4acdc7c252650acc12a"
+    },
+    {
+      "filename": "kras_cutsite_allele_counts.tsv",
+      "purpose": "KRAS cut-site per-allele counts (optional input)",
+      "size_bytes": 108465527,
+      "sha256": null
+    }
+  ],
+  "input_status": "Read-level tables and raw sequencing files require separate access; supplied summary tables are checked against reported panel metrics.",
+  "source_file_count": 50,
+  "folder_author": {
+    "name": "Mert Demirdizen",
+    "email": "mert@bmb.sdu.dk"
+  }
+}
