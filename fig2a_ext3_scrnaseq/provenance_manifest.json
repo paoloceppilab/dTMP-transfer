@@ -357,6 +357,12 @@
       "relative_local_path": "scripts/Readme.txt",
       "size_bytes": 450,
       "sha256": "6561e32b79290074d0e11ec17d73a78eb04297ab872ba85ce1d9514a4207c38d"
+    },
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md",
+      "size_bytes": 1707,
+      "sha256": "f625294fef9f513d366c963bce77fbb3aca4f6da46fdea86d3e8bb2e6073d5b2"
     }
   ],
   "data_sources": {
@@ -433,7 +439,7 @@
     "per_patient_tyms_tk1_scripts": 36
   },
   "input_status": "Processed GSE148071 matrices are required; source scripts and a software record are included.",
-  "source_file_count": 59,
+  "source_file_count": 60,
   "folder_author": {
     "name": "Vignesh Ramesh",
     "email": "vramesh@bmb.sdu.dk"

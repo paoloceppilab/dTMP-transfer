@@ -1,3 +1,0 @@
-source_key	label	source_url	figshare_file_id	filename	size_bytes	sha256	acquisition	retained_raw
-expression	DepMap 24Q4 all-gene RNA expression profile matrix	https://ndownloader.figshare.com/files/51065360	51065360	OmicsExpressionAllGenesTPMLogp1Profile.csv	1016340354	57aa034ec15c48109333aad9d09d31bf8080ce222c45f3b0465fe8e7e7b88d7a	validated_local_cache	False
-default_profiles	DepMap 24Q4 default model profiles	https://ndownloader.figshare.com/files/51065339	51065339	OmicsDefaultModelProfiles.csv	90080	096a96c39d88374cb7c37058816e6cde29d6617b820b8a14d33ae9dd821c6dc5	validated_local_cache	False

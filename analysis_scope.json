@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "release_version": "1.0.1",
+  "scope_source": {
+    "filename": "Bioinformatics_Methods_five_sections_CopyKAT_updated.docx",
+    "sha256": "92afee81ec356fbf29a2cd29da08f85c9a895f8499dac7595f10913aae3ed53c"
+  },
+  "analyses": [
+    {
+      "methods_heading": "RNA-sequencing",
+      "directory": "ext4_fig5_rnaseq"
+    },
+    {
+      "methods_heading": "Analysis of Single-cell RNA-sequencing data",
+      "directory": "fig2a_ext3_scrnaseq"
+    },
+    {
+      "methods_heading": "Neighborhood analysis of Visium spatial sequencing",
+      "directory": "fig2b_d_ext3f_visium"
+    },
+    {
+      "methods_heading": "Spatial Transcriptomics Deconvolution",
+      "directory": "fig4j_cellstates"
+    },
+    {
+      "methods_heading": "Amplicon Sequencing",
+      "directory": "ext10_amplicon"
+    }
+  ]
+}

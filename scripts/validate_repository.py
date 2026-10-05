@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate tracked figure files and key panel invariants.
 
-Run with Python 3 from any directory; standard library only.
+Run with Python >=3.9 from any directory; standard library only.
 """
 
 import csv
@@ -97,22 +97,18 @@ def _assert_xlsx(path, required_sheets, expected_rows=None):
             )
 
 expected_manifest_record_counts = {
-    "fig4j_cellstates": 7,
-    "fig2b_d_ext3f_visium": 9,
-    "ext3c_tcga": 4,
-    "fig2a_ext3_scrnaseq": 59,
+    "fig4j_cellstates": 8,
+    "fig2b_d_ext3f_visium": 10,
+    "fig2a_ext3_scrnaseq": 60,
     "ext4_fig5_rnaseq": 15,
-    "ext7c_depmap": 37,
     "ext10_amplicon": 52,
 }
 
 for figure_dir_name in (
     "fig4j_cellstates",
     "fig2b_d_ext3f_visium",
-    "ext3c_tcga",
     "fig2a_ext3_scrnaseq",
     "ext4_fig5_rnaseq",
-    "ext7c_depmap",
     "ext10_amplicon",
 ):
     figure_dir = root / figure_dir_name
@@ -131,7 +127,6 @@ for figure_dir_name in (
         raise SystemExit(f"{figure_dir_name} has duplicate source paths")
     if figure_dir_name in {
         "ext4_fig5_rnaseq",
-        "ext7c_depmap",
         "ext10_amplicon",
     }:
         tracked_paths = _tracked_paths(figure_dir_name)
@@ -148,36 +143,6 @@ for figure_dir_name in (
         if not path.is_file():
             raise SystemExit(f"missing source file: {figure_dir_name}/{relative}")
     print(f"OK {figure_dir_name}: {observed_count} source files present")
-
-figure_7c_dir = (
-    root / "ext7c_depmap/publication"
-    / "extended_fig7c_depmap_24q4_tpm_connexin_heatmap"
-)
-figure_7c_manifest = json.loads((figure_7c_dir / "run_manifest.json").read_text())
-if not figure_7c_manifest["qc"]["final_tpm_matrix_shape_is_8_by_17"]:
-    raise SystemExit("Extended Data Fig. 7C run manifest reports failed matrix QC")
-figure_7c_table = figure_7c_dir / "tables/depmap_24q4_tpm_matrix.tsv"
-with figure_7c_table.open(newline="") as handle:
-    table_rows = list(csv.DictReader(handle, delimiter="\t"))
-if len(table_rows) != 8 or len(table_rows[0]) != 18:
-    raise SystemExit("Extended Data Fig. 7C table is not 8 samples x 17 genes")
-if len({row["cell_line"] for row in table_rows}) != 8:
-    raise SystemExit("Extended Data Fig. 7C table has duplicate cell lines")
-for row in table_rows:
-    for gene, value in row.items():
-        if gene == "cell_line":
-            continue
-        try:
-            tpm = float(value)
-        except (TypeError, ValueError) as exc:
-            raise SystemExit(f"invalid TPM for {row['cell_line']}:{gene}: {value}") from exc
-        if not math.isfinite(tpm) or tpm < 0:
-            raise SystemExit(f"invalid TPM for {row['cell_line']}:{gene}: {value}")
-for suffix in ("png", "pdf", "svg"):
-    figure_path = figure_7c_dir / f"figures/extended_fig7c_depmap_24q4_tpm.{suffix}"
-    if not figure_path.is_file() or figure_path.stat().st_size == 0:
-        raise SystemExit(f"Extended Data Fig. 7C figure missing/empty: {figure_path}")
-print("OK Extended Data Fig. 7C figure package: 8 x 17 table and nonempty figures")
 
 spatial_dir = root / "fig2b_d_ext3f_visium"
 with (spatial_dir / "results/tyms_tk1_counts.csv").open(newline="") as handle:
@@ -216,32 +181,6 @@ for row in rows:
     if observed_neighbors != expected_neighbors:
         raise SystemExit(
             f"unexpected Visium numneigh at radius {radius}: {observed_neighbors}"
-        )
-
-e3c_dir = root / "ext3c_tcga"
-with (e3c_dir / "data/alteration_summary.csv").open(newline="") as handle:
-    e3c_rows = list(csv.DictReader(handle))
-expected_e3c_counts = {
-    "Amplification in TYMS and TK1": 6,
-    "Amplification in TYMS": 10,
-    "Amplification in TK1": 17,
-    "Missense in TYMS": 1,
-    "Missense in TK1": 1,
-    "None": 461,
-}
-e3c_counts = {row["category"]: int(row["count"]) for row in e3c_rows}
-if e3c_counts != expected_e3c_counts:
-    raise SystemExit(f"unexpected Extended Data Fig. 3C counts: {e3c_counts}")
-if sum(e3c_counts.values()) != 496:
-    raise SystemExit("Extended Data Fig. 3C counts do not sum to 496")
-for row in e3c_rows:
-    count = int(row["count"])
-    expected_percent = float(row["expected_percent"])
-    observed_percent = round(count / 496 * 100, 2)
-    if observed_percent != expected_percent:
-        raise SystemExit(
-            f"unexpected Extended Data Fig. 3C percent for {row['category']}: "
-            f"{observed_percent}"
         )
 
 ext10_dir = root / "ext10_amplicon"
@@ -348,11 +287,6 @@ _assert_xlsx(
         "TScc_NTCcc": 61542,
         "TScc_TS": 61542,
     },
-)
-_assert_xlsx(
-    root / "ext7c_depmap/tables/ccle_connexins_workbook.xlsx",
-    ["CCLE_data (2)", "annotation", "Connexins_2"],
-    {"CCLE_data (2)": 18, "annotation": 1047, "Connexins_2": 20},
 )
 script_text = (rnaseq_dir / "source/22_08_23_Script_TS.txt").read_text()
 required_script_terms = [

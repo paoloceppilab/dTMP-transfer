@@ -3,8 +3,6 @@
 **Author:** Vignesh Ramesh ([vramesh@bmb.sdu.dk](mailto:vramesh@bmb.sdu.dk))
 
 Source files and analysis commands for Extended Data Fig. 4A-C and Fig. 5A.
-The Extended Data Fig. 7C connexin/DepMap analysis is in its
-[figure folder](../ext7c_depmap/README.md).
 
 ## Design and methods
 

@@ -45,6 +45,12 @@
       "relative_local_path": "source/colocation.py",
       "size_bytes": 4388,
       "sha256": "b7801be29945b5045ee513a4a300774580bc814fa70a25ded4b05e0f0cdfbb46"
+    },
+    {
+      "role": "source_readme",
+      "relative_local_path": "README.md",
+      "size_bytes": 2616,
+      "sha256": "0bfed9ecece3816daf6434f39f8120c42e0cf86ed5721fed8b4dce24b4a65d5e"
     }
   ],
   "data_sources": {
@@ -122,7 +128,7 @@
     "cell2location": "not independently verified; manuscript reports 0.1.4"
   },
   "input_status": "Source scripts are included; processed reference, Visium data and trained models require separate access.",
-  "source_file_count": 7,
+  "source_file_count": 8,
   "folder_author": {
     "name": "Mert Demirdizen",
     "email": "mert@bmb.sdu.dk"

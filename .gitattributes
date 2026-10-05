@@ -8,7 +8,3 @@ ext4_fig5_rnaseq/source/** -whitespace
 ext4_fig5_rnaseq/metadata/** -whitespace
 ext4_fig5_rnaseq/tables/** -whitespace
 ext4_fig5_rnaseq/figures_or_prism/** -whitespace
-mouse_kp_kptt_rnaseq/source/** -whitespace
-mouse_kp_kptt_rnaseq/metadata/** -whitespace
-mouse_kp_kptt_rnaseq/tables/** -whitespace
-ext7c_depmap/figures_or_prism/**/*.pzfx -whitespace

@@ -9,13 +9,11 @@ Spatial cell-state mapping	torch.manual_seed	42	source scripts
 Spatial NMF	random initialization	package-dependent	source script; exact environment required for rerun
 Human bulk RNA-seq	FastQC	0.11.9	source transcript
 Human bulk RNA-seq	Ensembl	GRCh38 release 105	source transcript
-Mouse bulk RNA-seq	Trimmomatic	0.39	source transcript
-Mouse bulk RNA-seq	STAR	2.7.9a	manuscript Methods
-Mouse bulk RNA-seq	Ensembl	GRCm39 release 108	source transcript
-Mouse bulk RNA-seq	R	4.2.1	manuscript Methods
-Mouse bulk RNA-seq	Rsubread	2.10.5	manuscript Methods
-Mouse bulk RNA-seq	DESeq2	1.36.0	manuscript Methods
-TCGA summary plot	R	base R only; deterministic	source script
-DepMap	dataset	24Q4 Public	download IDs and SHA-256 in manifest
 Amplicons	Python	3.10.20	archived Methods/version record
 Amplicons	MultiQC	1.33	archived Methods/version record
+Human bulk RNA-seq	STAR	2.7.9a	supplied final computational Methods
+Human bulk RNA-seq	R	4.2.1	supplied final computational Methods
+Human bulk RNA-seq	Rsubread	2.10.5	supplied final computational Methods
+Human bulk RNA-seq	DESeq2	1.36.0	supplied final computational Methods
+Spatial cell-state mapping	cell2location	0.1.4	supplied final computational Methods
+Amplicons	CRISPResso2	2.3.354	supplied final computational Methods

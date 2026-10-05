@@ -1,3 +1,0 @@
-# Extended Data Fig. 7C DepMap 24Q4 TPM Caption
-
-**Extended Data Fig. 7C. Connexin mRNA abundance in lung cancer cell lines from DepMap 24Q4.** The heatmap shows TPM expression for 17 connexin genes across A549, Calu-1, NCI-H23, SK-MES-1, NCI-H520, NCI-H1299, BEN, and NCI-H838 in the specified order. DepMap 24Q4 all-gene RNA expression values from `OmicsExpressionAllGenesTPMLogp1Profile.csv` were obtained as `log2(TPM + 1)`, mapped to default RNA profiles using `OmicsDefaultModelProfiles.csv`, and inverse-transformed to TPM before plotting. Gene columns were matched by symbol and Ensembl ID; GJD3 was matched as `GJD3 (ENSG00000183153)`. The primary color scale spans 0–91.71 TPM, the observed maximum in this matrix, without clipping.

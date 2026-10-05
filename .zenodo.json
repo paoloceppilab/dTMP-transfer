@@ -1,11 +1,11 @@
 {
   "title": "Analysis code and figure source data for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\"",
   "upload_type": "software",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "access_right": "open",
   "license": "mit",
   "language": "eng",
-  "description": "Selected analysis scripts and figure source data accompanying Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation. Includes patient-level scRNA-seq cell-state analysis, Visium TYMS/TK1 neighborhoods, TCGA-LUAD summaries, human and mouse bulk RNA-seq source analysis, DepMap connexins, spatial cell-state abundance mapping and Kras/Trp53 amplicon analysis. Each analysis folder describes its inputs, methods, environment and QC. MIT applies to laboratory-authored software; third-party code and data retain their original terms as described in THIRD_PARTY_NOTICES.md.",
+  "description": "Analysis scripts and source data for the five bioinformatics Methods sections of Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation: human A549 bulk RNA-seq, GSE148071 single-cell TYMS/TK1/MKI67 analysis, Visium TYMS/TK1 neighborhood analysis, cell2location spatial deconvolution and NMF, and Kras/Trp53 amplicon analysis. Each analysis folder records inputs, provenance and execution limits. MIT applies to laboratory-authored code; third-party code and scientific data retain their original terms.",
   "creators": [
     {
       "name": "Ceppi, Paolo",
