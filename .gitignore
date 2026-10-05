@@ -14,7 +14,6 @@ __pycache__/
 .ipynb_checkpoints/
 /.venv/
 /venv/
-/env/
 
 # Local and generated logs
 *.log
@@ -54,3 +53,5 @@ logs/
 /references/
 
 # Keep the curated Figure 4J archive and small provenance records tracked.
+
+/.venv-validation/

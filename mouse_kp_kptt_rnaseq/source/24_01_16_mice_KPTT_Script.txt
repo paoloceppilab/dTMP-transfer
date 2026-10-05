@@ -1,0 +1,156 @@
+ssh vramesh@solexa2.bmb.sdu.dk
+
+# FastQC analysis
+fastqc *.fastq.gz
+mkdir FastQC_Results
+mv *fastqc* FastQC_Results
+
+### Trimmomatic - Trimmomatic-0.39 - TruSeq3-PE-2.fa ###
+
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 SDU-RNA-378_R1_001.fastq SDU-RNA-378_R2_001.fastq SDU-RNA-378_R1_FPT.fastq SDU-RNA-378_R1_FUPT.fastq SDU-RNA-378_R2_RPT.fastq SDU-RNA-378_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 SDU-RNA-398_R1_001.fastq SDU-RNA-398_R2_001.fastq SDU-RNA-398_R1_FPT.fastq SDU-RNA-398_R1_FUPT.fastq SDU-RNA-398_R2_RPT.fastq SDU-RNA-398_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 SDU-RNA-404_R1_001.fastq SDU-RNA-404_R2_001.fastq SDU-RNA-404_R1_FPT.fastq SDU-RNA-404_R1_FUPT.fastq SDU-RNA-404_R2_RPT.fastq SDU-RNA-404_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 KPTT-613_R1_001.fastq KPTT-613_R2_001.fastq KPTT-613_R1_FPT.fastq KPTT-613_R1_FUPT.fastq KPTT-613_R2_RPT.fastq KPTT-613_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 KPTT-637_R1_001.fastq KPTT-637_R2_001.fastq KPTT-637_R1_FPT.fastq KPTT-637_R1_FUPT.fastq KPTT-637_R2_RPT.fastq KPTT-637_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 KPTT-646_R1_001.fastq KPTT-646_R2_001.fastq KPTT-646_R1_FPT.fastq KPTT-646_R1_FUPT.fastq KPTT-646_R2_RPT.fastq KPTT-646_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 KPTT-655_R1_001.fastq KPTT-655_R2_001.fastq KPTT-655_R1_FPT.fastq KPTT-655_R1_FUPT.fastq KPTT-655_R2_RPT.fastq KPTT-655_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar $HOME/Trimmomatic/Trimmomatic-0.39/trimmomatic-0.39.jar PE -threads 30 KPTT-687_R1_001.fastq KPTT-687_R2_001.fastq KPTT-687_R1_FPT.fastq KPTT-687_R1_FUPT.fastq KPTT-687_R2_RPT.fastq KPTT-687_R2_RUPT.fastq ILLUMINACLIP:TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+
+### STAR ASSEMBLY ###
+
+cd STAR_Ensembl
+mkdir STAR_Ensembl_Index
+STAR --runThreadN 15 --runMode genomeGenerate --genomeSAsparseD 12 --genomeSAindexNbases 12 --genomeChrBinNbits 14 --genomeDir STAR_Ensembl_Index --genomeFastaFiles Mus_musculus.GRCm39.dna_sm.primary_assembly.fa --sjdbGTFfile Mus_musculus.GRCm39.108.gtf --sjdbOverhang 149
+
+# ID Details
+SDU-RNA-378	KP_378
+SDU-RNA-398	KP_398
+SDU-RNA-404	KP_404
+KPTT-613	KPTT_613
+KPTT-637	KPTT_637
+KPTT-646	KPTT_646
+KPTT-655	KPTT_655
+KPTT-687	KPTT_687
+
+### STAR Alignment ###
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn SDU-RNA-378_R1_FPT.fastq SDU-RNA-378_R2_RPT.fastq \
+--outFileNamePrefix KP_378_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn SDU-RNA-398_R1_FPT.fastq SDU-RNA-398_R2_RPT.fastq \
+--outFileNamePrefix KP_398_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn SDU-RNA-404_R1_FPT.fastq SDU-RNA-404_R2_RPT.fastq \
+--outFileNamePrefix KP_404_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn KPTT-613_R1_FPT.fastq KPTT-613_R2_RPT.fastq \
+--outFileNamePrefix KPTT_613_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn KPTT-637_R1_FPT.fastq KPTT-637_R2_RPT.fastq \
+--outFileNamePrefix KPTT_637_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn KPTT-646_R1_FPT.fastq KPTT-646_R2_RPT.fastq \
+--outFileNamePrefix KPTT_646_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn KPTT-655_R1_FPT.fastq KPTT-655_R2_RPT.fastq \
+--outFileNamePrefix KPTT_655_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+STAR --runThreadN 15 --outFilterMultimapNmax 1 --genomeDir STAR_Ensembl_Index \
+--sjdbGTFfile Mus_musculus.GRCm39.108.gtf \
+--readFilesIn KPTT-687_R1_FPT.fastq KPTT-687_R2_RPT.fastq \
+--outFileNamePrefix KPTT_687_ --twopassMode Basic --outSAMtype BAM Unsorted
+
+### For Featurecounts to include for Ensemble ###
+
+R
+library(Rsubread)
+getwd()
+aligned_Bam<-list.files(path=".",pattern="Aligned.out.bam$")
+aligned_Bam
+counts <- featureCounts(aligned_Bam,isPairedEnd=TRUE,countMultiMappingReads=TRUE,nthreads=15,annot.ext="Mus_musculus.GRCm39.108.gtf",isGTFAnnotationFile=TRUE,useMetaFeatures=TRUE,allowMultiOverlap=FALSE,GTF.featureType="exon",GTF.attrType="gene_id",GTF.attrType.extra="gene_name")
+write.table(cbind(counts$annotation$GeneID,counts$counts),"Aligned_Ensemble_featureCounts.txt",quote=F,sep="\t",row.names=F)
+
+### DEG analysis using DESeq2 ###
+
+library(DESeq2)
+setwd()
+fcc<-read.table("Input_DESeq2.txt",header=TRUE,sep="\t",row.names=1)
+ncol(fcc)
+nrow(fcc)
+dim(fcc)
+head(fcc)
+SI<-read.table("SI.txt",header=TRUE,sep="\t")
+ncol(SI)
+nrow(SI)
+dim(SI)
+head(SI)
+SI
+
+dds = DESeqDataSetFromMatrix(countData = fcc, colData = SI, design = ~ Type)
+dds = estimateSizeFactors(dds)
+sizeFactors(dds)
+
+par(mar=c(10,6,4,1))
+barplot(colSums(counts(dds)),las=2,cex.axis=1.5,cex.names=1.5,main="Sum of the Counts")
+par(mar=c(10,6,4,1))
+barplot(sizeFactors(dds),las=2,cex.names=1.5,cex.axis=1.5,main="Size Factors")
+
+par(mar=c(10,6,4,1))
+boxplot(log2(counts(dds)+1), ylim=c(-5,20),las=2,cex.names=1.5, main="Non-normalized read counts", ylab="log2(read counts)")
+par(mar=c(10,6,4,1))
+boxplot(log2(counts(dds,normalized=TRUE)+1), ylim=c(-5,20),las=2,cex.names=1.5,main="Size Factor Normalized read counts", ylab="log2(read counts)")
+
+dds = estimateDispersions(dds)
+plotDispEsts(dds)
+dds = nbinomWaldTest(dds)
+res_KPTT_KP = results(dds,contrast=c("Type","KPTT","KP"))
+mcols(res_KPTT_KP,use.names=TRUE)
+
+plotMA(res_KPTT_KP)
+hist(res_KPTT_KP$pvalue,breaks=20,col="grey")
+vsd <- varianceStabilizingTransformation(dds, blind=TRUE)
+p = plotPCA(vsd,intgroup="Type")
+p
+
+library(tidyverse)
+library(ggplot2)
+p = plotPCA(vsd,intgroup="Type",returnData=TRUE)
+percentVar <- round(100 * attr(p, "percentVar"))
+ggplot(p, aes(PC1, PC2, color=Type)) +
+  geom_point(size=4) +
+  xlab(paste0("PC1: ",percentVar[1],"% variance")) +
+  ylab(paste0("PC2: ",percentVar[2],"% variance")) + 
+  coord_fixed() +
+  xlim(-50,50)+
+  ylim(-50,50)+
+  theme(aspect.ratio=1)+
+  theme(text = element_text(size = 20)) 
+
+sampleDists <- dist(t(assay(vsd)))
+library(pheatmap)
+library(RColorBrewer)
+sampleDistMatrix <- as.matrix(sampleDists)
+rownames(sampleDistMatrix) <- paste(vsd$Samples, sep="-")
+colnames(sampleDistMatrix) <- NULL
+colors <- colorRampPalette( rev(brewer.pal(9, "Blues")) )(255)
+pheatmap(sampleDistMatrix,
+         clustering_distance_rows=sampleDists,
+         clustering_distance_cols=sampleDists,
+         col=colors)
+
+res_KPTT_KP = res_KPTT_KP[order(res_KPTT_KP$padj),]
+write.table(res_KPTT_KP, "res_KPTT_KP.txt", row.name=T, quote=F, sep='\t')

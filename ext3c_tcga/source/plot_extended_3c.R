@@ -70,7 +70,7 @@ if (length(missing_columns) > 0) {
 }
 
 if (!identical(summary_table$category, expected_categories)) {
-  stop("Input categories are not in the expected Extended Fig. 3C order.", call. = FALSE)
+  stop("Input categories are not in the expected Extended Data Fig. 3C order.", call. = FALSE)
 }
 
 if (any(is.na(summary_table$count)) || any(summary_table$count < 0)) {

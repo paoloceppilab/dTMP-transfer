@@ -1,0 +1,46 @@
+{
+  "title": "Analysis code and figure source data for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\"",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "access_right": "open",
+  "license": "mit",
+  "language": "eng",
+  "description": "Selected analysis scripts and figure source data accompanying Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation. Includes patient-level scRNA-seq cell-state analysis, Visium TYMS/TK1 neighborhoods, TCGA-LUAD summaries, human and mouse bulk RNA-seq source analysis, DepMap connexins, spatial cell-state abundance mapping and Kras/Trp53 amplicon analysis. Each analysis folder describes its inputs, methods, environment and QC. MIT applies to laboratory-authored software; third-party code and data retain their original terms as described in THIRD_PARTY_NOTICES.md.",
+  "creators": [
+    {
+      "name": "Ceppi, Paolo",
+      "affiliation": "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+    },
+    {
+      "name": "Siddiqui, Mohammad A.",
+      "affiliation": "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+    },
+    {
+      "name": "Rømer, Anne Mette A.",
+      "affiliation": "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+    },
+    {
+      "name": "Ramesh, Vignesh",
+      "affiliation": "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+    },
+    {
+      "name": "Demirdizen, Mert",
+      "affiliation": "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+    }
+  ],
+  "keywords": [
+    "cancer",
+    "dTMP",
+    "TYMS",
+    "TK1",
+    "RNA-seq",
+    "spatial transcriptomics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/paoloceppilab/dTMP-transfer",
+      "relation": "isSupplementTo",
+      "resource_type": "software"
+    }
+  ]
+}

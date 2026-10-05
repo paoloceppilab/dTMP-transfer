@@ -1,8 +1,8 @@
-# Figure 4J: TYMS/TK1 spatial cell-state analysis
+# TYMS/TK1 spatial cell-state abundance analysis
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 
-Figure 4J uses four TYMS/TK1 detection states in tumor epithelial cells,
+The analysis uses four TYMS/TK1 detection states in tumor epithelial cells,
 cell2location abundance estimates in spatial sections, and a seven-factor
 nonnegative matrix factorization (NMF) of those estimates.
 

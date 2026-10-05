@@ -2,7 +2,7 @@
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 
-Analysis code and figure data for Fig. 2B/D and Extended Fig. 3F.
+Analysis code and figure data for Fig. 2B/D and Extended Data Fig. 3F.
 The input is the 10x Genomics
 `CytAssist_FFPE_Human_Lung_Squamous_Cell_Carcinoma` Visium dataset.
 The filtered feature-barcode H5 is not included; its SHA-256 value and size

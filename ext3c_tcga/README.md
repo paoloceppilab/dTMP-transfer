@@ -1,4 +1,4 @@
-# Extended Fig. 3C: TCGA-LUAD TYMS/TK1 alterations
+# Extended Data Fig. 3C: TCGA-LUAD TYMS/TK1 alterations
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 

@@ -2,7 +2,7 @@
 
 **Author:** Vignesh Ramesh ([vramesh@bmb.sdu.dk](mailto:vramesh@bmb.sdu.dk))
 
-Code for Fig. 2A and Extended Fig. 3A/B/D/E using patient-level
+Code for MKI67 and Extended Data Fig. 3A/B/D/E using patient-level
 single-cell RNA-seq data from [GSE148071](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE148071).
 The processed `GSM*_P*_exp.txt` expression matrices are not included.
 
@@ -14,7 +14,7 @@ The processed `GSM*_P*_exp.txt` expression matrices are not included.
 - `scripts/24_05_16_scRNA_Mod_script_P*_new.txt`: patient-level cell-state
   classification and marker analyses for 36 patients with identified
   cancer-cell clusters.
-- `scripts/MKI67_P*.txt`: Fig. 2A MKI67-positive subsets for 21 patients
+- `scripts/MKI67_P*.txt`: MKI67-positive subsets for 21 patients
   with more than 50 MKI67-positive cancer cells.
 - [Source-file list](provenance_manifest.json) and the software-version
   listing in `scripts/Readme.txt`.

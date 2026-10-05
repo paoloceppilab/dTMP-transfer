@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BASE_DIR="$(cd "${1:-$(dirname "${BASH_SOURCE[0]}")/..}" && pwd)"
-ENV_PREFIX="${ENV_PREFIX:-${BASE_DIR}/env/alignment_crispresso}"
-MAMBA_BIN="${MAMBA_BIN:-micromamba}"
+BASE_DIR="${1:-/work/alignment}"
+ENV_PREFIX="${BASE_DIR}/env/alignment_crispresso"
+MAMBA_BIN="${BASE_DIR}/env/bin/micromamba"
 N_PROCESSES="${N_PROCESSES:-8}"
-cd "${BASE_DIR}"
-
-if ! command -v "${MAMBA_BIN}" >/dev/null 2>&1; then
-  echo "[ERROR] micromamba not found: ${MAMBA_BIN}" >&2
-  exit 1
-fi
 
 LOG_DIR="${BASE_DIR}/logs"
 QC_DIR="${BASE_DIR}/results/qc"
@@ -23,20 +17,12 @@ timestamp="$(date +%Y%m%d_%H%M%S)"
 log_file="${LOG_DIR}/run_crispresso_workflow_${timestamp}.log"
 exec > >(tee -a "${log_file}") 2>&1
 
-echo "[INFO] Start: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+echo "[INFO] Start: $(date --iso-8601=seconds)"
 echo "[INFO] Base directory: ${BASE_DIR}"
 echo "[INFO] Environment prefix: ${ENV_PREFIX}"
 echo "[INFO] N processes: ${N_PROCESSES}"
 
-FASTQ_DIR="${BASE_DIR}/data/fastq"
-if [[ ! -d "${FASTQ_DIR}" ]]; then
-  echo "[ERROR] Raw FASTQ directory missing: ${FASTQ_DIR}" >&2
-  exit 1
-fi
-if [[ ! -d "${ENV_PREFIX}" ]]; then
-  echo "[ERROR] CRISPResso environment missing: ${ENV_PREFIX}" >&2
-  exit 1
-fi
+FASTQ_DIR="${BASE_DIR}/AA_PC"
 
 echo "[INFO] Extracting forward-oriented informative reads"
 while IFS=$'\t' read -r specimen_id cohort locus sample_name r1 r2 remote_r1 remote_r2 analysis_read analysis_fastq analysis_name processed_summary_json fastq_status analysis_include exclusion_reason; do
@@ -48,16 +34,9 @@ while IFS=$'\t' read -r specimen_id cohort locus sample_name r1 r2 remote_r1 rem
     continue
   fi
 
-  for input_fastq in "${remote_r1}" "${remote_r2}"; do
-    if [[ ! -f "${input_fastq}" ]]; then
-      echo "[ERROR] Required FASTQ missing for ${analysis_name}: ${input_fastq}" >&2
-      exit 1
-    fi
-  done
-
   primer_fwd="$(awk -F'\t' -v locus="${locus}" 'NR>1 && $1==locus {print $4}' "${BASE_DIR}/references/amplicons.tsv")"
   "${MAMBA_BIN}" run -p "${ENV_PREFIX}" \
-    python3 "${BASE_DIR}/source/extract_forward_informative_reads.py" \
+    python3 "${BASE_DIR}/scripts/extract_forward_informative_reads.py" \
     --fastq-r1 "${remote_r1}" \
     --fastq-r2 "${remote_r2}" \
     --primer-fwd "${primer_fwd}" \
@@ -111,4 +90,4 @@ echo "[INFO] Running CRISPRessoBatch for Trp53 (single-end R1; indel-focused)"
   --ignore_substitutions \
   -p "${N_PROCESSES}"
 
-echo "[INFO] Completed: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+echo "[INFO] Completed: $(date --iso-8601=seconds)"

@@ -1,7 +1,16 @@
 {
   "created_utc": "2026-06-14T18:40:12.605056+00:00",
-  "script": "source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py",
-  "analysis_goal": "Summarize non-HDR Kras codon 12/13 alleles for Extended Fig. 10E/F after excluding HDR-barcode-positive reads.",
+  "script": "plot_kras_g12_g13_hotspot_frequency_nonhdr.py",
+  "argv": [
+    "scripts/plot_kras_g12_g13_hotspot_frequency_nonhdr.py",
+    "--alleles",
+    "kras_codon13_window_allele_counts.tsv",
+    "--outdir",
+    "kras_publication_plot_check_package_corrected_nonhdr_sf5d",
+    "--prefix",
+    "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr"
+  ],
+  "analysis_goal": "Correct Supplementary Figure 5D by removing HDR-barcode-positive Kras G12D/codon-window alleles from the codon 12/13 point-mutation spectrum.",
   "figure_title": "Frequencies of point mutations affecting Kras codons 12 and 13 among non-HDR alleles",
   "denominator_type": "non-HDR tumor-only allele reads from codon13-window spectrum",
   "categories": [
@@ -44,12 +53,13 @@
     "alleles": "kras_codon13_window_allele_counts.tsv"
   },
   "outputs": {
-    "figure_pdf": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
-    "figure_svg": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
-    "figure_png": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
-    "figure_ready_tsv": "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv",
+    "figure_pdf": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
+    "figure_svg": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
+    "figure_png": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
+    "figure_ready_tsv": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv",
     "readme": "README.md",
-    "run_info": "metadata/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json"
+    "run_info": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json",
+    "workbook_xlsx": "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_data.xlsx"
   },
   "source_accounting": {
     "normal_rows_excluded": 18121,
@@ -60,6 +70,35 @@
     "tumor_nonhdr_reads_included": 19487513,
     "tumor_strict_hdr_yes_rows_excluded": 233,
     "tumor_strict_hdr_yes_reads_excluded": 2594
+  },
+  "old_bundled_reference": {
+    "tumor_denominator_allele_reads": 19490107,
+    "aggregate_counts": {
+      "WT": 18730422,
+      "G12D": 15269,
+      "G12V": 50182,
+      "G12C": 34035,
+      "G12A": 7091,
+      "G12R": 9014,
+      "G12S": 18370,
+      "G13D": 13814,
+      "G13C": 8684,
+      "G13R": 6153,
+      "other": 597073
+    },
+    "aggregate_percentages": {
+      "WT": 96.10220200432968,
+      "G12D": 0.0783423097677196,
+      "G12V": 0.2574742149953307,
+      "G12C": 0.1746270556647021,
+      "G12A": 0.03638256064987227,
+      "G12R": 0.046249104738111495,
+      "G12S": 0.09425294586633105,
+      "G13D": 0.07087698389752299,
+      "G13C": 0.04455593804590195,
+      "G13R": 0.031569862597470605,
+      "other": 3.0634670194473537
+    }
   },
   "hdr_positive_removed": {
     "tumor_strict_hdr_barcode_yes_reads": 2594,
@@ -248,16 +287,16 @@
     "interpretation_note": "Corrected G12D is non-HDR/unintended G12D only; HDR-derived Kras G12D remains represented by the separate HDR panel."
   },
   "expected_values_checked": {
+    "old_bundled_g12d_reads": 15269,
+    "old_bundled_g12d_pct": 0.0783423097677196,
     "hdr_positive_g12d_removed_reads": 2589,
     "expected_corrected_g12d_reads": 12680,
-    "expected_corrected_denominator": 19487513,
-    "g12d_before_hdr_exclusion_reads": 15269,
-    "g12d_before_hdr_exclusion_pct": 0.0783423097677196
+    "expected_corrected_denominator": 19487513
   },
   "qc_checks": {
-    "no_strict_hdr_barcode_yes_reads_contribute_to_nonhdr_panel": true,
-    "normal_samples_excluded_from_nonhdr_panel": true,
-    "normal_458_and_normal_460_absent_from_nonhdr_panel": true,
+    "no_strict_hdr_barcode_yes_reads_contribute_to_corrected_sf5d": true,
+    "normal_samples_excluded_from_corrected_sf5d": true,
+    "normal_458_and_normal_460_absent_from_corrected_sf5d": true,
     "per_sample_counts_sum_to_nonhdr_denominator": true,
     "per_sample_pct_sum_close_to_100": true,
     "aggregate_counts_sum_to_nonhdr_denominator": true,
@@ -265,39 +304,37 @@
     "old_denominator_minus_hdr_positive_equals_corrected_denominator": true,
     "old_g12d_minus_hdr_positive_g12d_equals_corrected_g12d": true
   },
+  "checksums_sha256": {
+    "script": "6df03f51c08b7728a9c965195042a6f9c9f4dfa5117da171547daac76601f9b2",
+    "inputs": {
+      "alleles": "4d4f7b3325345b434c649c5ad069a12aed4eeb77a41ef4acdc7c252650acc12a"
+    },
+    "outputs": {
+      "figure_pdf": "a6ef4baf3f4b9c1683a7a79e345901a68bcabdc535b354dd9a339aad53db5165",
+      "figure_svg": "c51d80397c3a51ca735e5328161565d31c66d24f2c9b4db510ddb3cf733732e7",
+      "figure_png": "b85e2c862c7761d1d6c06e3599093d65a5e0703db285e4397b5c7fae7bfbfcbf",
+      "figure_ready_tsv": "9b765baec1b8aa269e1d9e70133d072f604bf1c22db4170530db68e3fbca2aa8",
+      "readme": "44fef6574539f7471744bc1a44e36e85e8d52d1354bedb2c5a7f8953127c2016",
+      "workbook_xlsx": "3307f9575d1e13ff22201a6e4d4de0a7f6e0a85d2f314462cc7496968a67d0e6"
+    },
+    "workbook_builder_script": "548a584166d8a74b7d0547c06c328ccc189d14e79b7c65986e5294d30d024433"
+  },
   "software": {
     "python_version": "3.9.6",
     "platform": "macOS-26.5.1-arm64-arm-64bit",
     "matplotlib_version": "3.9.4",
     "numpy_version": "2.0.2"
   },
-  "before_hdr_exclusion": {
-    "tumor_denominator_allele_reads": 19490107,
-    "aggregate_counts": {
-      "WT": 18730422,
-      "G12D": 15269,
-      "G12V": 50182,
-      "G12C": 34035,
-      "G12A": 7091,
-      "G12R": 9014,
-      "G12S": 18370,
-      "G13D": 13814,
-      "G13C": 8684,
-      "G13R": 6153,
-      "other": 597073
-    },
-    "aggregate_percentages": {
-      "WT": 96.10220200432968,
-      "G12D": 0.0783423097677196,
-      "G12V": 0.2574742149953307,
-      "G12C": 0.1746270556647021,
-      "G12A": 0.03638256064987227,
-      "G12R": 0.046249104738111495,
-      "G12S": 0.09425294586633105,
-      "G13D": 0.07087698389752299,
-      "G13C": 0.04455593804590195,
-      "G13R": 0.031569862597470605,
-      "other": 3.0634670194473537
-    }
+  "workbook_builder": {
+    "script": "build_kras_nonhdr_sf5d_workbook.mjs",
+    "argv": [
+      "node",
+      "build_kras_nonhdr_sf5d_workbook.mjs",
+      "--package-dir",
+      "kras_publication_plot_check_package_corrected_nonhdr_sf5d",
+      "--prefix",
+      "kras_g12_g13_hotspot_frequency_tumor_only_nonhdr"
+    ],
+    "node_version": "v24.14.0"
   }
 }

@@ -1,5 +1,5 @@
-record_type: public_rerun_parameters
-command: source/analyze_kras_cutsite_spectrum.py --analysis-manifest metadata/analysis_manifest.tsv --amplicons references/amplicons.tsv --editing-summary results/summary/editing_summary.tsv --locus Kras --cut-site 91 --cut-window-start 71 --cut-window-end 111 --context-window-start 71 --context-window-end 111 --primer-kmer-len 10 --primer-search-window 5 --min-window-baseq 20 --min-classifiable-pairs 10000 --outdir results/kras_cutsite_pm20_spectrum
+generated_at_utc: "2026-06-10T17:50:09.987535+00:00"
+command: scripts/analyze_kras_cutsite_spectrum.py --analysis-manifest metadata/analysis_manifest.tsv --amplicons references/amplicons.tsv --editing-summary results/summary/editing_summary.tsv --locus Kras --cut-site 91 --cut-window-start 71 --cut-window-end 111 --context-window-start 71 --context-window-end 111 --primer-kmer-len 10 --primer-search-window 5 --min-window-baseq 20 --min-classifiable-pairs 10000 --outdir results/kras_cutsite_pm20_spectrum
 parameters:
   analysis_manifest: metadata/analysis_manifest.tsv
   amplicons: references/amplicons.tsv
@@ -23,9 +23,13 @@ parameters:
   max_pairs_per_sample: null
   log_level: INFO
 inputs:
-  analysis_manifest: metadata/analysis_manifest.tsv
-  amplicons: references/amplicons.tsv
-  editing_summary: results/summary/editing_summary.tsv
+  analysis_manifest: /work/alignment/metadata/analysis_manifest.tsv
+  amplicons: /work/alignment/references/amplicons.tsv
+  editing_summary: /work/alignment/results/summary/editing_summary.tsv
+input_sha256:
+  analysis_manifest: b3c6c02662dc70eeffbcdb4df57f5c92ffd8a23dd218205795ac30d8b1e4eb57
+  amplicons: b003e8efb4580471b54063eb7677a4de02c59c92363e735cbada8d0f40961868
+  editing_summary: db3cfc8694974d969ac2372ee45d6bf81567cf9ee6acc86c093f502abdc2d24e
 outputs:
   per_pair: results/kras_cutsite_pm20_spectrum/per_pair/kras_cutsite_pair_calls.tsv.gz
   per_allele: results/kras_cutsite_pm20_spectrum/per_allele/kras_cutsite_allele_counts.tsv

@@ -1,24 +1,32 @@
 {
   "schema_version": "1.1",
   "panels": [
-    "Extended Fig. 3C"
+    "Extended Data Fig. 3C"
   ],
   "source_files": [
     {
       "role": "source_readme",
-      "relative_local_path": "README.md"
+      "relative_local_path": "README.md",
+      "size_bytes": 1272,
+      "sha256": "e944b70de5bd82915a4bdc80befd910ac089a194cd84903eb389f6d36f268697"
     },
     {
       "role": "curated_extended_3c_alteration_summary_table",
-      "relative_local_path": "data/alteration_summary.csv"
+      "relative_local_path": "data/alteration_summary.csv",
+      "size_bytes": 418,
+      "sha256": "9b8689a36ad79673e4d21bc5fac49285dacdf596b70b556c1e6213ab9f6eac39"
     },
     {
       "role": "deterministic_base_r_summary_plot_script",
-      "relative_local_path": "source/plot_extended_3c.R"
+      "relative_local_path": "source/plot_extended_3c.R",
+      "size_bytes": 5260,
+      "sha256": "7f4c629173f6944f306713af6a70b9de81d2a5f7a12a125117d9648f18b0adec"
     },
     {
       "role": "regenerated_extended_3c_pie_svg",
-      "relative_local_path": "results/extended_3c_pie.svg"
+      "relative_local_path": "results/extended_3c_pie.svg",
+      "size_bytes": 2348,
+      "sha256": "7708d07fc9ac55cd31cf0094abf712c1338881df0d15a0c3dcc20c79cfb0ef4a"
     }
   ],
   "data_sources": {

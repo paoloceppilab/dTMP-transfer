@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this version of the code archive."
+type: software
+title: "Analysis code and figure source data for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\""
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/paoloceppilab/dTMP-transfer"
+abstract: "Selected analysis scripts and figure source data accompanying Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation. Includes patient-level scRNA-seq cell-state analysis, Visium TYMS/TK1 neighborhoods, TCGA-LUAD summaries, human and mouse bulk RNA-seq source analysis, DepMap connexins, spatial cell-state abundance mapping and Kras/Trp53 amplicon analysis. Each analysis folder describes its inputs, methods, environment and QC. MIT applies to laboratory-authored software; third-party code and data retain their original terms as described in THIRD_PARTY_NOTICES.md."
+authors:
+  - given-names: "Paolo"
+    family-names: "Ceppi"
+    affiliation: "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+  - given-names: "Mohammad A."
+    family-names: "Siddiqui"
+    affiliation: "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+  - given-names: "Anne Mette A."
+    family-names: "Rømer"
+    affiliation: "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+  - given-names: "Vignesh"
+    family-names: "Ramesh"
+    affiliation: "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"
+  - given-names: "Mert"
+    family-names: "Demirdizen"
+    affiliation: "Department of Biochemistry and Molecular Biology, University of Southern Denmark, Odense, Denmark"

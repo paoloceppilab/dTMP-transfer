@@ -1,15 +1,14 @@
 {
-  "created_utc": "2026-09-15T22:42:52.273260+00:00",
+  "created_utc": "2026-09-15T11:11:41.325078+00:00",
   "script_path": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/scripts/generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py",
-  "script_sha256": "c01bf543413293df358588aa8e7f2e1e0288b88850466f85c4741954e0ff67d7",
   "project_root": ".",
-  "git_commit": null,
+  "git_commit": "8bdec9092754b687bc3ec8b3bec8bafe1609eec4",
   "rerun_command_from_project_root": "python3 ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/scripts/generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py --force",
   "arguments": {
     "force": true,
     "keep_raw": false,
     "raw_cache_dir": null,
-    "external_validated_cache_used": true
+    "external_validated_cache_used": false
   },
   "release": {
     "name": "DepMap 24Q4 Public",
@@ -100,6 +99,8 @@
     "tables": {
       "depmap_tpm_matrix": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_tpm_matrix.tsv",
       "source_log2_matrix": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_log2_tpm_plus1_matrix.tsv",
+      "paper_workbook_matrix": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/paper_workbook_matrix.tsv",
+      "comparison_long": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/depmap_24q4_vs_paper_workbook_long.tsv",
       "gene_availability": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/gene_availability_provenance.tsv",
       "sample_profile_mapping": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/tables/sample_profile_mapping.tsv"
     },
@@ -109,7 +110,16 @@
       "primary_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm.svg",
       "primary_no_title_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.png",
       "primary_no_title_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.pdf",
-      "primary_no_title_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.svg"
+      "primary_no_title_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.svg",
+      "native_comparison_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.png",
+      "native_comparison_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.pdf",
+      "native_comparison_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.svg",
+      "paper_style_single_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.png",
+      "paper_style_single_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.pdf",
+      "paper_style_single_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.svg",
+      "paper_style_comparison_png": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.png",
+      "paper_style_comparison_pdf": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.pdf",
+      "paper_style_comparison_svg": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.svg"
     },
     "methods": {
       "methods": "ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/methods/depmap_24q4_tpm_methods.md",
@@ -138,6 +148,21 @@
       },
       "cmap": "white_to_red",
       "no_depmap_clipping": true
+    },
+    "side_by_side_tpm_native": {
+      "vmin": 0.0,
+      "vmax": 91.71,
+      "vmax_source": "observed maximum in DepMap 24Q4 TPM matrix",
+      "cmap": "white_to_red",
+      "no_depmap_clipping": true
+    },
+    "paper_style_comparator": {
+      "vmin": 0.0,
+      "vmax": 70.0,
+      "vmax_source": "original paper-like visual scale",
+      "cmap": "white_to_red",
+      "depmap_values_above_vmax_are_saturated": true,
+      "not_primary_quantitative_figure": true
     }
   },
   "qc": {
@@ -148,11 +173,40 @@
     "final_tpm_matrix_has_no_missing_values": true,
     "tpm_native_color_scale_vmin_is_0": true,
     "tpm_native_color_scale_vmax_is_observed_depmap_maximum": true,
-    "depmap_tpm_values_not_clipped_in_primary_figure": true,
+    "depmap_tpm_values_not_clipped_in_primary_or_native_comparison": true,
     "png_pdf_svg_files_non_empty_and_renderable": true
   },
+  "gjd3_workbook_agreement": {
+    "n_cell_lines": 8,
+    "pearson_r": 0.9002931710975998,
+    "spearman_rho": 0.880952380952381,
+    "depmap_lower_than_workbook_count": 8,
+    "workbook_rank_descending": [
+      "SK-MES-1",
+      "A549",
+      "NCI-H23",
+      "NCI-H838",
+      "BEN",
+      "NCI-H520",
+      "NCI-H1299",
+      "Calu-1"
+    ],
+    "depmap_rank_descending": [
+      "A549",
+      "SK-MES-1",
+      "NCI-H838",
+      "NCI-H23",
+      "NCI-H520",
+      "NCI-H1299",
+      "BEN",
+      "Calu-1"
+    ],
+    "conclusion": "The CCLE workbook comparison shows a similar GJD3 ordering (Pearson r=0.900, Spearman rho=0.881). The workbook expression unit is unconfirmed, so differences in numeric values must not be interpreted as TPM differences.",
+    "max_abs_numeric_delta": 2.1999999999999997
+  },
   "assumptions": [
-    "Raw DepMap downloads are not retained in the repository unless --keep-raw is used.",
+    "Raw DepMap downloads are not retained in the GitHub-facing folder unless --keep-raw is used.",
+    "CCLE workbook values are provided for numeric comparison; their expression unit is unconfirmed.",
     "DepMap source values are log2(TPM + 1) and are inverse-transformed before reporting or plotting.",
     "GJD3 is treated as the current HGNC symbol and must match ENSG00000183153.",
     "No RPKM source and no protein-coding-only TPM source is used for the final figure."
@@ -163,7 +217,9 @@
     "pandas": "2.3.3",
     "numpy": "2.0.2",
     "matplotlib": "3.9.4",
+    "openpyxl": "3.1.5",
     "pillow": "11.3.0",
     "pypdf": "6.7.5"
-  }
+  },
+  "path_policy": "Repository outputs are relative to the repository root; raw downloads are validated by checksum and not retained by default."
 }

@@ -1,4 +1,4 @@
-# Extended Fig. 7C: DepMap connexin expression
+# Extended Data Fig. 7C: DepMap connexin expression
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 
@@ -50,6 +50,7 @@ values, and matching source SHA-256 values. From the repository root, run
 `python3 ext7c_depmap/scripts/validate_figure.py` to
 check the committed tables, figure formats, source files, and local links.
 
-The plotted genes are matched to pinned symbol/Ensembl pairs in the generation
-script. The displayed values come solely from DepMap 24Q4. The primary figure
-and title-free export are the two supplied layout versions.
+The included CCLE workbook and Prism file are comparison sources only;
+the displayed TPM values come solely from DepMap 24Q4. The CCLE workbook's
+expression unit is not established and should not be compared numerically
+with TPM without further documentation.

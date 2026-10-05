@@ -3,44 +3,62 @@
   "panels": [
     "Fig. 2B",
     "Fig. 2D",
-    "Extended Fig. 3F"
+    "Extended Data Fig. 3F"
   ],
   "source_files": [
     {
       "role": "main_verbatim_r_source_for_fig_2b_fig_2d_extended_fig_3f",
-      "relative_local_path": "source/analysis.R"
+      "relative_local_path": "source/analysis.R",
+      "size_bytes": 6780,
+      "sha256": "26efc008ebf5148d5080c4eaab34fdcb33161cb439a9af871ee0c63f879ac445"
     },
     {
       "role": "fig_2b_spot_state_counts",
-      "relative_local_path": "results/tyms_tk1_counts.csv"
+      "relative_local_path": "results/tyms_tk1_counts.csv",
+      "size_bytes": 119,
+      "sha256": "fa84d07c709106676146f4b9c2b34330bf6fbef27e8245ef9252f2053eea32d8"
     },
     {
       "role": "fig_2d_neighborhood_data_points",
-      "relative_local_path": "results/neighborhood_data_points.csv"
+      "relative_local_path": "results/neighborhood_data_points.csv",
+      "size_bytes": 19776,
+      "sha256": "fa6c4bc6824ca55daf4e613a82c2002190add60fccf8022e38ee1877e70e810c"
     },
     {
       "role": "fig_2b_combined_spatial_map_svg",
-      "relative_local_path": "results/spatial_plot.svg"
+      "relative_local_path": "results/spatial_plot.svg",
+      "size_bytes": 849149,
+      "sha256": "075acc7af838e656c9a588f4b0307487a481ac477371d6c58515bc513cce8e59"
     },
     {
       "role": "fig_2d_neighborhood_plot_svg",
-      "relative_local_path": "results/neighborhood_plot.svg"
+      "relative_local_path": "results/neighborhood_plot.svg",
+      "size_bytes": 109114,
+      "sha256": "9724c8d033066164b12a087036ac3d89a6cb09a0efaee881380fb0bfd67d8101"
     },
     {
       "role": "extended_fig_3f_tyms_negative_tk1_negative_svg",
-      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_neg.svg"
+      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_neg.svg",
+      "size_bytes": 341530,
+      "sha256": "7c04c7ca0941c76c62c4c02322e1ed839caf3faa6d77af64d0934f5a2cfc35f2"
     },
     {
       "role": "extended_fig_3f_tyms_negative_tk1_positive_svg",
-      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_pos.svg"
+      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_pos.svg",
+      "size_bytes": 341530,
+      "sha256": "f39d52e71cbdf1667fb518c4bc1afa3c8eeaec551ce6e686243823043f9997e5"
     },
     {
       "role": "extended_fig_3f_tyms_positive_tk1_negative_svg",
-      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_neg.svg"
+      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_neg.svg",
+      "size_bytes": 341530,
+      "sha256": "eaf05abef8ac437f5fd66dab1fba6c7fe888c8b27d07077953522df4853023be"
     },
     {
       "role": "extended_fig_3f_tyms_positive_tk1_positive_svg",
-      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_pos.svg"
+      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_pos.svg",
+      "size_bytes": 341530,
+      "sha256": "59f47a5c80e97d5ddd8fb81f3375ad9b52c26386aa58eae2b0d110cac4626928"
     }
   ],
   "data_sources": {

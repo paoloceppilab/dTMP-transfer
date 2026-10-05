@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a publication-ready DepMap 24Q4 TPM figure for Extended Fig. 7C.
+"""Generate a publication-ready DepMap 24Q4 TPM figure for Extended Data Fig. 7C.
 
 The source expression matrix is the official DepMap 24Q4 Public Figshare+
 all-gene file, OmicsExpressionAllGenesTPMLogp1Profile.csv. DepMap reports
@@ -38,6 +38,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+import openpyxl
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
 from PIL import Image
@@ -47,6 +48,13 @@ from pypdf import PdfReader
 SCRIPT_PATH = Path(__file__).resolve()
 OUTPUT_ROOT = SCRIPT_PATH.parents[1]
 PROJECT_ROOT = SCRIPT_PATH.parents[4]
+
+WORKBOOK_PATH = (
+    PROJECT_ROOT
+    / "ext7c_depmap"
+    / "tables"
+    / "ccle_connexins_workbook.xlsx"
+)
 
 FIGSHARE_ARTICLE_URL = "https://plus.figshare.com/articles/dataset/DepMap_24Q4_Public/27993248"
 FIGSHARE_ARTICLE_ID = "27993248"
@@ -102,30 +110,11 @@ GENES = [
 GJD3_REQUIRED_COLUMN_ID = "GJD3 (ENSG00000183153)"
 GJD3_REQUIRED_ENSEMBL_ID = "ENSG00000183153"
 
-# Pinned gene identifiers from the final DepMap all-gene source columns.
-# Require both symbol and Ensembl ID for each plotted source column.
-GENE_ENSEMBL_IDS = {
-    "GJA1": "ENSG00000152661",
-    "GJA10": "ENSG00000135355",
-    "GJA3": "ENSG00000121743",
-    "GJA5": "ENSG00000265107",
-    "GJA8": "ENSG00000121634",
-    "GJA9": "ENSG00000131233",
-    "GJB2": "ENSG00000165474",
-    "GJB4": "ENSG00000189433",
-    "GJB5": "ENSG00000189280",
-    "GJB6": "ENSG00000121742",
-    "GJB7": "ENSG00000164411",
-    "GJC1": "ENSG00000182963",
-    "GJC2": "ENSG00000198835",
-    "GJC3": "ENSG00000176402",
-    "GJD2": "ENSG00000159248",
-    "GJD3": "ENSG00000183153",
-    "GJD4": "ENSG00000177291",
-}
-
 PRIMARY_FIGURE_STEM = "extended_fig7c_depmap_24q4_tpm"
 PRIMARY_NO_TITLE_STEM = "extended_fig7c_depmap_24q4_tpm_no_title"
+NATIVE_COMPARISON_STEM = "extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native"
+PAPER_STYLE_COMPARISON_STEM = "extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale"
+PAPER_STYLE_SINGLE_STEM = "extended_fig7c_depmap_24q4_tpm_paper_style_scale"
 
 
 @dataclass(frozen=True)
@@ -431,50 +420,165 @@ def prepare_output_dirs(force: bool, keep_raw: bool) -> None:
         (OUTPUT_ROOT / "raw").mkdir(parents=True, exist_ok=True)
 
 
+def read_paper_workbook(path: Path) -> tuple[pd.DataFrame, dict[str, str]]:
+    if not path.exists():
+        raise FileNotFoundError(f"Missing paper workbook: {path}")
+    workbook = openpyxl.load_workbook(path, read_only=True, data_only=True)
+    required_sheets = {"Connexins_2", "CCLE_data (2)"}
+    missing_sheets = sorted(required_sheets.difference(workbook.sheetnames))
+    if missing_sheets:
+        raise ValueError(f"Workbook is missing required sheets: {missing_sheets}")
+
+    rows = list(workbook["Connexins_2"].iter_rows(values_only=True))
+    header = list(rows[0])
+    paper = pd.DataFrame(rows[1:], columns=header).rename(columns={"SYMBOL": "cell_line"})
+    paper = paper.dropna(subset=["cell_line"]).set_index("cell_line")
+    missing_gene_columns = sorted(set(GENES).difference(paper.columns))
+    if missing_gene_columns:
+        raise ValueError(f"Paper workbook lacks plotted gene columns: {missing_gene_columns}")
+
+    row_by_key: dict[str, str] = {}
+    for label in paper.index:
+        key = normalise_name(label)
+        if key and key not in row_by_key:
+            row_by_key[key] = str(label)
+
+    selected_rows = []
+    missing_rows = []
+    for cell_line in CELL_LINES:
+        workbook_label = row_by_key.get(normalise_name(cell_line))
+        if workbook_label is None:
+            missing_rows.append(cell_line)
+            continue
+        selected_rows.append(paper.loc[workbook_label, GENES])
+    if missing_rows:
+        raise ValueError("Paper workbook lacks rows for: " + ", ".join(missing_rows))
+
+    paper_matrix = pd.DataFrame(selected_rows, index=CELL_LINES, columns=GENES)
+    paper_matrix = paper_matrix.apply(pd.to_numeric, errors="coerce")
+    if paper_matrix.isna().any().any():
+        missing_values = [
+            f"{row}/{col}"
+            for row, data in paper_matrix.isna().iterrows()
+            for col, is_missing in data.items()
+            if is_missing
+        ]
+        raise ValueError("Paper workbook has missing/non-numeric values: " + ", ".join(missing_values))
+
+    ccle_rows = list(workbook["CCLE_data (2)"].iter_rows(values_only=True))
+    symbol_to_ensembl: dict[str, str] = {}
+    for row in ccle_rows[1:]:
+        ensembl_id, symbol = row[0], row[1]
+        if symbol in GENES and ensembl_id and str(symbol) not in symbol_to_ensembl:
+            symbol_to_ensembl[str(symbol)] = strip_ensembl_version(ensembl_id)
+    missing_ids = sorted(set(GENES).difference(symbol_to_ensembl))
+    if missing_ids:
+        raise ValueError(f"Workbook lacks Ensembl IDs for plotted genes: {missing_ids}")
+    if symbol_to_ensembl.get("GJD3") != GJD3_REQUIRED_ENSEMBL_ID:
+        raise ValueError(
+            f"Workbook GJD3 Ensembl ID is {symbol_to_ensembl.get('GJD3')}, "
+            f"expected {GJD3_REQUIRED_ENSEMBL_ID}"
+        )
+    return paper_matrix, symbol_to_ensembl
+
+
 def find_gene_columns(
-    expression_csv: Path,
+    expression_csv: Path, symbol_to_ensembl: dict[str, str]
 ) -> tuple[dict[str, str], pd.DataFrame, str]:
-    if set(GENE_ENSEMBL_IDS) != set(GENES):
-        raise ValueError("Pinned Ensembl identifiers do not cover all plotted genes.")
-    if GENE_ENSEMBL_IDS["GJD3"] != GJD3_REQUIRED_ENSEMBL_ID:
-        raise ValueError("Pinned GJD3 Ensembl identifier changed.")
     with expression_csv.open("r", encoding="utf-8", newline="") as handle:
         header = next(csv.reader(handle))
     profile_column = header[0]
-    parsed_columns = [(column, parse_gene_identifier(column)) for column in header[1:]]
 
     records: list[dict[str, Any]] = []
     gene_to_column: dict[str, str] = {}
+    parsed_columns = [(column, parse_gene_identifier(column)) for column in header[1:]]
+
     for gene in GENES:
-        expected_id = GENE_ENSEMBL_IDS[gene]
-        matches = [
+        expected_ensembl = symbol_to_ensembl.get(gene)
+        symbol_matches = [
             (column, parsed)
             for column, parsed in parsed_columns
-            if parsed["symbol"] == gene and parsed["ensembl_id"] == expected_id
+            if parsed["symbol"] == gene
         ]
-        if len(matches) > 1:
-            raise ValueError(f"Multiple DepMap columns match {gene}/{expected_id}.")
-        selected = matches[0] if matches else None
-        if selected:
-            column, parsed = selected
-            gene_to_column[gene] = column
-        records.append({
-            "gene": gene,
-            "present": bool(selected),
-            "depmap_column_id": selected[0] if selected else None,
-            "depmap_symbol": selected[1]["symbol"] if selected else None,
-            "depmap_ensembl_id": selected[1]["ensembl_id"] if selected else None,
-            "expected_ensembl_id": expected_id,
-            "match_type": "symbol_and_ensembl" if selected else None,
-        })
+        exact_matches = [
+            (column, parsed)
+            for column, parsed in symbol_matches
+            if expected_ensembl and parsed["ensembl_id"] == expected_ensembl
+        ]
 
-    availability = pd.DataFrame.from_records(records)
+        selected: tuple[str, dict[str, str | None]] | None = None
+        match_type: str | None = None
+        if expected_ensembl:
+            if len(exact_matches) != 1:
+                records.append(
+                    {
+                        "gene": gene,
+                        "present": False,
+                        "depmap_column_id": None,
+                        "depmap_symbol": None,
+                        "depmap_ensembl_id": None,
+                        "workbook_ensembl_id": expected_ensembl,
+                        "match_type": None,
+                    }
+                )
+                continue
+            selected = exact_matches[0]
+            match_type = "symbol_and_ensembl"
+        elif len(symbol_matches) == 1:
+            selected = symbol_matches[0]
+            match_type = "symbol_only"
+        elif len(symbol_matches) > 1:
+            raise ValueError(f"Multiple symbol-only DepMap matches for {gene}: {symbol_matches}")
+
+        if selected is None:
+            records.append(
+                {
+                    "gene": gene,
+                    "present": False,
+                    "depmap_column_id": None,
+                    "depmap_symbol": None,
+                    "depmap_ensembl_id": None,
+                    "workbook_ensembl_id": expected_ensembl,
+                    "match_type": None,
+                }
+            )
+            continue
+
+        column, parsed = selected
+        gene_to_column[gene] = column
+        records.append(
+            {
+                "gene": gene,
+                "present": True,
+                "depmap_column_id": column,
+                "depmap_symbol": parsed["symbol"],
+                "depmap_ensembl_id": parsed["ensembl_id"],
+                "workbook_ensembl_id": expected_ensembl,
+                "match_type": match_type,
+            }
+        )
+
+    availability = pd.DataFrame.from_records(
+        records,
+        columns=[
+            "gene",
+            "present",
+            "depmap_column_id",
+            "depmap_symbol",
+            "depmap_ensembl_id",
+            "workbook_ensembl_id",
+            "match_type",
+        ],
+    )
     missing = availability.loc[~availability["present"], "gene"].tolist()
     if missing:
         raise ValueError("DepMap expression matrix lacks plotted genes: " + ", ".join(missing))
-    gjd3 = availability.loc[availability["gene"].eq("GJD3")].iloc[0]
-    if gjd3["depmap_column_id"] != GJD3_REQUIRED_COLUMN_ID:
-        raise ValueError(f"Matched GJD3 column {gjd3['depmap_column_id']!r}; expected {GJD3_REQUIRED_COLUMN_ID!r}")
+    gjd3_row = availability.loc[availability["gene"].eq("GJD3")].iloc[0]
+    if gjd3_row["depmap_column_id"] != GJD3_REQUIRED_COLUMN_ID:
+        raise ValueError(
+            f"Matched GJD3 column {gjd3_row['depmap_column_id']!r}; "
+            f"expected {GJD3_REQUIRED_COLUMN_ID!r}"
+        )
     return gene_to_column, availability, profile_column
 
 
@@ -563,6 +667,28 @@ def extract_depmap_matrices(
 
 def write_matrix(path: Path, matrix: pd.DataFrame) -> None:
     matrix.to_csv(path, sep="\t", float_format="%.10g", index_label="cell_line")
+
+
+def write_long_comparison(
+    paper_matrix: pd.DataFrame, depmap_matrix: pd.DataFrame, out_path: Path
+) -> pd.DataFrame:
+    rows = []
+    for cell_line in CELL_LINES:
+        for gene in GENES:
+            paper_value = float(paper_matrix.loc[cell_line, gene])
+            depmap_value = float(depmap_matrix.loc[cell_line, gene])
+            rows.append(
+                {
+                    "cell_line": cell_line,
+                    "gene": gene,
+                    "paper_workbook_value": paper_value,
+                    "depmap_24q4_tpm": depmap_value,
+                    "delta_depmap_minus_paper": depmap_value - paper_value,
+                }
+            )
+    comparison = pd.DataFrame.from_records(rows)
+    comparison.to_csv(out_path, sep="\t", index=False, float_format="%.10g")
+    return comparison
 
 
 def white_to_red_cmap() -> LinearSegmentedColormap:
@@ -691,6 +817,51 @@ def make_single_heatmap(
     return save_figure(fig, out_prefix)
 
 
+def make_side_by_side_heatmap(
+    paper_matrix: pd.DataFrame,
+    depmap_matrix: pd.DataFrame,
+    out_prefix: Path,
+    *,
+    vmax: float,
+    suptitle: str,
+    colorbar_label: str,
+    paper_style: bool = False,
+) -> list[Path]:
+    apply_plot_style()
+    fig, axes = plt.subplots(1, 2, figsize=(11.8, 3.55), layout="constrained")
+    fig.suptitle(suptitle, fontsize=12, fontweight="bold")
+    image = draw_heatmap_panel(
+        axes[0],
+        paper_matrix,
+        "Paper workbook matrix",
+        vmax=vmax,
+        show_y_labels=True,
+        color_over="#7F0000" if paper_style else None,
+    )
+    draw_heatmap_panel(
+        axes[1],
+        depmap_matrix,
+        "DepMap 24Q4 all-gene TPM",
+        vmax=vmax,
+        show_y_labels=False,
+        color_over="#7F0000" if paper_style else None,
+    )
+    colorbar = fig.colorbar(
+        image,
+        ax=axes,
+        fraction=0.025,
+        pad=0.01,
+        extend="max" if paper_style else "neither",
+    )
+    ticks = np.arange(0, 71, 10).tolist() if paper_style else colorbar_ticks(vmax)
+    colorbar.set_ticks(ticks)
+    colorbar.ax.set_yticklabels([f"{tick:g}" for tick in ticks])
+    colorbar.ax.tick_params(length=0, labelsize=8)
+    colorbar.outline.set_linewidth(0.6)
+    colorbar.set_label(colorbar_label, fontsize=8)
+    return save_figure(fig, out_prefix)
+
+
 def validate_png(path: Path) -> dict[str, Any]:
     with Image.open(path) as image:
         image.verify()
@@ -744,20 +915,12 @@ def validate_figure_outputs(paths: list[Path]) -> tuple[pd.DataFrame, list[dict[
 
 def git_commit() -> str | None:
     try:
-        commit = subprocess.check_output(
+        return subprocess.check_output(
             ["git", "rev-parse", "HEAD"],
             cwd=PROJECT_ROOT,
             stderr=subprocess.DEVNULL,
             text=True,
         ).strip()
-        script_relative = SCRIPT_PATH.relative_to(PROJECT_ROOT).as_posix()
-        script_status = subprocess.check_output(
-            ["git", "status", "--porcelain", "--", script_relative],
-            cwd=PROJECT_ROOT,
-            stderr=subprocess.DEVNULL,
-            text=True,
-        )
-        return commit if not script_status else None
     except Exception:
         return None
 
@@ -771,8 +934,36 @@ def software_versions() -> dict[str, str]:
         "pandas": pd.__version__,
         "numpy": np.__version__,
         "matplotlib": matplotlib.__version__,
+        "openpyxl": openpyxl.__version__,
         "pillow": Image.__version__,
         "pypdf": pypdf.__version__,
+    }
+
+
+def compute_gjd3_summary(comparison: pd.DataFrame) -> dict[str, Any]:
+    gjd3 = comparison.loc[comparison["gene"].eq("GJD3")].copy()
+    workbook = gjd3["paper_workbook_value"].astype(float)
+    depmap = gjd3["depmap_24q4_tpm"].astype(float)
+    pearson = float(workbook.corr(depmap, method="pearson"))
+    spearman = float(workbook.corr(depmap, method="spearman"))
+    workbook_desc = gjd3.sort_values("paper_workbook_value", ascending=False)["cell_line"].tolist()
+    depmap_desc = gjd3.sort_values("depmap_24q4_tpm", ascending=False)["cell_line"].tolist()
+    lower_count = int((depmap < workbook).sum())
+    conclusion = (
+        "The CCLE workbook comparison shows a similar GJD3 ordering "
+        f"(Pearson r={pearson:.3f}, Spearman rho={spearman:.3f}). "
+        "The workbook expression unit is unconfirmed, so differences in numeric "
+        "values must not be interpreted as TPM differences."
+    )
+    return {
+        "n_cell_lines": int(gjd3.shape[0]),
+        "pearson_r": pearson,
+        "spearman_rho": spearman,
+        "max_abs_numeric_delta": float(gjd3["delta_depmap_minus_paper"].abs().max()),
+        "depmap_lower_than_workbook_count": lower_count,
+        "workbook_rank_descending": workbook_desc,
+        "depmap_rank_descending": depmap_desc,
+        "conclusion": conclusion,
     }
 
 
@@ -807,7 +998,7 @@ def markdown_table_from_dataframe(df: pd.DataFrame, max_rows: int | None = None)
     return "\n".join(lines)
 
 
-def write_methods(vmax_native: float) -> None:
+def write_methods(vmax_native: float, gjd3_summary: dict[str, Any]) -> None:
     methods = f"""# DepMap 24Q4 TPM Methods
 
 Connexin mRNA abundance was re-derived from the official DepMap 24Q4 Public Figshare+ release ({FIGSHARE_ARTICLE_URL}). The all-gene RNA expression source file was `{EXPRESSION_SPEC.filename}` (Figshare file `{EXPRESSION_SPEC.figshare_file_id}`), and the default model/profile map was `{PROFILE_SPEC.filename}` (Figshare file `{PROFILE_SPEC.figshare_file_id}`).
@@ -825,8 +1016,8 @@ Quality control required all 17 genes to be present, all 8 cell lines to map to 
     (OUTPUT_ROOT / "methods" / "depmap_24q4_tpm_methods.md").write_text(methods, encoding="utf-8")
 
 
-def write_caption(vmax_native: float) -> None:
-    caption = f"""# Extended Fig. 7C DepMap 24Q4 TPM Caption
+def write_caption(vmax_native: float, gjd3_summary: dict[str, Any]) -> None:
+    caption = f"""# Extended Data Fig. 7C DepMap 24Q4 TPM Caption
 
 **Extended Data Fig. 7C. Connexin mRNA abundance in lung cancer cell lines from DepMap 24Q4.** Heatmap shows TPM expression for 17 connexin genes across A549, Calu-1, NCI-H23, SK-MES-1, NCI-H520, NCI-H1299, BEN, and NCI-H838 in the specified order. DepMap 24Q4 all-gene RNA expression values were obtained from `{EXPRESSION_SPEC.filename}` as log2(TPM + 1), mapped to default RNA profiles using `{PROFILE_SPEC.filename}`, and inverse-transformed to TPM before plotting. Gene columns were matched by symbol and Ensembl ID; GJD3 was matched as `{GJD3_REQUIRED_COLUMN_ID}`. The primary color scale is TPM-native from 0 to {vmax_native:.2f}, the observed DepMap maximum in the plotted matrix, with no clipping of DepMap values.
 """
@@ -838,6 +1029,7 @@ def write_qc_report(
     gene_availability: pd.DataFrame,
     sample_map: pd.DataFrame,
     figure_validation: pd.DataFrame,
+    gjd3_summary: dict[str, Any],
 ) -> None:
     qc_rows = [{"check": key, "passed": value} for key, value in qc.items() if isinstance(value, bool)]
     pd.DataFrame.from_records(qc_rows).to_csv(OUTPUT_ROOT / "qc" / "qc_checks.tsv", sep="\t", index=False)
@@ -859,6 +1051,16 @@ def write_qc_report(
 ## Figure File Validation
 
 {markdown_table_from_dataframe(figure_validation)}
+
+## CCLE workbook numeric comparison
+
+{gjd3_summary['conclusion']}
+
+- Pearson r: {gjd3_summary['pearson_r']:.6f}
+- Spearman rho: {gjd3_summary['spearman_rho']:.6f}
+- Maximum absolute numeric delta: {gjd3_summary['max_abs_numeric_delta']:.6g} (source units unconfirmed)
+- Workbook rank order: {", ".join(gjd3_summary['workbook_rank_descending'])}
+- DepMap rank order: {", ".join(gjd3_summary['depmap_rank_descending'])}
 """
     (OUTPUT_ROOT / "qc" / "qc_report.md").write_text(report, encoding="utf-8")
 
@@ -866,6 +1068,7 @@ def write_qc_report(
 def write_docs(
     source_metadata: dict[str, Any],
     vmax_native: float,
+    gjd3_summary: dict[str, Any],
     outputs: dict[str, Any],
 ) -> None:
     expression_sha = source_metadata["expression"]["sha256"]
@@ -876,11 +1079,9 @@ def write_docs(
         "generate_extended_fig7c_depmap_24q4_tpm_connexin_heatmap.py --force"
     )
 
-    readme = f"""# DepMap 24Q4 TPM Extended Fig. 7C
+    readme = f"""# DepMap 24Q4 TPM Extended Data Fig. 7C
 
-**Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
-
-Publication-ready figure package for the paper's Extended Fig. 7C connexin mRNA heatmap using the official DepMap 24Q4 Public Figshare+ all-gene TPM source.
+Publication-ready figure package for the paper's Extended Data Fig. 7C connexin mRNA heatmap using the official DepMap 24Q4 Public Figshare+ all-gene TPM source.
 
 ## Primary Outputs
 
@@ -937,9 +1138,9 @@ Run from the project root:
 {rerun}
 ```
 
-Add `--keep-raw` to retain the DepMap source CSV files under `raw/`; by default raw downloads are validated from cache or temporary download and are not retained in the repository.
+Add `--keep-raw` to retain the DepMap source CSV files under `raw/`; by default raw downloads are validated from cache or temporary download and are not retained in this GitHub-facing folder.
 
-For verification, run in a temporary copy of the repository. `--force` overwrites generated figures, tables, and run records in the selected checkout.
+For verification, run in a temporary copy of the repository. `--force` in the committed checkout rewrites run-specific records and requires provenance hashes to be reviewed and updated.
 
 ## Software
 
@@ -982,7 +1183,7 @@ Underlying numeric values are available in `tables/depmap_24q4_tpm_matrix.tsv`.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DepMap 24Q4 TPM Extended Fig. 7C</title>
+  <title>DepMap 24Q4 TPM Extended Data Fig. 7C</title>
   <style>
     body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.5; margin: 2rem auto; max-width: 980px; color: #1f2933; }}
     h1, h2 {{ line-height: 1.2; }}
@@ -992,7 +1193,7 @@ Underlying numeric values are available in `tables/depmap_24q4_tpm_matrix.tsv`.
   </style>
 </head>
 <body>
-  <h1>DepMap 24Q4 TPM Extended Fig. 7C</h1>
+  <h1>DepMap 24Q4 TPM Extended Data Fig. 7C</h1>
   <p class="meta">Primary TPM-native scale: vmin=0, vmax={vmax_native:.6g} TPM.</p>
   <img src="figures/{PRIMARY_FIGURE_STEM}.png" alt="DepMap 24Q4 TPM connexin mRNA heatmap">
 
@@ -1023,6 +1224,7 @@ def build_manifest(
     outputs: dict[str, Any],
     qc: dict[str, Any],
     color_scales: dict[str, Any],
+    gjd3_summary: dict[str, Any],
     n_expression_profiles: int,
 ) -> dict[str, Any]:
     rerun_command = (
@@ -1033,7 +1235,6 @@ def build_manifest(
     return {
         "created_utc": utc_now(),
         "script_path": relative(SCRIPT_PATH),
-        "script_sha256": sha256_file(SCRIPT_PATH),
         "project_root": ".",
         "git_commit": git_commit(),
         "rerun_command_from_project_root": rerun_command,
@@ -1064,8 +1265,10 @@ def build_manifest(
         "outputs": portable_outputs(outputs),
         "color_scales": color_scales,
         "qc": qc,
+        "gjd3_workbook_agreement": gjd3_summary,
         "assumptions": [
-            "Raw DepMap downloads are not retained in the repository unless --keep-raw is used.",
+            "Raw DepMap downloads are not retained in the GitHub-facing folder unless --keep-raw is used.",
+            "CCLE workbook values are provided for numeric comparison; their expression unit is unconfirmed.",
             "DepMap source values are log2(TPM + 1) and are inverse-transformed before reporting or plotting.",
             "GJD3 is treated as the current HGNC symbol and must match ENSG00000183153.",
             "No RPKM source and no protein-coding-only TPM source is used for the final figure.",
@@ -1116,7 +1319,10 @@ def main() -> None:
             "default_profiles": profile_metadata,
         }
 
-        gene_to_column, gene_availability, profile_column = find_gene_columns(expression_csv)
+        paper_matrix, symbol_to_ensembl = read_paper_workbook(WORKBOOK_PATH)
+        gene_to_column, gene_availability, profile_column = find_gene_columns(
+            expression_csv, symbol_to_ensembl
+        )
         depmap_matrix, log2_matrix, sample_map, n_expression_profiles = extract_depmap_matrices(
             expression_csv,
             profile_csv,
@@ -1127,14 +1333,18 @@ def main() -> None:
     tables = {
         "depmap_tpm_matrix": OUTPUT_ROOT / "tables" / "depmap_24q4_tpm_matrix.tsv",
         "source_log2_matrix": OUTPUT_ROOT / "tables" / "depmap_24q4_log2_tpm_plus1_matrix.tsv",
+        "paper_workbook_matrix": OUTPUT_ROOT / "tables" / "paper_workbook_matrix.tsv",
+        "comparison_long": OUTPUT_ROOT / "tables" / "depmap_24q4_vs_paper_workbook_long.tsv",
         "gene_availability": OUTPUT_ROOT / "tables" / "gene_availability_provenance.tsv",
         "sample_profile_mapping": OUTPUT_ROOT / "tables" / "sample_profile_mapping.tsv",
     }
 
     write_matrix(tables["depmap_tpm_matrix"], depmap_matrix)
     write_matrix(tables["source_log2_matrix"], log2_matrix)
+    write_matrix(tables["paper_workbook_matrix"], paper_matrix)
     gene_availability.to_csv(tables["gene_availability"], sep="\t", index=False)
     sample_map.to_csv(tables["sample_profile_mapping"], sep="\t", index=False)
+    comparison = write_long_comparison(paper_matrix, depmap_matrix, tables["comparison_long"])
     write_source_table(source_metadata)
 
     vmax_native = float(np.round(depmap_matrix.to_numpy(dtype=float).max(), 10))
@@ -1160,7 +1370,37 @@ def main() -> None:
         panel_label=None,
     )
     all_figure_paths.extend(primary_no_title_paths)
+    native_paths = make_side_by_side_heatmap(
+        paper_matrix,
+        depmap_matrix,
+        OUTPUT_ROOT / "figures" / NATIVE_COMPARISON_STEM,
+        vmax=vmax_native,
+        suptitle=f"Connexin mRNA; TPM-native color scale 0-{vmax_native:.2f}",
+        colorbar_label="TPM",
+    )
+    all_figure_paths.extend(native_paths)
+    paper_style_single_paths = make_single_heatmap(
+        depmap_matrix,
+        OUTPUT_ROOT / "figures" / PAPER_STYLE_SINGLE_STEM,
+        vmax=70.0,
+        title="DepMap 24Q4 TPM (paper-style 0-70 scale; saturated)",
+        colorbar_label="TPM (paper-style scale)",
+        paper_style=True,
+    )
+    all_figure_paths.extend(paper_style_single_paths)
+    paper_style_paths = make_side_by_side_heatmap(
+        paper_matrix,
+        depmap_matrix,
+        OUTPUT_ROOT / "figures" / PAPER_STYLE_COMPARISON_STEM,
+        vmax=70.0,
+        suptitle="Connexin mRNA; paper-style 0-70 scale (saturated comparator)",
+        colorbar_label="TPM (paper-style scale)",
+        paper_style=True,
+    )
+    all_figure_paths.extend(paper_style_paths)
+
     figure_validation, figure_failures = validate_figure_outputs(all_figure_paths)
+    gjd3_summary = compute_gjd3_summary(comparison)
 
     qc = {
         "all_17_genes_present": bool(gene_availability["present"].all() and gene_availability.shape[0] == 17),
@@ -1173,15 +1413,15 @@ def main() -> None:
         "final_tpm_matrix_has_no_missing_values": bool(not depmap_matrix.isna().any().any()),
         "tpm_native_color_scale_vmin_is_0": True,
         "tpm_native_color_scale_vmax_is_observed_depmap_maximum": True,
-        "depmap_tpm_values_not_clipped_in_primary_figure": True,
+        "depmap_tpm_values_not_clipped_in_primary_or_native_comparison": True,
         "png_pdf_svg_files_non_empty_and_renderable": bool(not figure_failures),
     }
     if not all(qc.values()):
         raise ValueError(f"QC failure: {qc}")
 
-    write_qc_report(qc, gene_availability, sample_map, figure_validation)
-    write_methods(vmax_native)
-    write_caption(vmax_native)
+    write_qc_report(qc, gene_availability, sample_map, figure_validation, gjd3_summary)
+    write_methods(vmax_native, gjd3_summary)
+    write_caption(vmax_native, gjd3_summary)
 
     outputs = {
         "tables": {key: str(path) for key, path in tables.items()},
@@ -1192,6 +1432,15 @@ def main() -> None:
             "primary_no_title_png": str((OUTPUT_ROOT / "figures" / PRIMARY_NO_TITLE_STEM).with_suffix(".png")),
             "primary_no_title_pdf": str((OUTPUT_ROOT / "figures" / PRIMARY_NO_TITLE_STEM).with_suffix(".pdf")),
             "primary_no_title_svg": str((OUTPUT_ROOT / "figures" / PRIMARY_NO_TITLE_STEM).with_suffix(".svg")),
+            "native_comparison_png": str((OUTPUT_ROOT / "figures" / NATIVE_COMPARISON_STEM).with_suffix(".png")),
+            "native_comparison_pdf": str((OUTPUT_ROOT / "figures" / NATIVE_COMPARISON_STEM).with_suffix(".pdf")),
+            "native_comparison_svg": str((OUTPUT_ROOT / "figures" / NATIVE_COMPARISON_STEM).with_suffix(".svg")),
+            "paper_style_single_png": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_SINGLE_STEM).with_suffix(".png")),
+            "paper_style_single_pdf": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_SINGLE_STEM).with_suffix(".pdf")),
+            "paper_style_single_svg": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_SINGLE_STEM).with_suffix(".svg")),
+            "paper_style_comparison_png": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_COMPARISON_STEM).with_suffix(".png")),
+            "paper_style_comparison_pdf": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_COMPARISON_STEM).with_suffix(".pdf")),
+            "paper_style_comparison_svg": str((OUTPUT_ROOT / "figures" / PAPER_STYLE_COMPARISON_STEM).with_suffix(".svg")),
         },
         "methods": {
             "methods": str(OUTPUT_ROOT / "methods" / "depmap_24q4_tpm_methods.md"),
@@ -1218,15 +1467,31 @@ def main() -> None:
             "cmap": "white_to_red",
             "no_depmap_clipping": True,
         },
+        "side_by_side_tpm_native": {
+            "vmin": 0.0,
+            "vmax": vmax_native,
+            "vmax_source": "observed maximum in DepMap 24Q4 TPM matrix",
+            "cmap": "white_to_red",
+            "no_depmap_clipping": True,
+        },
+        "paper_style_comparator": {
+            "vmin": 0.0,
+            "vmax": 70.0,
+            "vmax_source": "original paper-like visual scale",
+            "cmap": "white_to_red",
+            "depmap_values_above_vmax_are_saturated": bool((depmap_matrix.to_numpy(dtype=float) > 70.0).any()),
+            "not_primary_quantitative_figure": True,
+        },
     }
 
-    write_docs(source_metadata, vmax_native, outputs)
+    write_docs(source_metadata, vmax_native, gjd3_summary, outputs)
     manifest = build_manifest(
         args=args,
         source_metadata=source_metadata,
         outputs=outputs,
         qc=qc,
         color_scales=color_scales,
+        gjd3_summary=gjd3_summary,
         n_expression_profiles=n_expression_profiles,
     )
     manifest_path = OUTPUT_ROOT / "run_manifest.json"
@@ -1236,6 +1501,7 @@ def main() -> None:
     print(f"Wrote final figure: {outputs['figures']['primary_png']}")
     print(f"Wrote TPM matrix: {tables['depmap_tpm_matrix']}")
     print(f"Wrote manifest: {manifest_path}")
+    print(gjd3_summary["conclusion"])
 
 
 if __name__ == "__main__":

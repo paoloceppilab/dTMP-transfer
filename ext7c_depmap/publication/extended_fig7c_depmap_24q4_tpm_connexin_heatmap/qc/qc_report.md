@@ -11,12 +11,12 @@
 | final_tpm_matrix_has_no_missing_values | True |
 | tpm_native_color_scale_vmin_is_0 | True |
 | tpm_native_color_scale_vmax_is_observed_depmap_maximum | True |
-| depmap_tpm_values_not_clipped_in_primary_figure | True |
+| depmap_tpm_values_not_clipped_in_primary_or_native_comparison | True |
 | png_pdf_svg_files_non_empty_and_renderable | True |
 
 ## Gene Availability
 
-| gene | present | depmap_column_id | depmap_symbol | depmap_ensembl_id | expected_ensembl_id | match_type |
+| gene | present | depmap_column_id | depmap_symbol | depmap_ensembl_id | workbook_ensembl_id | match_type |
 | --- | --- | --- | --- | --- | --- | --- |
 | GJA1 | True | GJA1 (ENSG00000152661) | GJA1 | ENSG00000152661 | ENSG00000152661 | symbol_and_ensembl |
 | GJA10 | True | GJA10 (ENSG00000135355) | GJA10 | ENSG00000135355 | ENSG00000135355 | symbol_and_ensembl |
@@ -59,3 +59,22 @@
 | ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.png | png | 137337 | True | True | {"format": "PNG", "height_px": 2010, "mode": "RGBA", "width_px": 4080} |
 | ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.pdf | pdf | 19989 | True | True | {"pages": 1} |
 | ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_no_title.svg | svg | 18739 | True | True | {"root_tag": "{http://www.w3.org/2000/svg}svg"} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.png | png | 242740 | True | True | {"format": "PNG", "height_px": 2130, "mode": "RGBA", "width_px": 7080} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.pdf | pdf | 26257 | True | True | {"pages": 1} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_tpm_native.svg | svg | 32950 | True | True | {"root_tag": "{http://www.w3.org/2000/svg}svg"} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.png | png | 197007 | True | True | {"format": "PNG", "height_px": 2010, "mode": "RGBA", "width_px": 4080} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.pdf | pdf | 25079 | True | True | {"pages": 1} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_paper_style_scale.svg | svg | 19801 | True | True | {"root_tag": "{http://www.w3.org/2000/svg}svg"} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.png | png | 283673 | True | True | {"format": "PNG", "height_px": 2130, "mode": "RGBA", "width_px": 7080} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.pdf | pdf | 29285 | True | True | {"pages": 1} |
+| ext7c_depmap/publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap/figures/extended_fig7c_depmap_24q4_tpm_vs_paper_workbook_paper_style_scale.svg | svg | 33648 | True | True | {"root_tag": "{http://www.w3.org/2000/svg}svg"} |
+
+## CCLE workbook numeric comparison
+
+The CCLE workbook comparison shows a similar GJD3 ordering (Pearson r=0.900, Spearman rho=0.881). The workbook expression unit is unconfirmed, so differences in numeric values must not be interpreted as TPM differences.
+
+- Pearson r: 0.900293
+- Spearman rho: 0.880952
+- Maximum absolute numeric delta: 2.2 (source units unconfirmed)
+- Workbook rank order: SK-MES-1, A549, NCI-H23, NCI-H838, BEN, NCI-H520, NCI-H1299, Calu-1
+- DepMap rank order: A549, SK-MES-1, NCI-H838, NCI-H23, NCI-H520, NCI-H1299, BEN, Calu-1

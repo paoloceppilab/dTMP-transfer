@@ -1,13 +1,9 @@
 # DepMap 24Q4 TPM Methods
 
-Connexin mRNA abundance was re-derived from the official DepMap 24Q4 Public Figshare+ release (https://plus.figshare.com/articles/dataset/DepMap_24Q4_Public/27993248). The all-gene RNA expression source file was `OmicsExpressionAllGenesTPMLogp1Profile.csv` (Figshare file `51065360`), and the default model/profile map was `OmicsDefaultModelProfiles.csv` (Figshare file `51065339`).
+Connexin mRNA abundance was derived from the official [DepMap 24Q4 Public](https://plus.figshare.com/articles/dataset/DepMap_24Q4_Public/27993248) release. The all-gene RNA expression file was `OmicsExpressionAllGenesTPMLogp1Profile.csv` (Figshare file ID `51065360`), and the default model/profile map was `OmicsDefaultModelProfiles.csv` (Figshare file ID `51065339`). Both raw files were validated against pinned sizes and SHA-256 hashes before processing.
 
-DepMap expression values were treated as `log2(TPM + 1)`. Values were converted to TPM before tabulation or plotting using `TPM = 2 ** log2_tpm_plus_1 - 1`. No RPKM matrix and no protein-coding-only TPM matrix was used.
+The source expression values are `log2(TPM + 1)`. Values were inverse-transformed using `TPM = 2 ** source_value - 1` before saving the plotted table or drawing the heatmap. No RPKM or protein-coding-only matrix was used for the primary figure.
 
-The eight lung cancer cell lines were plotted in the predefined order: A549, Calu-1, NCI-H23, SK-MES-1, NCI-H520, NCI-H1299, BEN, NCI-H838. Cell lines were mapped to DepMap model IDs using the supplied identifiers, then to default RNA profile IDs using rows with `ProfileType == "RNA"` in `OmicsDefaultModelProfiles.csv`.
+The predefined lung cancer cell-line order was A549, Calu-1, NCI-H23, SK-MES-1, NCI-H520, NCI-H1299, BEN, and NCI-H838. Supplied DepMap model IDs were matched to default RNA profile IDs using `ProfileType == "RNA"` in `OmicsDefaultModelProfiles.csv`. The gene order was GJA1, GJA10, GJA3, GJA5, GJA8, GJA9, GJB2, GJB4, GJB5, GJB6, GJB7, GJC1, GJC2, GJC3, GJD2, GJD3, and GJD4. Gene columns were checked by HGNC symbol and Ensembl gene ID; GJD3 was required to match `GJD3 (ENSG00000183153)` with no gene substitution.
 
-The 17 connexin genes were plotted in the predefined order: GJA1, GJA10, GJA3, GJA5, GJA8, GJA9, GJB2, GJB4, GJB5, GJB6, GJB7, GJC1, GJC2, GJC3, GJD2, GJD3, GJD4. Gene columns were matched by HGNC symbol and Ensembl gene ID. `GJD3` was required to match `GJD3 (ENSG00000183153)`; no `GJC1` substitution was permitted.
-
-The primary heatmap uses a TPM-native scale with `vmin=0` and `vmax=91.71`, the observed maximum in the DepMap 24Q4 TPM matrix. Its DepMap values are not clipped.
-
-Quality control required all 17 genes to be present, all 8 cell lines to map to default RNA profiles, no missing values in the final 8 x 17 TPM matrix, successful PNG/PDF/SVG parsing, and checksum validation of both DepMap source files.
+The primary heatmap uses a TPM-native scale from 0 to 91.71 TPM, the maximum of the plotted DepMap matrix, so no plotted DepMap value is clipped. QC requires all eight default RNA profiles and 17 genes to map uniquely, an 8 × 17 finite nonnegative TPM matrix without missing values, valid source checksums, and parseable PNG/PDF/SVG exports. This is a descriptive cell-line heatmap; no replicate-level statistical test or multiple-testing inference is reported.

@@ -1,4 +1,4 @@
-# Extended Fig. 10B/D/E/F: Kras and Trp53 amplicon analysis
+# Extended Data Fig. 10B/D/E/F: Kras and Trp53 amplicon analysis
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 
@@ -10,40 +10,20 @@ GRCm38/mm10.
 
 ## Panel methods
 
-- **Extended Fig. 10B:** [editing summary](tables/extended_10b_editing_summary.tsv)
+- **Extended Data Fig. 10B:** [editing summary](tables/extended_10b_editing_summary.tsv)
   and [plotting code](source/plot_figure7b_like.py). `kras_hdr_exact_pct`
   measures exact matching to the eight-base HDR barcode in processed
   forward-oriented reads. `trp53_indel_pct` excludes pure right-edge
   truncation artifacts. `KP_811` Trp53 is missing after QC.
-- **Extended Fig. 10D:** [cut-site analysis](source/analyze_kras_cutsite_spectrum.py)
+- **Extended Data Fig. 10D:** [cut-site analysis](source/analyze_kras_cutsite_spectrum.py)
   classifies `Kras` read pairs in a ±20 bp window around the cut site after
   amplicon base 91. Displayed non-HDR denominators exclude HDR-positive
   pairs. Small summary tables and plots are supplied; the full pair-call
   table is not included.
-- **Extended Fig. 10E/F:** [codon-window analysis](source/analyze_kras_codon_window.py)
+- **Extended Data Fig. 10E/F:** [codon-window analysis](source/analyze_kras_codon_window.py)
   and [plotting code](source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py)
   summarize `Kras` codon 12/13 mutations after excluding strict HDR-barcode
   positive alleles.
-
-The [sample manifest](metadata/sample_manifest.tsv) retains the 34
-specimen/locus libraries and the Trp53 exclusion for `KP_811`. The
-[analysis manifest](metadata/analysis_manifest.tsv) refers to raw pairs under
-`data/fastq/` and processed reads under `results/processed_forward_reads/`.
-The [Kras CRISPRessoBatch settings](metadata/crispresso_kras_batch.tsv) and
-[Trp53 settings](metadata/crispresso_trp53_batch.tsv) can be recreated from
-the sample manifest and [amplicon references](references/amplicons.tsv):
-
-```bash
-cd ext10_amplicon
-python3 source/prepare_crispresso_inputs.py \
-  --sample-manifest metadata/sample_manifest.tsv \
-  --amplicons references/amplicons.tsv \
-  --remote-fastq-dir data/fastq \
-  --remote-processed-dir results/processed_forward_reads \
-  --analysis-manifest-out metadata/analysis_manifest.tsv \
-  --kras-batch-out metadata/crispresso_kras_batch.tsv \
-  --trp53-batch-out metadata/crispresso_trp53_batch.tsv
-```
 
 Production software records include CRISPResso 2.3.3, FastQC 0.12.1,
 MultiQC 1.33, and Python 3.10.20. Plot run-info files in `metadata/` record
@@ -59,8 +39,6 @@ category totals. A mismatch indicates changed reads, filtering, or category
 classification and must be resolved before replacing a figure.
 
 FASTQ files and the large read-pair classification table are not included.
-The [provenance manifest](provenance_manifest.json) records sizes and checksums
-for the large derived read-level tables. Reprocessing from FASTQ requires
-separately obtaining the original reads and a compatible CRISPResso/micromamba
-environment.
+Their checksums are recorded in the corresponding run-info JSON files, so
+read-level reprocessing requires separately obtaining those exact inputs.
 The supplied summary tables support downstream figure reproduction.

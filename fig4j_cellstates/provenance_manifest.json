@@ -1,36 +1,50 @@
 {
   "schema_version": "1.1",
   "panels": [
-    "Fig. 4J"
+    "Archived spatial cell-state abundance analysis"
   ],
   "source_files": [
     {
       "role": "Three epithelial source populations to four TYMS/TK1 detection states",
-      "relative_local_path": "source/MalignantCellClassification_TYMS_TK1_cycling.ipynb"
+      "relative_local_path": "source/MalignantCellClassification_TYMS_TK1_cycling.ipynb",
+      "size_bytes": 14810,
+      "sha256": "b84147a69e78f772c6072da38761e036b71d3e6fc80ec15162ed25c88a1873db"
     },
     {
       "role": "Reference label column, excluded cell populations, and tumor section list",
-      "relative_local_path": "source/config.py"
+      "relative_local_path": "source/config.py",
+      "size_bytes": 4612,
+      "sha256": "a53660da4560dbdb46d6eabfab678d8bcf312b4e974a0b7ddd069a187a88c6bc"
     },
     {
       "role": "Negative-binomial reference signature training",
-      "relative_local_path": "source/estimate_expression_signatures.py"
+      "relative_local_path": "source/estimate_expression_signatures.py",
+      "size_bytes": 3143,
+      "sha256": "27bca4c46c85f8cf645bd43d466777d71b54f8545a8090f66eb1db6c1366e47e"
     },
     {
       "role": "Spatial mapping and posterior export",
-      "relative_local_path": "source/run_cell2location.py"
+      "relative_local_path": "source/run_cell2location.py",
+      "size_bytes": 6705,
+      "sha256": "abce9c4c51633170e2cffa831034b4af821b1adcb84b214973df87019bf676d1"
     },
     {
       "role": "Shared Visium reader and QC metadata helper",
-      "relative_local_path": "source/visium_qc_and_visualisation.py"
+      "relative_local_path": "source/visium_qc_and_visualisation.py",
+      "size_bytes": 8499,
+      "sha256": "7bdbec90f1f4601969e247cfdbe9fb048e2a2653ae4d5d0af43ca44ec4388e3b"
     },
     {
       "role": "Attach aligned spatial coordinates and images to posterior",
-      "relative_local_path": "source/save_all_samples_merged.py"
+      "relative_local_path": "source/save_all_samples_merged.py",
+      "size_bytes": 8932,
+      "sha256": "344a2046134a9f7591a77556e16ed12a5a765d0d102916db0abf75db3a253cff"
     },
     {
       "role": "Restricted-gene count filter, NMF factor sweep and package-generated plots",
-      "relative_local_path": "source/colocation.py"
+      "relative_local_path": "source/colocation.py",
+      "size_bytes": 4388,
+      "sha256": "b7801be29945b5045ee513a4a300774580bc814fa70a25ded4b05e0f0cdfbb46"
     }
   ],
   "data_sources": {

@@ -1,7 +1,7 @@
 {
-  "script": "source/analyze_kras_codon_window.py",
+  "script": "analyze_kras_codon_window.py",
   "argv": [
-    "source/analyze_kras_codon_window.py",
+    "scripts/analyze_kras_codon_window.py",
     "--analysis-manifest",
     "metadata/analysis_manifest.tsv",
     "--amplicons",
@@ -37,8 +37,11 @@
   },
   "inputs": {
     "analysis_manifest": "metadata/analysis_manifest.tsv",
+    "analysis_manifest_sha256": "b3c6c02662dc70eeffbcdb4df57f5c92ffd8a23dd218205795ac30d8b1e4eb57",
     "amplicons": "references/amplicons.tsv",
+    "amplicons_sha256": "b003e8efb4580471b54063eb7677a4de02c59c92363e735cbada8d0f40961868",
     "editing_summary": "results/summary/editing_summary.tsv",
+    "editing_summary_sha256": "db3cfc8694974d969ac2372ee45d6bf81567cf9ee6acc86c093f502abdc2d24e",
     "crispresso_dir": "results/crispresso/kras_batch",
     "allele_table_paths": {
       "Normal_458_Kras": "results/crispresso/kras_batch/CRISPRessoBatch_on_crispresso_kras_batch/CRISPResso_on_Normal_458_Kras/Alleles_frequency_table.zip",

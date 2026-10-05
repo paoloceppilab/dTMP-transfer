@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate Extended Fig. 7C inputs and reported DepMap figure."""
+"""Validate Extended Data Fig. 7C inputs and reported DepMap figure."""
 
 from __future__ import annotations
 
@@ -14,11 +14,13 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote
 
+import openpyxl
 from PIL import Image
 from pypdf import PdfReader
 
 FIGURE_DIR_NAME = "ext7c_depmap"
 PACKAGE_REL = Path("publication/extended_fig7c_depmap_24q4_tpm_connexin_heatmap")
+EXPECTED_SHEETS = {"CCLE_data (2)": 18, "annotation": 1047, "Connexins_2": 20}
 
 
 def fail(message: str) -> None:
@@ -42,8 +44,7 @@ def tracked_figure_paths(repo_root: Path) -> set[str]:
         }
     output = subprocess.check_output(
         ["git", "ls-files", "--cached", "--", FIGURE_DIR_NAME],
-        cwd=repo_root,
-        text=True,
+        cwd=repo_root, text=True,
     )
     return {
         Path(path).relative_to(figure_dir).as_posix()
@@ -70,6 +71,26 @@ def validate_provenance(repo_root: Path, figure_dir: Path) -> dict:
         if not path.is_file():
             fail(f"missing provenance file: {path}")
     return manifest
+
+
+def validate_source_workbooks(figure_dir: Path, manifest: dict) -> None:
+    roles = {rec["role"]: rec for rec in manifest["source_files"]}
+    workbook_record = roles.get("extended_7c_ccle_source_workbook")
+    prism_record = roles.get("extended_7c_prism_source")
+    if not workbook_record or not prism_record:
+        fail("source roles missing in provenance")
+    workbook_path = figure_dir / workbook_record["relative_local_path"]
+    book = openpyxl.load_workbook(workbook_path, read_only=True, data_only=True)
+    try:
+        for sheet, expected_rows in EXPECTED_SHEETS.items():
+            if sheet not in book.sheetnames:
+                fail(f"missing workbook sheet: {sheet}")
+            if book[sheet].max_row != expected_rows:
+                fail(f"unexpected row count for {sheet}: {book[sheet].max_row}")
+    finally:
+        book.close()
+    prism_path = figure_dir / prism_record["relative_local_path"]
+    ET.parse(prism_path)
 
 
 def validate_depmap_tables(package: Path, run: dict) -> None:
@@ -142,8 +163,8 @@ def validate_outputs(repo_root: Path, package: Path, run: dict) -> None:
 
     check_paths(run["outputs"])
     figures = sorted((package / "figures").iterdir())
-    if len(figures) != 6:
-        fail(f"expected six figure exports, found {len(figures)}")
+    if len(figures) != 15:
+        fail(f"expected 15 figure exports, found {len(figures)}")
     formats = {".png": 0, ".pdf": 0, ".svg": 0}
     for figure in figures:
         if figure.stat().st_size == 0 or figure.suffix not in formats:
@@ -157,8 +178,8 @@ def validate_outputs(repo_root: Path, package: Path, run: dict) -> None:
                 fail(f"PDF page count mismatch: {figure}")
         elif not ET.parse(figure).getroot().tag.endswith("svg"):
             fail(f"invalid SVG: {figure}")
-    if set(formats.values()) != {2}:
-        fail(f"expected two exports per format: {formats}")
+    if set(formats.values()) != {5}:
+        fail(f"expected five exports per format: {formats}")
 
 
 class LocalLinks(HTMLParser):
@@ -211,11 +232,12 @@ def main() -> None:
     figure_dir = repo_root / FIGURE_DIR_NAME
     package = figure_dir / PACKAGE_REL
     manifest = validate_provenance(repo_root, figure_dir)
+    validate_source_workbooks(figure_dir, manifest)
     run = json.loads((package / "run_manifest.json").read_text())
     validate_depmap_tables(package, run)
     validate_outputs(repo_root, package, run)
     validate_links(repo_root, figure_dir, package)
-    print(f"OK Extended Fig. 7C: {len(manifest['source_files'])} source files, 8x17 TPM, six figures, and links")
+    print(f"OK Extended Data Fig. 7C: {len(manifest['source_files'])} source files, workbook/Prism, 8x17 TPM, 15 figures, and links")
 
 
 if __name__ == "__main__":

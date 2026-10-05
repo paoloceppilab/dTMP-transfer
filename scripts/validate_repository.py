@@ -101,9 +101,9 @@ expected_manifest_record_counts = {
     "fig2b_d_ext3f_visium": 9,
     "ext3c_tcga": 4,
     "fig2a_ext3_scrnaseq": 59,
-    "ext4_fig5_rnaseq": 11,
-    "ext7c_depmap": 24,
-    "ext10_amplicon": 50,
+    "ext4_fig5_rnaseq": 15,
+    "ext7c_depmap": 37,
+    "ext10_amplicon": 52,
 }
 
 for figure_dir_name in (
@@ -155,14 +155,14 @@ figure_7c_dir = (
 )
 figure_7c_manifest = json.loads((figure_7c_dir / "run_manifest.json").read_text())
 if not figure_7c_manifest["qc"]["final_tpm_matrix_shape_is_8_by_17"]:
-    raise SystemExit("Extended Fig. 7C run manifest reports failed matrix QC")
+    raise SystemExit("Extended Data Fig. 7C run manifest reports failed matrix QC")
 figure_7c_table = figure_7c_dir / "tables/depmap_24q4_tpm_matrix.tsv"
 with figure_7c_table.open(newline="") as handle:
     table_rows = list(csv.DictReader(handle, delimiter="\t"))
 if len(table_rows) != 8 or len(table_rows[0]) != 18:
-    raise SystemExit("Extended Fig. 7C table is not 8 samples x 17 genes")
+    raise SystemExit("Extended Data Fig. 7C table is not 8 samples x 17 genes")
 if len({row["cell_line"] for row in table_rows}) != 8:
-    raise SystemExit("Extended Fig. 7C table has duplicate cell lines")
+    raise SystemExit("Extended Data Fig. 7C table has duplicate cell lines")
 for row in table_rows:
     for gene, value in row.items():
         if gene == "cell_line":
@@ -176,8 +176,8 @@ for row in table_rows:
 for suffix in ("png", "pdf", "svg"):
     figure_path = figure_7c_dir / f"figures/extended_fig7c_depmap_24q4_tpm.{suffix}"
     if not figure_path.is_file() or figure_path.stat().st_size == 0:
-        raise SystemExit(f"Extended Fig. 7C figure missing/empty: {figure_path}")
-print("OK Extended Fig. 7C figure package: 8 x 17 table and nonempty figures")
+        raise SystemExit(f"Extended Data Fig. 7C figure missing/empty: {figure_path}")
+print("OK Extended Data Fig. 7C figure package: 8 x 17 table and nonempty figures")
 
 spatial_dir = root / "fig2b_d_ext3f_visium"
 with (spatial_dir / "results/tyms_tk1_counts.csv").open(newline="") as handle:
@@ -231,16 +231,16 @@ expected_e3c_counts = {
 }
 e3c_counts = {row["category"]: int(row["count"]) for row in e3c_rows}
 if e3c_counts != expected_e3c_counts:
-    raise SystemExit(f"unexpected Extended Fig. 3C counts: {e3c_counts}")
+    raise SystemExit(f"unexpected Extended Data Fig. 3C counts: {e3c_counts}")
 if sum(e3c_counts.values()) != 496:
-    raise SystemExit("Extended Fig. 3C counts do not sum to 496")
+    raise SystemExit("Extended Data Fig. 3C counts do not sum to 496")
 for row in e3c_rows:
     count = int(row["count"])
     expected_percent = float(row["expected_percent"])
     observed_percent = round(count / 496 * 100, 2)
     if observed_percent != expected_percent:
         raise SystemExit(
-            f"unexpected Extended Fig. 3C percent for {row['category']}: "
+            f"unexpected Extended Data Fig. 3C percent for {row['category']}: "
             f"{observed_percent}"
         )
 
@@ -248,7 +248,7 @@ ext10_dir = root / "ext10_amplicon"
 with (ext10_dir / "tables/extended_10b_editing_summary.tsv").open(newline="") as handle:
     ext10b_rows = list(csv.DictReader(handle, delimiter="\t"))
 if len(ext10b_rows) != 17:
-    raise SystemExit(f"unexpected Extended Fig. 10B specimen count: {len(ext10b_rows)}")
+    raise SystemExit(f"unexpected Extended Data Fig. 10B specimen count: {len(ext10b_rows)}")
 required_10b_fields = {
     "specimen_id",
     "cohort",
@@ -258,7 +258,7 @@ required_10b_fields = {
 }
 missing_10b_fields = required_10b_fields - set(ext10b_rows[0])
 if missing_10b_fields:
-    raise SystemExit(f"missing Extended Fig. 10B fields: {sorted(missing_10b_fields)}")
+    raise SystemExit(f"missing Extended Data Fig. 10B fields: {sorted(missing_10b_fields)}")
 trp53_values = {row["specimen_id"]: row["trp53_indel_pct"] for row in ext10b_rows}
 trp53_flags = {row["specimen_id"]: row["trp53_qc_flag"] for row in ext10b_rows}
 if trp53_values.get("KP_811") != "NA":
@@ -276,9 +276,9 @@ threebin = json.loads(
     ).read_text()
 )
 if threebin["aggregate_qc"]["plot_sample_count"] != 15:
-    raise SystemExit("Extended Fig. 10D tumor-only sample count is not 15")
+    raise SystemExit("Extended Data Fig. 10D tumor-only sample count is not 15")
 if threebin["aggregate_qc"]["displayed_nonhdr_classifiable_pairs"] != 8879020:
-    raise SystemExit("Extended Fig. 10D non-HDR denominator is not 8,879,020")
+    raise SystemExit("Extended Data Fig. 10D non-HDR denominator is not 8,879,020")
 
 frame = json.loads(
     (
@@ -295,7 +295,7 @@ expected_frame_pct = {
 for key, expected in expected_frame_pct.items():
     observed = frame_pct[key]
     if not math.isclose(observed, expected, rel_tol=0.0, abs_tol=1e-9):
-        raise SystemExit(f"unexpected Extended Fig. 10D {key}: {observed}")
+        raise SystemExit(f"unexpected Extended Data Fig. 10D {key}: {observed}")
 
 hotspot = json.loads(
     (
@@ -304,26 +304,26 @@ hotspot = json.loads(
     ).read_text()
 )
 if hotspot["corrected_nonhdr"]["aggregate_denominator_allele_reads"] != 19487513:
-    raise SystemExit("Extended Fig. 10E/F corrected denominator is not 19,487,513")
+    raise SystemExit("Extended Data Fig. 10E/F corrected denominator is not 19,487,513")
 if hotspot["hdr_positive_removed"]["tumor_strict_hdr_barcode_yes_reads"] != 2594:
-    raise SystemExit("Extended Fig. 10E/F HDR-positive removed read count is not 2,594")
+    raise SystemExit("Extended Data Fig. 10E/F HDR-positive removed read count is not 2,594")
 if hotspot["corrected_nonhdr"]["aggregate_counts"]["G12D"] != 12680:
-    raise SystemExit("Extended Fig. 10E/F corrected G12D read count is not 12,680")
+    raise SystemExit("Extended Data Fig. 10E/F corrected G12D read count is not 12,680")
 g12d_pct = hotspot["corrected_nonhdr"]["aggregate_percentages"]["G12D"]
 if not math.isclose(g12d_pct, 0.06506730745991035, rel_tol=0.0, abs_tol=1e-12):
-    raise SystemExit(f"unexpected Extended Fig. 10E/F corrected G12D percent: {g12d_pct}")
+    raise SystemExit(f"unexpected Extended Data Fig. 10E/F corrected G12D percent: {g12d_pct}")
 with (
     ext10_dir
     / "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv"
 ).open(newline="") as handle:
     hotspot_rows = list(csv.DictReader(handle, delimiter="\t"))
 if len(hotspot_rows) != 15:
-    raise SystemExit(f"unexpected Extended Fig. 10E/F sample count: {len(hotspot_rows)}")
+    raise SystemExit(f"unexpected Extended Data Fig. 10E/F sample count: {len(hotspot_rows)}")
 for row in hotspot_rows:
     category_sum = float(row["category_pct_sum"])
     if not math.isclose(category_sum, 100.0, rel_tol=0.0, abs_tol=1e-9):
         raise SystemExit(
-            f"Extended Fig. 10E/F category percentages do not sum to 100 for "
+            f"Extended Data Fig. 10E/F category percentages do not sum to 100 for "
             f"{row['specimen_id']}: {category_sum}"
         )
 
@@ -348,6 +348,11 @@ _assert_xlsx(
         "TScc_NTCcc": 61542,
         "TScc_TS": 61542,
     },
+)
+_assert_xlsx(
+    root / "ext7c_depmap/tables/ccle_connexins_workbook.xlsx",
+    ["CCLE_data (2)", "annotation", "Connexins_2"],
+    {"CCLE_data (2)": 18, "annotation": 1047, "Connexins_2": 20},
 )
 script_text = (rnaseq_dir / "source/22_08_23_Script_TS.txt").read_text()
 required_script_terms = [

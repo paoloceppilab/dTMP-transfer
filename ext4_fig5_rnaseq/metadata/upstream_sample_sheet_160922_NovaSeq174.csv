@@ -1,0 +1,10 @@
+ID,Samples,Conditions,Conditions
+B483_S17,A549_gNTC1_1,Control KO,Control KO
+B484_S18,A549_gNTC1_2,Control KO,Control KO
+B485_S19,A549_gNTC1_3,Control KO,Control KO
+B489_S23,A549_gTYMS2_1,TS KO,TS KO
+B490_S24,A549_gTYMS2_2,TS KO,TS KO
+B491_S25,A549_gTYMS2_3,TS KO,TS KO
+B492_S26,A549_gTYMS_2_cocultur_1,TS KO after parental rescue by co-culture,TS KO Co-culture
+B493_S27,A549_gTYMS_2_cocultur_2,TS KO after parental rescue by co-culture,TS KO Co-culture
+B494_S28,A549_gTYMS_2_cocultur_3,TS KO after parental rescue by co-culture,TS KO Co-culture

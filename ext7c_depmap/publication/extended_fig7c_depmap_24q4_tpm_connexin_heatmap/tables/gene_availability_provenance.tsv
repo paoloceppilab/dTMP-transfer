@@ -1,4 +1,4 @@
-gene	present	depmap_column_id	depmap_symbol	depmap_ensembl_id	expected_ensembl_id	match_type
+gene	present	depmap_column_id	depmap_symbol	depmap_ensembl_id	workbook_ensembl_id	match_type
 GJA1	True	GJA1 (ENSG00000152661)	GJA1	ENSG00000152661	ENSG00000152661	symbol_and_ensembl
 GJA10	True	GJA10 (ENSG00000135355)	GJA10	ENSG00000135355	ENSG00000135355	symbol_and_ensembl
 GJA3	True	GJA3 (ENSG00000121743)	GJA3	ENSG00000121743	ENSG00000121743	symbol_and_ensembl

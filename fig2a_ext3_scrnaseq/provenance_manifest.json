@@ -1,248 +1,362 @@
 {
   "schema_version": "1.1",
   "panels": [
-    "Fig. 2A",
-    "Extended Fig. 3A",
-    "Extended Fig. 3B",
-    "Extended Fig. 3D",
-    "Extended Fig. 3E"
+    "Patient-level scRNA-seq TYMS/TK1/MKI67 analysis"
   ],
   "source_files": [
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P10_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P10_new.txt",
+      "size_bytes": 14644,
+      "sha256": "9b89871e14b581d5ddf4ebd16fbf3484c7cbbf35430a041e6bf2ecc422483e9f"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P12_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P12_new.txt",
+      "size_bytes": 14559,
+      "sha256": "83ee785a2750390c6603cbfd0969cbe259d7056918e0df9492a521c2b456990c"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P13_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P13_new.txt",
+      "size_bytes": 14243,
+      "sha256": "6b3f4658279fab83b50c6a2a2807fcaedfaaa3b4aecd1bc643e8a382d28956ac"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P14_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P14_new.txt",
+      "size_bytes": 14503,
+      "sha256": "70e9b2b995ef0267b656facf229b01d20a3825b5181a6a6846569cb083b9fc95"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P15_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P15_new.txt",
+      "size_bytes": 14596,
+      "sha256": "e4e5822af0c6ed590646efaa08b468db6eb782ea52f6d1880ccdd72f3cb05362"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P16_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P16_new.txt",
+      "size_bytes": 14285,
+      "sha256": "2881cae76ba32dbf57abfdf4d4b82255f7a30b0e14782cfc006a04d10ffa0ebe"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P17_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P17_new.txt",
+      "size_bytes": 14489,
+      "sha256": "a91367348bf7a3d0f1a59eae1efff5b9e1ff94616e8c6f5b66c6339ad1e09ea0"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P18_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P18_new.txt",
+      "size_bytes": 14738,
+      "sha256": "9d2ebdf18ac35ccdd75845ab8ed3ac0a0ea600d539a419fab80891918cbc7e08"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P1_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P1_new.txt",
+      "size_bytes": 14855,
+      "sha256": "c6c6d4f8fc19c6fb678d89939dcaae70de247f8431d7ae01c03b8cc19a84c5cb"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P20_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P20_new.txt",
+      "size_bytes": 13951,
+      "sha256": "be44a9ef695eca272b15d6c58dab92d8237c6adaf40328d3313cbcae026c1c03"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P21_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P21_new.txt",
+      "size_bytes": 14283,
+      "sha256": "715b17f1bfb85c3ecc782f2ba2f9c025e42636a146f5effe01eb778392c6afab"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P22_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P22_new.txt",
+      "size_bytes": 14199,
+      "sha256": "dd828b39b8c85ae2cb54a85dd2653821445c8a6de2096ee737682730c30bd1e7"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P23_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P23_new.txt",
+      "size_bytes": 14522,
+      "sha256": "d9624ef1767139bcb27dc0897298c5d8bc498cf240046abb078d3311539fa062"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P24_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P24_new.txt",
+      "size_bytes": 13963,
+      "sha256": "f3f4819b59b928788b750a6aeee61befcc540a62a72654514dd4df5619e7451f"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P25_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P25_new.txt",
+      "size_bytes": 14375,
+      "sha256": "b0fd1373aa406742073677afc93194c99ffccbdc4e56692240e420d49a0d9b07"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P26_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P26_new.txt",
+      "size_bytes": 14187,
+      "sha256": "5caaba57c360d9eab18e7a8c82fb0e9667611865d27884b0db03deaa29967846"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P28_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P28_new.txt",
+      "size_bytes": 14869,
+      "sha256": "8624ab0a581e3538e06f51c310ff6c876c55bd6ac78deac6e9afa710d56d3df0"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P29_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P29_new.txt",
+      "size_bytes": 14182,
+      "sha256": "de2075732e46d1bc321b240905f46d6d14584aceefd10a650522258d3f6350ec"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P2_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P2_new.txt",
+      "size_bytes": 13814,
+      "sha256": "5334e84e4ce4bd923763613feb99476aeecc86471b4f8c714f2b2006c9703b1d"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P30_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P30_new.txt",
+      "size_bytes": 14004,
+      "sha256": "c59cca97f40215011e1e42989b6ca880c4df5f950317a32daf4894ae5a12e7bd"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P31_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P31_new.txt",
+      "size_bytes": 14087,
+      "sha256": "096045ceadc3b3e8a4c84980e38d725c66f7a4d54ef24b73c71018582665458c"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P32_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P32_new.txt",
+      "size_bytes": 14039,
+      "sha256": "762898a41c36482616fc6f2014e7bc69ea94edeb17e4e93c1f3dd7630213fa6d"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P33_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P33_new.txt",
+      "size_bytes": 13925,
+      "sha256": "e7ab555a75b572c1959470794295934693b51c773b91bda12fe1b8b1b709fb61"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P34_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P34_new.txt",
+      "size_bytes": 17238,
+      "sha256": "2df6e0560bce5f6cc63a6e99ab04e80d8f3b41a1557d955d9e62787bb0b3bbd4"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P35_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P35_new.txt",
+      "size_bytes": 14060,
+      "sha256": "826b4a27288a40298f56e5aeec2136076f23224d998698f95d975943928d0c65"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P36_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P36_new.txt",
+      "size_bytes": 14017,
+      "sha256": "ee1be11e7cbb35cb2b03836f0936d50eaa8ef4170bdc48d6c4a327d9d3b6ede7"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P38_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P38_new.txt",
+      "size_bytes": 14412,
+      "sha256": "0705874fe9be2a9d9cccddaa06613d692acf86041565fac7d293b6a9a7ea0b5e"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P39_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P39_new.txt",
+      "size_bytes": 14418,
+      "sha256": "342cc1dc222980ea1daf567bf17b1f8bac92a9f61bf87e8140162ca52587a4ef"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P3_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P3_new.txt",
+      "size_bytes": 14927,
+      "sha256": "fddb99d873cccc8697072565c05a1d3a49402c56d0853c69bd8b161990c79857"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P40_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P40_new.txt",
+      "size_bytes": 14319,
+      "sha256": "f45600327dbf42a974fd23129bbbd358d18a19c71a1c9e3f0d0767753e3bf83d"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P41_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P41_new.txt",
+      "size_bytes": 14649,
+      "sha256": "fbf5cd5dce009f5426f82308e1e8b2b0354707dfe62a2ba47f5a6e9eb9f9189a"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P4_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P4_new.txt",
+      "size_bytes": 14950,
+      "sha256": "f7b40bf8732771c7de70e94a7c0c0eb891d5689303a54620d8f735779357febc"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P5_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P5_new.txt",
+      "size_bytes": 14840,
+      "sha256": "f2de2c01cb731a6fb4a545a06da4a263b21487746dc8b80462d3900aa38b7875"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P6_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P6_new.txt",
+      "size_bytes": 14926,
+      "sha256": "a05facd1564f5c3123fa6c08f55134b14b8fa79b95953274a15cbec6746dcfc2"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P8_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P8_new.txt",
+      "size_bytes": 14917,
+      "sha256": "c4aeac67a6752ce999af0aabe90655837a5c7511a768867b72342a9a6cf3cfc0"
     },
     {
       "role": "source_mixed_per_patient_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P9_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_P9_new.txt",
+      "size_bytes": 14483,
+      "sha256": "2337669fac90930f0452e38f689208b1909e57fd3595b65f1ee7731585595f54"
     },
     {
       "role": "extended_fig_3_pooled_scrnaseq_script",
-      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_Pooled_new.txt"
+      "relative_local_path": "scripts/24_05_16_scRNA_Mod_script_Pooled_new.txt",
+      "size_bytes": 29074,
+      "sha256": "d33f578a90a089695e4d1f4c95ce271c6f7e6685548485eb0806a44ec6de0ff5"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P1.txt"
+      "relative_local_path": "scripts/MKI67_P1.txt",
+      "size_bytes": 1138,
+      "sha256": "9b3f3eda5e533b149fc98b6cef2de7c9427e2826ab969834532dbd7686161b7c"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P10.txt"
+      "relative_local_path": "scripts/MKI67_P10.txt",
+      "size_bytes": 1137,
+      "sha256": "5ad1e8caea89442974779feb0f881a6ef659d138cb65cbaf7d730fdd257716db"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P14.txt"
+      "relative_local_path": "scripts/MKI67_P14.txt",
+      "size_bytes": 1138,
+      "sha256": "006c99b178710219f19b6c83ea0d73ce9b85a42ba5907a47f650165cdc99031a"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P15.txt"
+      "relative_local_path": "scripts/MKI67_P15.txt",
+      "size_bytes": 1138,
+      "sha256": "31f988487804b4c6a1266089c54d7afbfa5964b5eb8a268f92ae20f26ac3944b"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P16.txt"
+      "relative_local_path": "scripts/MKI67_P16.txt",
+      "size_bytes": 1140,
+      "sha256": "b2bc48a7813bdb90b6fb6f14064ac21e0162920d6950b1c4daab35ebcb391309"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P17.txt"
+      "relative_local_path": "scripts/MKI67_P17.txt",
+      "size_bytes": 1137,
+      "sha256": "478864a7946cfd91891e70671aecfab7f2630d6a8d0aa634ed12c8fe373fb99b"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P18.txt"
+      "relative_local_path": "scripts/MKI67_P18.txt",
+      "size_bytes": 1138,
+      "sha256": "a4bd502b4d75295503525d18e277dc975211321781cfc5a6a1494212d159e427"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P21.txt"
+      "relative_local_path": "scripts/MKI67_P21.txt",
+      "size_bytes": 1137,
+      "sha256": "fb9e711b731db2d41b5b247a7ca8622fc1c0fd53abacfbb27537c7029aeb9f34"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P23.txt"
+      "relative_local_path": "scripts/MKI67_P23.txt",
+      "size_bytes": 1137,
+      "sha256": "a2e2a291724df5386a0fddeaf5915a872302f7d69b7cc727c39a9a5136480daa"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P25.txt"
+      "relative_local_path": "scripts/MKI67_P25.txt",
+      "size_bytes": 1139,
+      "sha256": "73c24beab3aa04bc58365505721131d51c0de96de1af4cc64cbbf50b02d8ef9d"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P28.txt"
+      "relative_local_path": "scripts/MKI67_P28.txt",
+      "size_bytes": 1139,
+      "sha256": "b070a185dc55f9415d23e6034298fd4f265839680272223588bed80bc85c8bb3"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P29.txt"
+      "relative_local_path": "scripts/MKI67_P29.txt",
+      "size_bytes": 1139,
+      "sha256": "91b69f09575ffb1d0c1ac0b1c316e6d0eb850fef74bb79268368c689665cb26c"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P3.txt"
+      "relative_local_path": "scripts/MKI67_P3.txt",
+      "size_bytes": 1134,
+      "sha256": "1b8d631292d28d505451f0be7113945577b8ed6e2acd4229678f14a5addf6d0a"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P30.txt"
+      "relative_local_path": "scripts/MKI67_P30.txt",
+      "size_bytes": 1139,
+      "sha256": "e399ecf351b0549ca0ba8167b0af8b2e906b717352f3bf1e9cb67a3f9ad34b15"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P34.txt"
+      "relative_local_path": "scripts/MKI67_P34.txt",
+      "size_bytes": 1139,
+      "sha256": "4dc39c709cd663c5310a9a03ef0fb7e85ead9dbb2dd34541a131e58bc83db16a"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P36.txt"
+      "relative_local_path": "scripts/MKI67_P36.txt",
+      "size_bytes": 1138,
+      "sha256": "49d3a77d7d1499741c34a43c59f16ea63a43c4af060aa34de8c2188227f9710f"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P39.txt"
+      "relative_local_path": "scripts/MKI67_P39.txt",
+      "size_bytes": 1138,
+      "sha256": "f84ee00622ae79bd5a83b06cfef3ac43e425714c9a294af59f37c86329d54e16"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P4.txt"
+      "relative_local_path": "scripts/MKI67_P4.txt",
+      "size_bytes": 1140,
+      "sha256": "084d7fe00f187727307261f93f80ea375324cc6d1e3c85dd4616cad14a4b25a7"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P41.txt"
+      "relative_local_path": "scripts/MKI67_P41.txt",
+      "size_bytes": 1138,
+      "sha256": "94f8df4bedfd5f630d8e87b7edebc592dddfdbfc35f335ec34f58fb38da51ac3"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P5.txt"
+      "relative_local_path": "scripts/MKI67_P5.txt",
+      "size_bytes": 1139,
+      "sha256": "14157d8e5da7a12a8b1f7d241a53a03970899dd2ed2a1f94e651d86934a52799"
     },
     {
       "role": "fig_2a_mki67_positive_cancer_cell_script",
-      "relative_local_path": "scripts/MKI67_P9.txt"
+      "relative_local_path": "scripts/MKI67_P9.txt",
+      "size_bytes": 1137,
+      "sha256": "41121698bef71ecd02fd2b61088021f5c174e555906c115e2a8a84d17acf2ba2"
     },
     {
       "role": "environment_record",
-      "relative_local_path": "scripts/Readme.txt"
+      "relative_local_path": "scripts/Readme.txt",
+      "size_bytes": 450,
+      "sha256": "6561e32b79290074d0e11ec17d73a78eb04297ab872ba85ce1d9514a4207c38d"
     }
   ],
   "data_sources": {

@@ -1,53 +1,99 @@
 {
   "schema_version": "1.1",
   "panels": [
-    "Extended Fig. 4A-C",
+    "Extended Data Fig. 4A-C",
     "Fig. 5A"
   ],
   "source_files": [
     {
       "role": "source_readme",
-      "relative_local_path": "README.md"
+      "relative_local_path": "README.md",
+      "size_bytes": 1554,
+      "sha256": "b8a88af86372ddfe57bbd5fb696bf2dadbf029c579becc244ce6db36a9c47c9a"
     },
     {
       "role": "figure_5a_prism_source",
-      "relative_local_path": "figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx"
+      "relative_local_path": "figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx",
+      "size_bytes": 13005,
+      "sha256": "c0f636042544d6d546c0fc33c650059ce3743d56ba34f120355828e6081725af"
     },
     {
-      "role": "deseq2_sample_metadata",
-      "relative_local_path": "metadata/upstream_deseq2_sample_info.txt"
+      "role": "upstream_tyms_presentation_source",
+      "relative_local_path": "figures_or_prism/upstream_tyms/ts_rna_seq_results.pptx",
+      "size_bytes": 392141,
+      "sha256": "a3500152294a5dc6b4010b9a7626a1106eccd5b452020d486f42c7b75eca8765"
+    },
+    {
+      "role": "sample_and_submission_metadata",
+      "relative_local_path": "metadata/upstream_deseq2_sample_info.txt",
+      "size_bytes": 204,
+      "sha256": "6025ad12a8d98a9483d79900156a587aba10805ce9933191b9c3f898fbcee3e9"
+    },
+    {
+      "role": "sample_and_submission_metadata",
+      "relative_local_path": "metadata/upstream_geo_sample_submission_rnaseq.xlsx",
+      "size_bytes": 45895,
+      "sha256": "6753f049026cbb3d5477fd7fff62fbf8a1e156ce2ab896a86075597e31423fd3"
+    },
+    {
+      "role": "sample_and_submission_metadata",
+      "relative_local_path": "metadata/upstream_sample_sheet_160922_NovaSeq174.csv",
+      "size_bytes": 556,
+      "sha256": "13756aebcbea75c330a1b0cc8d1039708ab5c56897ec82ef4615e3c0be37f18e"
+    },
+    {
+      "role": "sample_and_submission_metadata",
+      "relative_local_path": "metadata/upstream_samplesheet_info.xlsx",
+      "size_bytes": 13750,
+      "sha256": "980ff0f4b8b96ae69ba6651888144f93bb6f09678dc3683723ad361740da78ba"
     },
     {
       "role": "source_upstream_script",
-      "relative_local_path": "source/22_08_23_Script_TS.txt"
+      "relative_local_path": "source/22_08_23_Script_TS.txt",
+      "size_bytes": 6738,
+      "sha256": "2903448127d9ec7b12864f38f4a01d0f1c475f01a7374bda744efb84d00d3bf4"
     },
     {
       "role": "figure_5a_source_workbook",
-      "relative_local_path": "tables/figure_5a_rnaseq_degs_source.xlsx"
+      "relative_local_path": "tables/figure_5a_rnaseq_degs_source.xlsx",
+      "size_bytes": 17034393,
+      "sha256": "fb148fd19e20d7e981683337b64f6cfb274ef6b6c690db6e6f05c629f2c14d30"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_deseq2_results.xlsx"
+      "relative_local_path": "tables/upstream_deseq2_results.xlsx",
+      "size_bytes": 32784946,
+      "sha256": "9dd173b0ea5e7d1e42c626c1ceca60bbcda1e93b66e463fd6cf6c442cecd53fe"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_input_deseq2.txt"
+      "relative_local_path": "tables/upstream_input_deseq2.txt",
+      "size_bytes": 2880594,
+      "sha256": "5361040a975b0e9e0dcacd5669699e1287a8ce66262a99bad8688acde7c4d1a8"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_raw_count_table_ts.txt"
+      "relative_local_path": "tables/upstream_raw_count_table_ts.txt",
+      "size_bytes": 2880616,
+      "sha256": "3cb9913f6055e4410902eb1c557ddbc2dc97e74ed1660ad8befb8ad6849e76de"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_res_ts_ntc.txt"
+      "relative_local_path": "tables/upstream_res_ts_ntc.txt",
+      "size_bytes": 5120983,
+      "sha256": "8e088fc335339cd6ca06894c84ce323690c1d19938685ead5c20fa0cec41c5c9"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_res_tscc_ntccc.txt"
+      "relative_local_path": "tables/upstream_res_tscc_ntccc.txt",
+      "size_bytes": 5114548,
+      "sha256": "b6644aede93da79a58876431702279b80c3c3fc1d1a9631124d74066f541b77f"
     },
     {
       "role": "upstream_tyms_count_or_deseq2_table",
-      "relative_local_path": "tables/upstream_res_tscc_ts.txt"
+      "relative_local_path": "tables/upstream_res_tscc_ts.txt",
+      "size_bytes": 5023034,
+      "sha256": "721131a6ba1e4c3fa6d9de971e66d35018538b35c70f2e8dac0bed87c759bcd4"
     }
   ],
   "data_sources": {
@@ -89,7 +135,7 @@
     ]
   },
   "input_status": "Raw FASTQ, BAM and large intermediate files require separate access.",
-  "source_file_count": 11,
+  "source_file_count": 15,
   "folder_author": {
     "name": "Vignesh Ramesh",
     "email": "vramesh@bmb.sdu.dk"

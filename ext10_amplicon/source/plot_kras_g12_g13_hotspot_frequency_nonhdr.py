@@ -90,7 +90,7 @@ REQUIRED_COLUMNS = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate Extended Fig. 10E/F Kras G12/G13 point-mutation "
+            "Generate corrected Supplementary Figure 5D KRAS G12/G13 point-mutation "
             "frequencies after excluding HDR-barcode-positive codon-window alleles."
         )
     )
@@ -322,23 +322,24 @@ def write_tsv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
-def write_readme(path: Path, prefix: str, run_info_path: Path, allele_path: Path) -> None:
+def write_readme(path: Path, prefix: str, run_info_path: Path) -> None:
     path.write_text(
         "\n".join(
             [
-                "# Extended Fig. 10E/F Kras G12/G13 non-HDR panel",
+                "# Corrected SF5D KRAS G12/G13 Non-HDR Panel",
                 "",
-                "This directory contains the Kras codon 12/13 non-HDR figure and source table.",
+                "This directory contains the corrected Supplementary Figure 5D point-mutation panel for Kras codons 12 and 13.",
                 "",
-                "## Filtering and denominator",
+                "## Correction",
                 "",
+                "- The previous bundled G12/G13 hotspot panel used all tumor-only codon13-window allele reads.",
                 "- HDR-barcode-positive alleles are excluded here with `strict_hdr_barcode == no`.",
                 "- The plotted denominator is non-HDR tumor-only allele reads.",
                 "- G12D is retained only when it is non-HDR/unintended G12D after this filtering.",
                 "",
                 "## Source",
                 "",
-                f"- Source allele table: `{allele_path}` (external read-level input).",
+                "- Source allele table: `remote_kras_codon13_window_spectrum_copy/results/kras_codon13_window_spectrum/per_allele/kras_codon13_window_allele_counts.tsv`",
                 "- Tumor filter: `cohort != Normal`",
                 "- HDR exclusion: `strict_hdr_barcode == yes` rows are excluded from numerator and denominator.",
                 "",
@@ -348,14 +349,15 @@ def write_readme(path: Path, prefix: str, run_info_path: Path, allele_path: Path
                 f"- `figures/{prefix}.pdf`",
                 f"- `figures/{prefix}.svg`",
                 f"- `data/{prefix}_figure_ready.tsv`",
+                f"- `data/{prefix}_data.xlsx`",
                 f"- `{run_info_path.relative_to(path.parent)}`",
                 "",
                 "## Expected aggregate QC",
                 "",
-                "- Tumor-only denominator before HDR exclusion: 19,490,107 allele reads.",
+                "- Old tumor-only denominator: 19,490,107 allele reads.",
                 "- HDR-positive tumor alleles removed: 2,594 reads.",
                 "- Corrected non-HDR tumor-only denominator: 19,487,513 allele reads.",
-                "- G12D before HDR exclusion: 15,269 reads / 0.078342%.",
+                "- Old bundled G12D: 15,269 reads / 0.078342%.",
                 "- HDR-positive G12D removed: 2,589 reads.",
                 "- Corrected non-HDR G12D: 12,680 reads / 0.065067%.",
                 "",
@@ -393,7 +395,7 @@ def fail_if_expected_values_drift(
     }
     if observed != expected:
         raise AssertionError(
-            "Extended Fig. 10E/F aggregate values do not match expected values:\n"
+            "Corrected SF5D aggregate values do not match expected locked values:\n"
             + json.dumps({"observed": observed, "expected": expected}, indent=2)
         )
 
@@ -604,13 +606,13 @@ def main() -> None:
         aggregate_effect_pairs.update(effect_pair_by_sample[key])
 
     qc_checks = {
-        "no_strict_hdr_barcode_yes_reads_contribute_to_nonhdr_panel": (
+        "no_strict_hdr_barcode_yes_reads_contribute_to_corrected_sf5d": (
             included_strict_hdr_status.get("yes", 0) == 0
         ),
-        "normal_samples_excluded_from_nonhdr_panel": all(
+        "normal_samples_excluded_from_corrected_sf5d": all(
             row["cohort"] != "Normal" for row in rows
         ),
-        "normal_458_and_normal_460_absent_from_nonhdr_panel": not any(
+        "normal_458_and_normal_460_absent_from_corrected_sf5d": not any(
             row["specimen_id"] in {"Normal_458", "Normal_460"} for row in rows
         ),
         "per_sample_counts_sum_to_nonhdr_denominator": all(
@@ -638,7 +640,7 @@ def main() -> None:
 
     readme_path = package_dir / "README.md"
     run_info_path = metadata_dir / f"{args.prefix}_run_info.json"
-    write_readme(readme_path, args.prefix, run_info_path, allele_path)
+    write_readme(readme_path, args.prefix, run_info_path)
 
     output_paths.update(
         {
@@ -661,8 +663,8 @@ def main() -> None:
         "script": str(Path(__file__).resolve()),
         "argv": sys.argv,
         "analysis_goal": (
-            "Summarize non-HDR Kras codon 12/13 alleles for Extended Fig. 10E/F "
-            "after excluding HDR-barcode-positive reads."
+            "Correct Supplementary Figure 5D by removing HDR-barcode-positive Kras "
+            "G12D/codon-window alleles from the codon 12/13 point-mutation spectrum."
         ),
         "figure_title": FIGURE_TITLE,
         "denominator_type": DENOMINATOR_TYPE,
@@ -687,7 +689,7 @@ def main() -> None:
         "inputs": {"alleles": str(allele_path)},
         "outputs": output_paths,
         "source_accounting": dict(source_accounting),
-        "before_hdr_exclusion": {
+        "old_bundled_reference": {
             "tumor_denominator_allele_reads": old_aggregate_denominator,
             "aggregate_counts": dict(old_aggregate_counts),
             "aggregate_percentages": {
@@ -727,8 +729,8 @@ def main() -> None:
             ),
         },
         "expected_values_checked": {
-            "g12d_before_hdr_exclusion_reads": EXPECTED_OLD_G12D_READS,
-            "g12d_before_hdr_exclusion_pct": pct(
+            "old_bundled_g12d_reads": EXPECTED_OLD_G12D_READS,
+            "old_bundled_g12d_pct": pct(
                 EXPECTED_OLD_G12D_READS, EXPECTED_OLD_TUMOR_DENOMINATOR
             ),
             "hdr_positive_g12d_removed_reads": EXPECTED_HDR_POSITIVE_G12D_READS,

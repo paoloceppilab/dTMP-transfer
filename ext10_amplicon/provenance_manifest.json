@@ -1,217 +1,329 @@
 {
   "schema_version": "1.1",
   "panels": [
-    "Extended Fig. 10B",
-    "Extended Fig. 10D",
-    "Extended Fig. 10E",
-    "Extended Fig. 10F"
+    "Extended Data Fig. 10B",
+    "Extended Data Fig. 10D",
+    "Extended Data Fig. 10E",
+    "Extended Data Fig. 10F"
   ],
   "source_files": [
     {
       "role": "source_readme",
-      "relative_local_path": "README.md"
+      "relative_local_path": "README.md",
+      "size_bytes": 2402,
+      "sha256": "a917b55a8b29caf1c7aa2e998dc81e9180ac124876a5600e6f25e335ff7b39fa"
     },
     {
       "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.pdf"
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.pdf",
+      "size_bytes": 18249,
+      "sha256": "3e9662ae85c59dcb000a392b46ce798433f0724a015edadfba830d621f4d35cc"
     },
     {
       "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.png"
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.png",
+      "size_bytes": 43410,
+      "sha256": "de9c44c928b8ac13f61e7272f0960d15af3f1af48b292f97200ffeaddfee9bb7"
     },
     {
       "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.svg"
+      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.svg",
+      "size_bytes": 60822,
+      "sha256": "f658b30c49f9f05de1e88d3bdc67680b1e7bcbcca2add30f9cdb538f6fa3e8be"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf",
+      "size_bytes": 37171,
+      "sha256": "cd8fd2002838618d1a9f07ea5b525e27603a342dd954c69c1bf5b834873a860c"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png",
+      "size_bytes": 211752,
+      "sha256": "147fc7432ac09aa71eba7374b1a77f823662b0b0b2fbc1e208be221e8256cf3e"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg",
+      "size_bytes": 23088,
+      "sha256": "1b2312a5511a7d6079751941821d4d0a0f55dd21dbabe7f92786dccec4d031c5"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf",
+      "size_bytes": 52358,
+      "sha256": "060deb605501eb2e586a638098b6a02b19c9b7f817eea911818fb91818b99330"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png",
+      "size_bytes": 303986,
+      "sha256": "10a250e0b84ef33f07a018a1ebcf9370e8e2abecc283126f9e5fc925015daf70"
     },
     {
       "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg"
+      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg",
+      "size_bytes": 44402,
+      "sha256": "954ab6d2af03914d7f5061792bc213e03991170788b5a1c0eaabfcda5b45b52d"
     },
     {
       "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf"
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
+      "size_bytes": 47605,
+      "sha256": "a6ef4baf3f4b9c1683a7a79e345901a68bcabdc535b354dd9a339aad53db5165"
     },
     {
       "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png"
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
+      "size_bytes": 406657,
+      "sha256": "b85e2c862c7761d1d6c06e3599093d65a5e0703db285e4397b5c7fae7bfbfcbf"
     },
     {
       "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg"
+      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
+      "size_bytes": 110093,
+      "sha256": "c51d80397c3a51ca735e5328161565d31c66d24f2c9b4db510ddb3cf733732e7"
     },
     {
       "role": "alignment_analysis_manifest",
-      "relative_local_path": "metadata/analysis_manifest.tsv"
-    },
-    {
-      "role": "kras_crispresso_batch_settings",
-      "relative_local_path": "metadata/crispresso_kras_batch.tsv"
-    },
-    {
-      "role": "trp53_crispresso_batch_settings",
-      "relative_local_path": "metadata/crispresso_trp53_batch.tsv"
+      "relative_local_path": "metadata/analysis_manifest.tsv",
+      "size_bytes": 12086,
+      "sha256": "b3c6c02662dc70eeffbcdb4df57f5c92ffd8a23dd218205795ac30d8b1e4eb57"
     },
     {
       "role": "extended_10e_10f_codon_window_workflow_run_info",
-      "relative_local_path": "metadata/kras_codon13_window_run_info.json"
+      "relative_local_path": "metadata/kras_codon13_window_run_info.json",
+      "size_bytes": 4609,
+      "sha256": "1b5a9bed98ab0945f84b9d8baeb944e6acd574299e2530bd4eabc6d8631373d6"
     },
     {
       "role": "extended_10e_10f_codon_window_workflow_run_manifest",
-      "relative_local_path": "metadata/kras_codon13_window_run_manifest.yaml"
+      "relative_local_path": "metadata/kras_codon13_window_run_manifest.yaml",
+      "size_bytes": 600,
+      "sha256": "628966bb1067c1c746879f7326cd29f79a6c35c0f683a31c8d1224ffc6828d96"
     },
     {
       "role": "extended_10d_indel_frame_plot_run_info",
-      "relative_local_path": "metadata/kras_cutsite_pm20_indel_frame_background83_tumor_only_plot_run_info.json"
+      "relative_local_path": "metadata/kras_cutsite_pm20_indel_frame_background83_tumor_only_plot_run_info.json",
+      "size_bytes": 4359,
+      "sha256": "59ddfd4feff69372f94ff37f99f3fce91ee02ebeea771881a0f582dd37f22798"
     },
     {
       "role": "extended_10d_cutsite_workflow_qc_summary",
-      "relative_local_path": "metadata/kras_cutsite_pm20_qc_summary.json"
+      "relative_local_path": "metadata/kras_cutsite_pm20_qc_summary.json",
+      "size_bytes": 1353,
+      "sha256": "d2ff3c47ed4d1d5a2ba82db272c5fb7d299434e578f59614f4b33ca9100360c7"
     },
     {
       "role": "extended_10d_cutsite_workflow_run_info",
-      "relative_local_path": "metadata/kras_cutsite_pm20_run_info.json"
+      "relative_local_path": "metadata/kras_cutsite_pm20_run_info.json",
+      "size_bytes": 995,
+      "sha256": "fed09aa6426b65f87c0257de104f51b2127baddba95a90304227a2dbdef8eeb7"
     },
     {
       "role": "extended_10d_cutsite_workflow_run_manifest",
-      "relative_local_path": "metadata/kras_cutsite_pm20_run_manifest.yaml"
+      "relative_local_path": "metadata/kras_cutsite_pm20_run_manifest.yaml",
+      "size_bytes": 2878,
+      "sha256": "20b85a1796460d5dbf0dc87118d3efcdf121d4f55c5f4f6a51ef5abceea21d2e"
     },
     {
       "role": "extended_10d_three_bin_plot_run_info",
-      "relative_local_path": "metadata/kras_cutsite_pm20_threebin_background83_tumor_only_plot_run_info.json"
+      "relative_local_path": "metadata/kras_cutsite_pm20_threebin_background83_tumor_only_plot_run_info.json",
+      "size_bytes": 3620,
+      "sha256": "b405c04c66c1050b34104f93967269c4efedc513182c4aaa0b01e559ec4c30dc"
     },
     {
       "role": "extended_10e_10f_corrected_nonhdr_plot_run_info",
-      "relative_local_path": "metadata/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json"
+      "relative_local_path": "metadata/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_run_info.json",
+      "size_bytes": 10125,
+      "sha256": "8dcbc49828a1230c2dbf06b10ee60fb01459a718c8ba9d148b06df8a9a2db472"
     },
     {
       "role": "extended_10b_metric_provenance",
-      "relative_local_path": "metadata/metric_provenance.json"
+      "relative_local_path": "metadata/metric_provenance.json",
+      "size_bytes": 828,
+      "sha256": "91ddce3ef4b47896bd99c4c3c544d55f8a12b4a1fcc36b851ddee37e85af03a8"
+    },
+    {
+      "role": "original_alignment_sample_sheet",
+      "relative_local_path": "metadata/original_sample_sheet.csv",
+      "size_bytes": 4961,
+      "sha256": "e3ced383df9e16e9b54422e83a3e38af4c014ea62428040874b8150f257d7258"
     },
     {
       "role": "extended_10b_clean_metric_qc_table",
-      "relative_local_path": "metadata/qc_metrics.tsv"
+      "relative_local_path": "metadata/qc_metrics.tsv",
+      "size_bytes": 3580,
+      "sha256": "676d4275f6fc151aef78bacb35d19b9f4b96e8bc80762b70e3812f5bc9715928"
     },
     {
       "role": "alignment_sample_manifest",
-      "relative_local_path": "metadata/sample_manifest.tsv"
+      "relative_local_path": "metadata/sample_manifest.tsv",
+      "size_bytes": 2494,
+      "sha256": "850067ae82d24a79ed7cafa5412af446dacc0bb77b1737eb563073ec4a18a682"
     },
     {
       "role": "amplicon_reference_notes",
-      "relative_local_path": "references/README.md"
+      "relative_local_path": "references/README.md",
+      "size_bytes": 2758,
+      "sha256": "1e8dd18ddb615552d6b3601221b3a6840a2a965661c28860e01fb6b562be7d62"
     },
     {
       "role": "amplicon_reference_sequences",
-      "relative_local_path": "references/amplicons.tsv"
+      "relative_local_path": "references/amplicons.tsv",
+      "size_bytes": 1607,
+      "sha256": "b003e8efb4580471b54063eb7677a4de02c59c92363e735cbada8d0f40961868"
     },
     {
       "role": "extended_10e_10f_kras_codon_window_analysis_source",
-      "relative_local_path": "source/analyze_kras_codon_window.py"
+      "relative_local_path": "source/analyze_kras_codon_window.py",
+      "size_bytes": 31743,
+      "sha256": "987600a06ade0f489c9bb41bbc3fa85548aa7b08dd7893a32b4ebece6c68c867"
     },
     {
       "role": "extended_10d_kras_cutsite_window_analysis_source",
-      "relative_local_path": "source/analyze_kras_cutsite_spectrum.py"
+      "relative_local_path": "source/analyze_kras_cutsite_spectrum.py",
+      "size_bytes": 56836,
+      "sha256": "81aad6beb9983f2847cd260a91b2aaf0ff9ec729f238b1a31b78fba929df3dba"
+    },
+    {
+      "role": "extended_10e_10f_workbook_export_helper",
+      "relative_local_path": "source/build_kras_nonhdr_sf5d_workbook.mjs",
+      "size_bytes": 13315,
+      "sha256": "548a584166d8a74b7d0547c06c328ccc189d14e79b7c65986e5294d30d024433"
     },
     {
       "role": "alignment_helper_expected_hdr_from_reads",
-      "relative_local_path": "source/derive_kras_expected_hdr_from_reads.py"
+      "relative_local_path": "source/derive_kras_expected_hdr_from_reads.py",
+      "size_bytes": 4560,
+      "sha256": "ef39b70d8865ee0cba375400131eaf61e3b3f5a06ec2f6bbc08df9930486bafc"
     },
     {
       "role": "alignment_helper_forward_informative_reads",
-      "relative_local_path": "source/extract_forward_informative_reads.py"
+      "relative_local_path": "source/extract_forward_informative_reads.py",
+      "size_bytes": 4221,
+      "sha256": "128d13cd18b970814088a71b6315048c845803a7d0831fd4e7a126035c7cbd68"
     },
     {
       "role": "extended_10b_kras_trp53_plot_source",
-      "relative_local_path": "source/plot_figure7b_like.py"
+      "relative_local_path": "source/plot_figure7b_like.py",
+      "size_bytes": 12110,
+      "sha256": "7de60dad14772a26384304d1bf8a1764b24c30bfe8676ea0b5cb37095ac43ecf"
     },
     {
       "role": "extended_10d_background_adjusted_indel_frame_plot_source",
-      "relative_local_path": "source/plot_kras_cutsite_pm20_indel_frame_background83.py"
+      "relative_local_path": "source/plot_kras_cutsite_pm20_indel_frame_background83.py",
+      "size_bytes": 17251,
+      "sha256": "4e2af97111bec18e3672082ca12143dcf372f3f379ad14cfc12d75cc6a504ead"
     },
     {
       "role": "extended_10d_background_adjusted_three_bin_plot_source",
-      "relative_local_path": "source/plot_kras_cutsite_pm20_threebin_background83.py"
+      "relative_local_path": "source/plot_kras_cutsite_pm20_threebin_background83.py",
+      "size_bytes": 22908,
+      "sha256": "5a79526b49bcd0577b66de0f32cf87d3714b69c53710f98a9c29b63417cf4690"
     },
     {
       "role": "extended_10e_10f_corrected_nonhdr_g12_g13_plot_source",
-      "relative_local_path": "source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py"
+      "relative_local_path": "source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py",
+      "size_bytes": 27719,
+      "sha256": "6df03f51c08b7728a9c965195042a6f9c9f4dfa5117da171547daac76601f9b2"
     },
     {
       "role": "alignment_crispresso_input_preparation",
-      "relative_local_path": "source/prepare_crispresso_inputs.py"
+      "relative_local_path": "source/prepare_crispresso_inputs.py",
+      "size_bytes": 4713,
+      "sha256": "1cd97df365d9b46ae7c18357b1d25d29bd8d7f1380e919390bfeced2c2cd4f9c"
     },
     {
       "role": "alignment_crispresso_workflow_runner",
-      "relative_local_path": "source/run_crispresso_workflow.sh"
+      "relative_local_path": "source/run_crispresso_workflow.sh",
+      "size_bytes": 3339,
+      "sha256": "d1499f071d73ddcc179531d814e15c285df7957de77390e65346f1addc0986cb"
     },
     {
       "role": "extended_10b_editing_metric_summary_source",
-      "relative_local_path": "source/summarize_clean_editing_metrics.py"
+      "relative_local_path": "source/summarize_clean_editing_metrics.py",
+      "size_bytes": 21772,
+      "sha256": "f67be719209fa613b5a92b299dbb6918af055e7df3c9d8019e673dde34e365b8"
     },
     {
       "role": "extended_10b_wide_editing_summary_table",
-      "relative_local_path": "tables/extended_10b_editing_summary.tsv"
+      "relative_local_path": "tables/extended_10b_editing_summary.tsv",
+      "size_bytes": 3072,
+      "sha256": "db3cfc8694974d969ac2372ee45d6bf81567cf9ee6acc86c093f502abdc2d24e"
     },
     {
       "role": "extended_10b_long_editing_summary_table",
-      "relative_local_path": "tables/extended_10b_editing_summary_long.tsv"
+      "relative_local_path": "tables/extended_10b_editing_summary_long.tsv",
+      "size_bytes": 5155,
+      "sha256": "d8210719a794c9b8f017d2c5067b2493a5c98ea9bee9be59f6223e85e1b36fa5"
     },
     {
       "role": "extended_10b_graphpad_ready_export",
-      "relative_local_path": "tables/extended_10b_graphpad_grouped_two_gene.csv"
+      "relative_local_path": "tables/extended_10b_graphpad_grouped_two_gene.csv",
+      "size_bytes": 580,
+      "sha256": "ac3ad0f75e33a31c52a1ee977dcbd5e77156e522df03cda4f0ca53ffb4eb6b12"
     },
     {
       "role": "extended_10d_indel_frame_figure_ready_table",
-      "relative_local_path": "tables/extended_10d_indel_frame_background83_tumor_only_figure_ready.tsv"
+      "relative_local_path": "tables/extended_10d_indel_frame_background83_tumor_only_figure_ready.tsv",
+      "size_bytes": 4893,
+      "sha256": "374a2ff94ae344c33b176671bc94a97914ed65f0d82eedc0c9b0f454c28f306d"
     },
     {
       "role": "extended_10d_cutsite_consequence_summary",
-      "relative_local_path": "tables/extended_10d_kras_cutsite_consequence_summary.tsv"
+      "relative_local_path": "tables/extended_10d_kras_cutsite_consequence_summary.tsv",
+      "size_bytes": 4212,
+      "sha256": "cc57bf6354b9258626fbf018080c8f0187a2ba49a1f9afeda92756435db7c311"
     },
     {
       "role": "extended_10d_cutsite_sample_summary",
-      "relative_local_path": "tables/extended_10d_kras_cutsite_sample_summary.tsv"
+      "relative_local_path": "tables/extended_10d_kras_cutsite_sample_summary.tsv",
+      "size_bytes": 6179,
+      "sha256": "ea099acca08d35926547a28584b660b9527956973bab61743fc33c8490f4cbfc"
     },
     {
       "role": "extended_10d_three_bin_figure_ready_table",
-      "relative_local_path": "tables/extended_10d_threebin_background83_tumor_only_figure_ready.tsv"
+      "relative_local_path": "tables/extended_10d_threebin_background83_tumor_only_figure_ready.tsv",
+      "size_bytes": 4519,
+      "sha256": "590fb6f13ae06f5311cd5cd07cfb5f057b5e0590f7286210385aaf64aef9bf7a"
     },
     {
       "role": "extended_10e_10f_codon_window_consequence_summary",
-      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_consequence_summary.tsv"
+      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_consequence_summary.tsv",
+      "size_bytes": 67818,
+      "sha256": "356d2fe805c8e57be501a618ff4198e06b31eb792333386c499e13537cb82dc4"
     },
     {
       "role": "extended_10e_10f_codon_window_sample_summary",
-      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_sample_summary.tsv"
+      "relative_local_path": "tables/extended_10e_10f_kras_codon13_window_sample_summary.tsv",
+      "size_bytes": 10424,
+      "sha256": "fb54002c06daf48676214540c8d756586bf3927ac0e8912293bda58d3fd1b2fd"
     },
     {
       "role": "extended_10e_10f_corrected_nonhdr_figure_ready_table",
-      "relative_local_path": "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv"
+      "relative_local_path": "tables/extended_10e_10f_kras_g12_g13_hotspot_frequency_tumor_only_nonhdr_figure_ready.tsv",
+      "size_bytes": 6381,
+      "sha256": "9b765baec1b8aa269e1d9e70133d072f604bf1c22db4170530db68e3fbca2aa8"
+    },
+    {
+      "role": "crispresso_batch_config",
+      "relative_local_path": "metadata/crispresso_kras_batch.tsv",
+      "size_bytes": 3939,
+      "sha256": "da4116ea937ec246073cfa555a61dc93ed0f1e706234bc60a72048e6b64b4e1b"
+    },
+    {
+      "role": "crispresso_batch_config",
+      "relative_local_path": "metadata/crispresso_trp53_batch.tsv",
+      "size_bytes": 2968,
+      "sha256": "2c7075b6f0ce65f844c69cd86df8e457699adc504c349b79dd7bfbad17314249"
     }
   ],
   "method_summary": [
-    "Extended Fig. 10B uses clean editing metrics summarized from KRAS HDR and Trp53 indel analyses, with KP_811 Trp53 retained as missing after QC.",
-    "Extended Fig. 10D uses tumor-only KRAS cut-site +/-20 bp per-pair classification outputs with HDR-positive pairs excluded from displayed non-HDR denominators and sub:83:T>C background reassignment documented in run-info JSON files.",
-    "Extended Fig. 10E/F uses the corrected non-HDR G12/G13 package: strict HDR-barcode positive reads are removed before calculating tumor-only allele-read percentages."
+    "Extended Data Fig. 10B uses clean editing metrics summarized from KRAS HDR and Trp53 indel analyses, with KP_811 Trp53 retained as missing after QC.",
+    "Extended Data Fig. 10D uses tumor-only KRAS cut-site +/-20 bp per-pair classification outputs with HDR-positive pairs excluded from displayed non-HDR denominators and sub:83:T>C background reassignment documented in run-info JSON files.",
+    "Extended Data Fig. 10E/F uses the corrected non-HDR G12/G13 package: strict HDR-barcode positive reads are removed before calculating tumor-only allele-read percentages."
   ],
   "validation_expectations": {
     "extended_10b": {
@@ -270,8 +382,8 @@
       "sha256": null
     }
   ],
-  "input_status": "Read-level tables and raw sequencing files require separate access; supplied summary tables are checked against reported panel metrics.",
-  "source_file_count": 50,
+  "input_status": "Read-level tables and raw sequencing files require separate access; included outputs are validated by checksum.",
+  "source_file_count": 52,
   "folder_author": {
     "name": "Mert Demirdizen",
     "email": "mert@bmb.sdu.dk"
