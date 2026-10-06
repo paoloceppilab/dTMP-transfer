@@ -2,10 +2,10 @@ cff-version: 1.2.0
 message: "If you use this software, please cite this version of the code archive."
 type: software
 title: "Analysis code and data for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\""
-version: 1.0.4
+version: 1.0.5
 license: MIT
 repository-code: "https://github.com/paoloceppilab/dTMP-transfer"
-abstract: "Analysis scripts and source data for the five bioinformatics Methods sections of Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation: human A549 bulk RNA-seq, GSE148071 single-cell TYMS/TK1/MKI67 analysis, Visium TYMS/TK1 neighborhood analysis, cell2location spatial deconvolution and NMF, and Kras/Trp53 amplicon analysis. Each analysis folder records inputs, provenance and execution limits. MIT applies to laboratory-authored code; third-party code and scientific data retain their original terms."
+abstract: "Analysis scripts and source data for the five bioinformatics Methods sections of Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation: human A549 bulk RNA-seq differential expression analysis, single-cell classification analysis (GSE148071), Visium spatial neighborhood analysis, spatial deconvolution and cell-state co-abundance analysis using cell2location and NMF, and Kras/Trp53 amplicon gene-editing and mutation analysis. Each analysis folder records inputs, provenance and execution limits. MIT applies to laboratory-authored code; third-party code and scientific data retain their original terms."
 authors:
   - given-names: "Mert"
     family-names: "Demirdizen"
