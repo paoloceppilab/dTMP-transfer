@@ -10,8 +10,8 @@
     {
       "role": "source_readme",
       "relative_local_path": "README.md",
-      "size_bytes": 2485,
-      "sha256": "76d46a81d1e13a9093ae2775dc629116b6fec1512fbd4630fd488fc39119ab5d"
+      "size_bytes": 2376,
+      "sha256": "ff03779ff6e31122be1b0fdb16d203fb460e694f97e2f9013b28f47f98ae9b3f"
     },
     {
       "role": "alignment_analysis_manifest",

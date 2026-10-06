@@ -17,7 +17,7 @@ NTC, TS_CC versus NTC_CC, and TS_CC versus TS.
 count, DESeq2, and source-data workbooks.
 [Prism numeric source data](tables/gap_junctions_prism_source.tsv) preserves
 8 genes and 16 decimal values from the original GraphPad table; decimal commas
-are converted to points without rounding. Graphics and presentations are excluded. The
+are converted to points without rounding. The
 [provenance manifest](provenance_manifest.json) lists file roles and paths.
 Raw FASTQ/BAM files and STAR indices are not included, so complete
 read-level processing requires the external sequencing files.

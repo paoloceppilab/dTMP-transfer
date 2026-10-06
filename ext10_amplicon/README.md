@@ -43,5 +43,3 @@ Their checksums are recorded in the corresponding run-info JSON files, so
 read-level reprocessing requires separately obtaining those exact inputs.
 The supplied summary tables support downstream figure reproduction.
 
-Rendered figure files are excluded; plotting scripts and their numeric inputs
-are retained for reproduction.

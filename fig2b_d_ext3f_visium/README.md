@@ -27,8 +27,7 @@ directory; record any path change during a rerun.
   549 TYMS+/TK1−, 1,273 TYMS−/TK1−, and 329 TYMS−/TK1+ spots; total 3,858.
 - [Neighborhood data](results/neighborhood_data_points.csv): 160 rows over
   ten radii.
-- Rendered spatial maps and plot exports are excluded. The source script
-  generates them from the input dataset.
+- The source script generates spatial maps from the input dataset.
 
 Run `python3 scripts/validate_repository.py` from the repository root to
 check file hashes, state counts, neighborhood rows, and radii. A mismatch

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release_version": "v1.0.3",
+  "release_version": "v1.0.4",
   "hash_algorithm": "SHA256",
   "self_exclusion": "release_manifest.json",
   "files": [
@@ -16,13 +16,13 @@
     },
     {
       "path": ".zenodo.json",
-      "size_bytes": 2076,
-      "sha256": "d79b9952d857d4d0850012d9a349de4c2826cb48f72892cfb251779e6d452bc5"
+      "size_bytes": 1959,
+      "sha256": "b38c0ebeccda0a2686fc8f645510f6bee112d76601d168cc50aeb1bf2783ab2d"
     },
     {
       "path": "CITATION.cff",
-      "size_bytes": 1863,
-      "sha256": "5f8fd617fd9d2694d6f26df6fb06c9fef907248d0640a3bed9710a832a4eb2bd"
+      "size_bytes": 1746,
+      "sha256": "696a3ca825f6df32f8e8a2e2682af8ce9ec49fa6ab1a345a968a83e589865291"
     },
     {
       "path": "LICENSE",
@@ -31,8 +31,8 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 3147,
-      "sha256": "7afe0d102ae137bb4cd269c910454f9f59ae2a028357bb39395256b446b3f880"
+      "size_bytes": 2979,
+      "sha256": "ed793745c8ff9f6f659be469a4a7ae14061fdf20b3fff1367d518144cb8191dd"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -42,7 +42,7 @@
     {
       "path": "analysis_scope.json",
       "size_bytes": 831,
-      "sha256": "99cff2f0594edabc1f756426cef01aab0af94d7062f921262312630f7fe9372d"
+      "sha256": "f4fc1ddeda5626d870feb83aec7aca1af0f48a042eec6a24aa3e80e76b362318"
     },
     {
       "path": "env/requirements-validation.lock.txt",
@@ -56,8 +56,8 @@
     },
     {
       "path": "ext10_amplicon/README.md",
-      "size_bytes": 2485,
-      "sha256": "76d46a81d1e13a9093ae2775dc629116b6fec1512fbd4630fd488fc39119ab5d"
+      "size_bytes": 2376,
+      "sha256": "ff03779ff6e31122be1b0fdb16d203fb460e694f97e2f9013b28f47f98ae9b3f"
     },
     {
       "path": "ext10_amplicon/metadata/analysis_manifest.tsv",
@@ -137,7 +137,7 @@
     {
       "path": "ext10_amplicon/provenance_manifest.json",
       "size_bytes": 13546,
-      "sha256": "04b9728e8a40688cff535afb8e4270dc7ae788cba406279bb914eb52ffbb64c8"
+      "sha256": "472289af9feee42a3844889c6098c8948660a3ef78f094c4312e6c84871e5504"
     },
     {
       "path": "ext10_amplicon/references/README.md",
@@ -261,8 +261,8 @@
     },
     {
       "path": "ext4_fig5_rnaseq/README.md",
-      "size_bytes": 1624,
-      "sha256": "45c71980a933572ce0278f00e11243a1b0edbc16be4c6ebbc77ff6623e5873b6"
+      "size_bytes": 1583,
+      "sha256": "d02bef1050cc020e82967d6e28f7afd88eac66c089f2b64ac0157665ca48ebd3"
     },
     {
       "path": "ext4_fig5_rnaseq/metadata/upstream_deseq2_sample_info.txt",
@@ -287,7 +287,7 @@
     {
       "path": "ext4_fig5_rnaseq/provenance_manifest.json",
       "size_bytes": 5177,
-      "sha256": "9e5d7fd91c967cb87bb2bb3d7ecac53240348b0f50490958c65e335578c48ebd"
+      "sha256": "75560ea2e13644ce253a9c10980791421d3502aa396c9ac825c660031b1ea527"
     },
     {
       "path": "ext4_fig5_rnaseq/source/22_08_23_Script_TS.txt",
@@ -641,13 +641,13 @@
     },
     {
       "path": "fig2b_d_ext3f_visium/README.md",
-      "size_bytes": 1671,
-      "sha256": "9ea928258ee0bba0dd0512a53ed313dcdd207c0e2962e102c6d032837ea06ecb"
+      "size_bytes": 1624,
+      "sha256": "f343c2aa5d7b1229770e98da3950b1feee78338cec6754b9ec572c904e942cd4"
     },
     {
       "path": "fig2b_d_ext3f_visium/provenance_manifest.json",
       "size_bytes": 3333,
-      "sha256": "48762692746bc646e2c2d8bf69a50c4b5cd1c79f81a714e27ae39fc0ea119ecb"
+      "sha256": "57d0d6161c3d281da7e5da608b0e50e0f55e28983047b0e0317eddbd85fdb71a"
     },
     {
       "path": "fig2b_d_ext3f_visium/results/neighborhood_data_points.csv",
@@ -712,7 +712,7 @@
     {
       "path": "scripts/validate_release.py",
       "size_bytes": 7917,
-      "sha256": "5551311fd76cd2d629a2d61ad0325b6ad1f149653a705c77fb925ac70b37bf50"
+      "sha256": "826108468799b88f2b394ccfb1ec3a1dc5e5b6cc212e0c6cf5479b4646843d97"
     },
     {
       "path": "scripts/validate_repository.py",

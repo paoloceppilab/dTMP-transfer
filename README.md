@@ -1,6 +1,6 @@
 # dTMP-transfer
 
-Analysis scripts and figure source data accompanying
+Analysis code and data accompanying
 *Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation*.
 
 ## Analysis guide
@@ -21,9 +21,6 @@ Folder and output names retain the archived source naming. Use the Methods
 section and each folder's provenance record to identify the relevant code.
 Each analysis README specifies inputs and execution limits. Raw sequencing
 datasets and trained models are obtained separately as described there.
-
-Rendered figures and presentations are excluded. Numeric source tables and
-plotting code are retained; the GraphPad numeric table is provided as TSV.
 
 ## Validate the archive
 
@@ -55,7 +52,7 @@ archive-validation lockfile.
 ## Code availability and citation
 
 Public repository: https://github.com/paoloceppilab/dTMP-transfer.
-Publication package: **v1.0.3**. Citation metadata is in
+Publication package: **v1.0.4**. Citation metadata is in
 [CITATION.cff](CITATION.cff); Zenodo metadata is in `.zenodo.json`.
 
 ## License and attribution
