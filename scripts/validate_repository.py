@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate tracked figure files and key panel invariants.
+"""Validate archived analysis files and key panel invariants.
 
 Run with Python >=3.9 from any directory; standard library only.
 """
@@ -96,13 +96,7 @@ def _assert_xlsx(path, required_sheets, expected_rows=None):
                 f"{observed_row_count}"
             )
 
-expected_manifest_record_counts = {
-    "fig4j_cellstates": 8,
-    "fig2b_d_ext3f_visium": 10,
-    "fig2a_ext3_scrnaseq": 60,
-    "ext4_fig5_rnaseq": 15,
-    "ext10_amplicon": 52,
-}
+expected_manifest_record_counts = {'fig4j_cellstates': 8, 'fig2b_d_ext3f_visium': 4, 'fig2a_ext3_scrnaseq': 60, 'ext4_fig5_rnaseq': 14, 'ext10_amplicon': 40}
 
 for figure_dir_name in (
     "fig4j_cellstates",

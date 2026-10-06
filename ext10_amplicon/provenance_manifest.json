@@ -10,80 +10,8 @@
     {
       "role": "source_readme",
       "relative_local_path": "README.md",
-      "size_bytes": 2402,
-      "sha256": "a917b55a8b29caf1c7aa2e998dc81e9180ac124876a5600e6f25e335ff7b39fa"
-    },
-    {
-      "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.pdf",
-      "size_bytes": 18249,
-      "sha256": "3e9662ae85c59dcb000a392b46ce798433f0724a015edadfba830d621f4d35cc"
-    },
-    {
-      "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.png",
-      "size_bytes": 43410,
-      "sha256": "de9c44c928b8ac13f61e7272f0960d15af3f1af48b292f97200ffeaddfee9bb7"
-    },
-    {
-      "role": "extended_10b_exported_figure",
-      "relative_local_path": "figures/extended_10b/figure7b_like_kras_trp53.svg",
-      "size_bytes": 60822,
-      "sha256": "f658b30c49f9f05de1e88d3bdc67680b1e7bcbcca2add30f9cdb538f6fa3e8be"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf",
-      "size_bytes": 37171,
-      "sha256": "cd8fd2002838618d1a9f07ea5b525e27603a342dd954c69c1bf5b834873a860c"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png",
-      "size_bytes": 211752,
-      "sha256": "147fc7432ac09aa71eba7374b1a77f823662b0b0b2fbc1e208be221e8256cf3e"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg",
-      "size_bytes": 23088,
-      "sha256": "1b2312a5511a7d6079751941821d4d0a0f55dd21dbabe7f92786dccec4d031c5"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf",
-      "size_bytes": 52358,
-      "sha256": "060deb605501eb2e586a638098b6a02b19c9b7f817eea911818fb91818b99330"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png",
-      "size_bytes": 303986,
-      "sha256": "10a250e0b84ef33f07a018a1ebcf9370e8e2abecc283126f9e5fc925015daf70"
-    },
-    {
-      "role": "extended_10d_exported_figure",
-      "relative_local_path": "figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg",
-      "size_bytes": 44402,
-      "sha256": "954ab6d2af03914d7f5061792bc213e03991170788b5a1c0eaabfcda5b45b52d"
-    },
-    {
-      "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
-      "size_bytes": 47605,
-      "sha256": "a6ef4baf3f4b9c1683a7a79e345901a68bcabdc535b354dd9a339aad53db5165"
-    },
-    {
-      "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
-      "size_bytes": 406657,
-      "sha256": "b85e2c862c7761d1d6c06e3599093d65a5e0703db285e4397b5c7fae7bfbfcbf"
-    },
-    {
-      "role": "extended_10e_10f_exported_figure",
-      "relative_local_path": "figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
-      "size_bytes": 110093,
-      "sha256": "c51d80397c3a51ca735e5328161565d31c66d24f2c9b4db510ddb3cf733732e7"
+      "size_bytes": 2485,
+      "sha256": "76d46a81d1e13a9093ae2775dc629116b6fec1512fbd4630fd488fc39119ab5d"
     },
     {
       "role": "alignment_analysis_manifest",
@@ -383,7 +311,7 @@
     }
   ],
   "input_status": "Read-level tables and raw sequencing files require separate access; included outputs are validated by checksum.",
-  "source_file_count": 52,
+  "source_file_count": 40,
   "folder_author": {
     "name": "Mert Demirdizen",
     "email": "mert@bmb.sdu.dk"

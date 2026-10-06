@@ -25,46 +25,10 @@
       "sha256": "fa6c4bc6824ca55daf4e613a82c2002190add60fccf8022e38ee1877e70e810c"
     },
     {
-      "role": "fig_2b_combined_spatial_map_svg",
-      "relative_local_path": "results/spatial_plot.svg",
-      "size_bytes": 849149,
-      "sha256": "075acc7af838e656c9a588f4b0307487a481ac477371d6c58515bc513cce8e59"
-    },
-    {
-      "role": "fig_2d_neighborhood_plot_svg",
-      "relative_local_path": "results/neighborhood_plot.svg",
-      "size_bytes": 109114,
-      "sha256": "9724c8d033066164b12a087036ac3d89a6cb09a0efaee881380fb0bfd67d8101"
-    },
-    {
-      "role": "extended_fig_3f_tyms_negative_tk1_negative_svg",
-      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_neg.svg",
-      "size_bytes": 341530,
-      "sha256": "7c04c7ca0941c76c62c4c02322e1ed839caf3faa6d77af64d0934f5a2cfc35f2"
-    },
-    {
-      "role": "extended_fig_3f_tyms_negative_tk1_positive_svg",
-      "relative_local_path": "results/extended_3f/TYMS_neg_TK1_pos.svg",
-      "size_bytes": 341530,
-      "sha256": "f39d52e71cbdf1667fb518c4bc1afa3c8eeaec551ce6e686243823043f9997e5"
-    },
-    {
-      "role": "extended_fig_3f_tyms_positive_tk1_negative_svg",
-      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_neg.svg",
-      "size_bytes": 341530,
-      "sha256": "eaf05abef8ac437f5fd66dab1fba6c7fe888c8b27d07077953522df4853023be"
-    },
-    {
-      "role": "extended_fig_3f_tyms_positive_tk1_positive_svg",
-      "relative_local_path": "results/extended_3f/TYMS_pos_TK1_pos.svg",
-      "size_bytes": 341530,
-      "sha256": "59f47a5c80e97d5ddd8fb81f3375ad9b52c26386aa58eae2b0d110cac4626928"
-    },
-    {
       "role": "source_readme",
       "relative_local_path": "README.md",
-      "size_bytes": 1639,
-      "sha256": "bd1426b9a44b222572d375818470473ac19739ad1e748110d6436dd5ac6f5a38"
+      "size_bytes": 1671,
+      "sha256": "9ea928258ee0bba0dd0512a53ed313dcdd207c0e2962e102c6d032837ea06ecb"
     }
   ],
   "data_sources": {
@@ -147,7 +111,7 @@
     "paper_theoretical_hex_neighbor_count_formula": "3 * radius * (radius + 1)"
   },
   "input_status": "Public Visium H5 input is required to rerun the source script.",
-  "source_file_count": 10,
+  "source_file_count": 4,
   "folder_author": {
     "name": "Mert Demirdizen",
     "email": "mert@bmb.sdu.dk"

@@ -2,7 +2,7 @@
 
 **Author:** Mert Demirdizen ([mert@bmb.sdu.dk](mailto:mert@bmb.sdu.dk))
 
-Code, summary tables, and figure exports for mouse `Kras`/`Trp53` amplicon
+Code and summary tables for mouse `Kras`/`Trp53` amplicon
 sequencing. The analysis includes 17 specimens: 2 normal lungs, 10 KP tumors,
 and 5 KPTT tumors. Reference and primer/guide definitions are in
 [references/amplicons.tsv](references/amplicons.tsv); the reference build is
@@ -18,7 +18,7 @@ GRCm38/mm10.
 - **Extended Data Fig. 10D:** [cut-site analysis](source/analyze_kras_cutsite_spectrum.py)
   classifies `Kras` read pairs in a ±20 bp window around the cut site after
   amplicon base 91. Displayed non-HDR denominators exclude HDR-positive
-  pairs. Small summary tables and plots are supplied; the full pair-call
+  pairs. Small summary tables are supplied; the full pair-call
   table is not included.
 - **Extended Data Fig. 10E/F:** [codon-window analysis](source/analyze_kras_codon_window.py)
   and [plotting code](source/plot_kras_g12_g13_hotspot_frequency_nonhdr.py)
@@ -42,3 +42,6 @@ FASTQ files and the large read-pair classification table are not included.
 Their checksums are recorded in the corresponding run-info JSON files, so
 read-level reprocessing requires separately obtaining those exact inputs.
 The supplied summary tables support downstream figure reproduction.
+
+Rendered figure files are excluded; plotting scripts and their numeric inputs
+are retained for reproduction.

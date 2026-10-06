@@ -22,6 +22,9 @@ section and each folder's provenance record to identify the relevant code.
 Each analysis README specifies inputs and execution limits. Raw sequencing
 datasets and trained models are obtained separately as described there.
 
+Rendered figures and presentations are excluded. Numeric source tables and
+plotting code are retained; the GraphPad numeric table is provided as TSV.
+
 ## Validate the archive
 
 From the repository root, using Python 3.9 or later:
@@ -52,7 +55,7 @@ archive-validation lockfile.
 ## Code availability and citation
 
 Public repository: https://github.com/paoloceppilab/dTMP-transfer.
-Publication package: **v1.0.2**. Citation metadata is in
+Publication package: **v1.0.3**. Citation metadata is in
 [CITATION.cff](CITATION.cff); Zenodo metadata is in `.zenodo.json`.
 
 ## License and attribution

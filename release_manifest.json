@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release_version": "v1.0.2",
+  "release_version": "v1.0.3",
   "hash_algorithm": "SHA256",
   "self_exclusion": "release_manifest.json",
   "files": [
@@ -16,13 +16,13 @@
     },
     {
       "path": ".zenodo.json",
-      "size_bytes": 1973,
-      "sha256": "c6a86434073449f71f5b1f132fedf928101b65408b596bac36e20e80b80d9278"
+      "size_bytes": 2076,
+      "sha256": "d79b9952d857d4d0850012d9a349de4c2826cb48f72892cfb251779e6d452bc5"
     },
     {
       "path": "CITATION.cff",
-      "size_bytes": 1760,
-      "sha256": "18e49769fa47da711adc3edfc24fa8cc73a13fbdc24a46547013a4787e5d28cd"
+      "size_bytes": 1863,
+      "sha256": "5f8fd617fd9d2694d6f26df6fb06c9fef907248d0640a3bed9710a832a4eb2bd"
     },
     {
       "path": "LICENSE",
@@ -31,18 +31,18 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 2996,
-      "sha256": "33d2fa6f91311bb9a2e75bafff11c1fa65ed6183c9222372192d249f5ec9dbc1"
+      "size_bytes": 3147,
+      "sha256": "7afe0d102ae137bb4cd269c910454f9f59ae2a028357bb39395256b446b3f880"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "size_bytes": 1505,
-      "sha256": "9683d126f7c15eed5a820e92d2c60fdd2bbc7b8644e18316f04b56983bda04cf"
+      "size_bytes": 1492,
+      "sha256": "a7079377afb13b89273747cc17bcf6fe05f46981db83eabd1e12a63539da0c87"
     },
     {
       "path": "analysis_scope.json",
       "size_bytes": 831,
-      "sha256": "f4e8471ecc0d79186e7a3b96e4bf1eaf9d7bac4f550c482a53dd21fa2da1d6a0"
+      "sha256": "99cff2f0594edabc1f756426cef01aab0af94d7062f921262312630f7fe9372d"
     },
     {
       "path": "env/requirements-validation.lock.txt",
@@ -56,68 +56,8 @@
     },
     {
       "path": "ext10_amplicon/README.md",
-      "size_bytes": 2402,
-      "sha256": "a917b55a8b29caf1c7aa2e998dc81e9180ac124876a5600e6f25e335ff7b39fa"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10b/figure7b_like_kras_trp53.pdf",
-      "size_bytes": 18249,
-      "sha256": "3e9662ae85c59dcb000a392b46ce798433f0724a015edadfba830d621f4d35cc"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10b/figure7b_like_kras_trp53.png",
-      "size_bytes": 43410,
-      "sha256": "de9c44c928b8ac13f61e7272f0960d15af3f1af48b292f97200ffeaddfee9bb7"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10b/figure7b_like_kras_trp53.svg",
-      "size_bytes": 60822,
-      "sha256": "f658b30c49f9f05de1e88d3bdc67680b1e7bcbcca2add30f9cdb538f6fa3e8be"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.pdf",
-      "size_bytes": 37171,
-      "sha256": "cd8fd2002838618d1a9f07ea5b525e27603a342dd954c69c1bf5b834873a860c"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.png",
-      "size_bytes": 211752,
-      "sha256": "147fc7432ac09aa71eba7374b1a77f823662b0b0b2fbc1e208be221e8256cf3e"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_indel_frame_background83_tumor_only.svg",
-      "size_bytes": 23088,
-      "sha256": "1b2312a5511a7d6079751941821d4d0a0f55dd21dbabe7f92786dccec4d031c5"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.pdf",
-      "size_bytes": 52358,
-      "sha256": "060deb605501eb2e586a638098b6a02b19c9b7f817eea911818fb91818b99330"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.png",
-      "size_bytes": 303986,
-      "sha256": "10a250e0b84ef33f07a018a1ebcf9370e8e2abecc283126f9e5fc925015daf70"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10d/kras_cutsite_pm20_threebin_background83_tumor_only.svg",
-      "size_bytes": 44402,
-      "sha256": "954ab6d2af03914d7f5061792bc213e03991170788b5a1c0eaabfcda5b45b52d"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.pdf",
-      "size_bytes": 47605,
-      "sha256": "a6ef4baf3f4b9c1683a7a79e345901a68bcabdc535b354dd9a339aad53db5165"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.png",
-      "size_bytes": 406657,
-      "sha256": "b85e2c862c7761d1d6c06e3599093d65a5e0703db285e4397b5c7fae7bfbfcbf"
-    },
-    {
-      "path": "ext10_amplicon/figures/extended_10e_10f/kras_g12_g13_hotspot_frequency_tumor_only_nonhdr.svg",
-      "size_bytes": 110093,
-      "sha256": "c51d80397c3a51ca735e5328161565d31c66d24f2c9b4db510ddb3cf733732e7"
+      "size_bytes": 2485,
+      "sha256": "76d46a81d1e13a9093ae2775dc629116b6fec1512fbd4630fd488fc39119ab5d"
     },
     {
       "path": "ext10_amplicon/metadata/analysis_manifest.tsv",
@@ -196,8 +136,8 @@
     },
     {
       "path": "ext10_amplicon/provenance_manifest.json",
-      "size_bytes": 16823,
-      "sha256": "8da02608ea3651ff91c41499130d7083d10c8b01bee5d7bdaaa3bf98fecb28d4"
+      "size_bytes": 13546,
+      "sha256": "04b9728e8a40688cff535afb8e4270dc7ae788cba406279bb914eb52ffbb64c8"
     },
     {
       "path": "ext10_amplicon/references/README.md",
@@ -321,18 +261,8 @@
     },
     {
       "path": "ext4_fig5_rnaseq/README.md",
-      "size_bytes": 1449,
-      "sha256": "ccd44ecab79e53445b7c9c797e4bb34b15a82cbab7c0421df854fcf5c44f5e9d"
-    },
-    {
-      "path": "ext4_fig5_rnaseq/figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx",
-      "size_bytes": 13005,
-      "sha256": "c0f636042544d6d546c0fc33c650059ce3743d56ba34f120355828e6081725af"
-    },
-    {
-      "path": "ext4_fig5_rnaseq/figures_or_prism/upstream_tyms/ts_rna_seq_results.pptx",
-      "size_bytes": 392141,
-      "sha256": "a3500152294a5dc6b4010b9a7626a1106eccd5b452020d486f42c7b75eca8765"
+      "size_bytes": 1624,
+      "sha256": "45c71980a933572ce0278f00e11243a1b0edbc16be4c6ebbc77ff6623e5873b6"
     },
     {
       "path": "ext4_fig5_rnaseq/metadata/upstream_deseq2_sample_info.txt",
@@ -356,8 +286,8 @@
     },
     {
       "path": "ext4_fig5_rnaseq/provenance_manifest.json",
-      "size_bytes": 5080,
-      "sha256": "764d8623f1e5054b9e6975c84406091865b2304908f6fe691eebcf11e486a3b2"
+      "size_bytes": 5177,
+      "sha256": "9e5d7fd91c967cb87bb2bb3d7ecac53240348b0f50490958c65e335578c48ebd"
     },
     {
       "path": "ext4_fig5_rnaseq/source/22_08_23_Script_TS.txt",
@@ -368,6 +298,11 @@
       "path": "ext4_fig5_rnaseq/tables/figure_5a_rnaseq_degs_source.xlsx",
       "size_bytes": 17034393,
       "sha256": "fb148fd19e20d7e981683337b64f6cfb274ef6b6c690db6e6f05c629f2c14d30"
+    },
+    {
+      "path": "ext4_fig5_rnaseq/tables/gap_junctions_prism_source.tsv",
+      "size_bytes": 187,
+      "sha256": "12e2d5131d42624d3214354afe76e54a5f9b7442e9311f0c073e67f9fc2d4f3b"
     },
     {
       "path": "ext4_fig5_rnaseq/tables/upstream_deseq2_results.xlsx",
@@ -706,48 +641,18 @@
     },
     {
       "path": "fig2b_d_ext3f_visium/README.md",
-      "size_bytes": 1639,
-      "sha256": "bd1426b9a44b222572d375818470473ac19739ad1e748110d6436dd5ac6f5a38"
+      "size_bytes": 1671,
+      "sha256": "9ea928258ee0bba0dd0512a53ed313dcdd207c0e2962e102c6d032837ea06ecb"
     },
     {
       "path": "fig2b_d_ext3f_visium/provenance_manifest.json",
-      "size_bytes": 4840,
-      "sha256": "34720f260111979b2b2e026598337309f856305a6015f4b9e7cb7fc04cd3b905"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/extended_3f/TYMS_neg_TK1_neg.svg",
-      "size_bytes": 341530,
-      "sha256": "7c04c7ca0941c76c62c4c02322e1ed839caf3faa6d77af64d0934f5a2cfc35f2"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/extended_3f/TYMS_neg_TK1_pos.svg",
-      "size_bytes": 341530,
-      "sha256": "f39d52e71cbdf1667fb518c4bc1afa3c8eeaec551ce6e686243823043f9997e5"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/extended_3f/TYMS_pos_TK1_neg.svg",
-      "size_bytes": 341530,
-      "sha256": "eaf05abef8ac437f5fd66dab1fba6c7fe888c8b27d07077953522df4853023be"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/extended_3f/TYMS_pos_TK1_pos.svg",
-      "size_bytes": 341530,
-      "sha256": "59f47a5c80e97d5ddd8fb81f3375ad9b52c26386aa58eae2b0d110cac4626928"
+      "size_bytes": 3333,
+      "sha256": "48762692746bc646e2c2d8bf69a50c4b5cd1c79f81a714e27ae39fc0ea119ecb"
     },
     {
       "path": "fig2b_d_ext3f_visium/results/neighborhood_data_points.csv",
       "size_bytes": 19776,
       "sha256": "fa6c4bc6824ca55daf4e613a82c2002190add60fccf8022e38ee1877e70e810c"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/neighborhood_plot.svg",
-      "size_bytes": 109114,
-      "sha256": "9724c8d033066164b12a087036ac3d89a6cb09a0efaee881380fb0bfd67d8101"
-    },
-    {
-      "path": "fig2b_d_ext3f_visium/results/spatial_plot.svg",
-      "size_bytes": 849149,
-      "sha256": "075acc7af838e656c9a588f4b0307487a481ac477371d6c58515bc513cce8e59"
     },
     {
       "path": "fig2b_d_ext3f_visium/results/tyms_tk1_counts.csv",
@@ -806,13 +711,13 @@
     },
     {
       "path": "scripts/validate_release.py",
-      "size_bytes": 7825,
-      "sha256": "1b3b314414505bb06c312013abce614e053bfb47b6fb9e856998c0c1c14c103c"
+      "size_bytes": 7917,
+      "sha256": "5551311fd76cd2d629a2d61ad0325b6ad1f149653a705c77fb925ac70b37bf50"
     },
     {
       "path": "scripts/validate_repository.py",
-      "size_bytes": 13218,
-      "sha256": "9ea146011a1c19988bb6c8fa2197c644c21e2741cf398377675477fef58db526"
+      "size_bytes": 13197,
+      "sha256": "0295d5e47bb66aec5d8a39e74488b7da956fd745115c9bf2eca13e0703404753"
     }
   ]
 }

@@ -14,8 +14,10 @@ The differential-testing unit is the library/sample. Contrasts are TS versus
 NTC, TS_CC versus NTC_CC, and TS_CC versus TS.
 
 `metadata/` contains sample and GEO submission records. `tables/` contains
-count, DESeq2, and source-data workbooks. `figures_or_prism/` contains the
-included presentation sources. The
+count, DESeq2, and source-data workbooks.
+[Prism numeric source data](tables/gap_junctions_prism_source.tsv) preserves
+8 genes and 16 decimal values from the original GraphPad table; decimal commas
+are converted to points without rounding. Graphics and presentations are excluded. The
 [provenance manifest](provenance_manifest.json) lists file roles and paths.
 Raw FASTQ/BAM files and STAR indices are not included, so complete
 read-level processing requires the external sequencing files.
@@ -23,7 +25,7 @@ read-level processing requires the external sequencing files.
 ## Validation
 
 Run `python3 scripts/validate_repository.py` from the repository root. The
-check covers 15 source records, required workbook sheets and rows, software
+check covers 14 source records, required workbook sheets and rows, software
 and contrast terms, and excluded raw-file types. A missing file or failing table
 check requires confirming the input release and contrast definition before
 using the result. Capture `python3 -V`, `git rev-parse HEAD`, and R

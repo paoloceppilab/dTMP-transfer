@@ -8,20 +8,8 @@
     {
       "role": "source_readme",
       "relative_local_path": "README.md",
-      "size_bytes": 1449,
-      "sha256": "ccd44ecab79e53445b7c9c797e4bb34b15a82cbab7c0421df854fcf5c44f5e9d"
-    },
-    {
-      "role": "figure_5a_prism_source",
-      "relative_local_path": "figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx",
-      "size_bytes": 13005,
-      "sha256": "c0f636042544d6d546c0fc33c650059ce3743d56ba34f120355828e6081725af"
-    },
-    {
-      "role": "upstream_tyms_presentation_source",
-      "relative_local_path": "figures_or_prism/upstream_tyms/ts_rna_seq_results.pptx",
-      "size_bytes": 392141,
-      "sha256": "a3500152294a5dc6b4010b9a7626a1106eccd5b452020d486f42c7b75eca8765"
+      "size_bytes": 1624,
+      "sha256": "45c71980a933572ce0278f00e11243a1b0edbc16be4c6ebbc77ff6623e5873b6"
     },
     {
       "role": "sample_and_submission_metadata",
@@ -94,6 +82,18 @@
       "relative_local_path": "tables/upstream_res_tscc_ts.txt",
       "size_bytes": 5023034,
       "sha256": "721131a6ba1e4c3fa6d9de971e66d35018538b35c70f2e8dac0bed87c759bcd4"
+    },
+    {
+      "role": "numeric_prism_source_data",
+      "relative_local_path": "tables/gap_junctions_prism_source.tsv",
+      "derived_from": {
+        "git_tag": "v1.0.2",
+        "path": "ext4_fig5_rnaseq/figures_or_prism/figure_5a/gap_junctions_prism_source.pzfx",
+        "sha256": "c0f636042544d6d546c0fc33c650059ce3743d56ba34f120355828e6081725af"
+      },
+      "processing": "Extract XML table labels and decimal strings; replace decimal comma with point; exclude binary graphs and layouts",
+      "size_bytes": 187,
+      "sha256": "12e2d5131d42624d3214354afe76e54a5f9b7442e9311f0c073e67f9fc2d4f3b"
     }
   ],
   "data_sources": {
@@ -135,7 +135,7 @@
     ]
   },
   "input_status": "Raw FASTQ, BAM and large intermediate files require separate access.",
-  "source_file_count": 15,
+  "source_file_count": 14,
   "folder_author": {
     "name": "Vignesh Ramesh",
     "email": "vramesh@bmb.sdu.dk"
