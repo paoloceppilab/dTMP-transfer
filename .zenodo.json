@@ -1,11 +1,11 @@
 {
-  "title": "Analysis code and data for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\"",
+  "title": "Analysis code for \"Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation\"",
   "upload_type": "software",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "access_right": "open",
   "license": "mit",
   "language": "eng",
-  "description": "Analysis scripts and source data for the five bioinformatics Methods sections of Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation: human A549 bulk RNA-seq differential expression analysis, single-cell classification analysis (GSE148071), Visium spatial neighborhood analysis, spatial deconvolution and cell-state co-abundance analysis using cell2location and NMF, and Kras/Trp53 amplicon gene-editing and mutation analysis. Each analysis folder records inputs, provenance and execution limits. MIT applies to laboratory-authored code; third-party code and scientific data retain their original terms.",
+  "description": "Analysis code for the five bioinformatics Methods sections of Contact-dependent intercellular dTMP transfer sustains tumor cell proliferation: human A549 bulk RNA-seq differential expression analysis (GSE271721), single-cell classification analysis (GSE148071), Visium spatial neighborhood analysis (10x Genomics Human Lung Cancer, FFPE), spatial deconvolution and cell-state co-abundance analysis using cell2location and NMF (spatial data: E-MTAB-13530; single-cell reference: E-MTAB-13526), and Kras/Trp53 amplicon gene-editing and mutation analysis. Each analysis folder records inputs, provenance and execution limits. MIT applies to laboratory-authored code; third-party code and scientific data retain their original terms.",
   "creators": [
     {
       "name": "Demirdizen, Mert",
@@ -41,6 +41,31 @@
       "identifier": "https://github.com/paoloceppilab/dTMP-transfer",
       "relation": "isSupplementTo",
       "resource_type": "software"
+    },
+    {
+      "identifier": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE271721",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE148071",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://www.10xgenomics.com/datasets/human-lung-cancer-ffpe-2-standard",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-13530",
+      "relation": "references",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://www.ebi.ac.uk/biostudies/arrayexpress/studies/E-MTAB-13526",
+      "relation": "references",
+      "resource_type": "dataset"
     }
   ]
 }

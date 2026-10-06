@@ -6,6 +6,8 @@ Source files and analysis commands for Extended Data Fig. 4A-C and Fig. 5A.
 
 ## Design and methods
 
+Study-generated A549 bulk RNA-seq: [GSE271721](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE271721), 12 libraries across four conditions.
+
 The [analysis command transcript](source/22_08_23_Script_TS.txt) specifies
 FastQC 0.11.9, STAR with GRCh38/Ensembl 105, paired-end Rsubread
 featureCounts, and DESeq2 design `~ Type`. Twelve libraries represent NTC,

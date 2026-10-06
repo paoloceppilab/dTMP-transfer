@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release_version": "v1.0.5",
+  "release_version": "v1.0.6",
   "hash_algorithm": "SHA256",
   "self_exclusion": "release_manifest.json",
   "files": [
@@ -16,13 +16,13 @@
     },
     {
       "path": ".zenodo.json",
-      "size_bytes": 2062,
-      "sha256": "eed77ef513a9b49ee1403152cbfd95323aa68127fb0ff39def5d4502ca5dde54"
+      "size_bytes": 2983,
+      "sha256": "34b5f71406ad9dc056117344cefca9fe709fadea6c1093d49859ba99c0df9a31"
     },
     {
       "path": "CITATION.cff",
-      "size_bytes": 1849,
-      "sha256": "0c2ee0ff92eaf01b2ef56adb74c6b8af1d1db16c733661fa50cc68606c8436d4"
+      "size_bytes": 1938,
+      "sha256": "b678ca2ec8f200370bc9b4fbd83fb1d88e4764ad8254dbba0015688b61e69815"
     },
     {
       "path": "LICENSE",
@@ -31,8 +31,8 @@
     },
     {
       "path": "README.md",
-      "size_bytes": 2979,
-      "sha256": "cb23867ce0211bbbfbbf942519337f6039c77c97001f8195ba4e36f3acbb28c0"
+      "size_bytes": 2970,
+      "sha256": "b0a22e043068d880ab0d4dc15c0874e836687c9b2b09f42046943abcfc0e97a3"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -42,7 +42,7 @@
     {
       "path": "analysis_scope.json",
       "size_bytes": 831,
-      "sha256": "dc49450d374e71b71e0ecbc7ff02c38231ae332dd88e69bbfe153acca2d44d90"
+      "sha256": "c4eb40400168d51d0d5c28e85560df7113752fd618779277c17b4c000385344e"
     },
     {
       "path": "env/requirements-validation.lock.txt",
@@ -261,8 +261,8 @@
     },
     {
       "path": "ext4_fig5_rnaseq/README.md",
-      "size_bytes": 1583,
-      "sha256": "d02bef1050cc020e82967d6e28f7afd88eac66c089f2b64ac0157665ca48ebd3"
+      "size_bytes": 1731,
+      "sha256": "ac4347d6689f94bad16c9fb05cbee2fe96de02e69489442abf77dde8df34137e"
     },
     {
       "path": "ext4_fig5_rnaseq/metadata/upstream_deseq2_sample_info.txt",
@@ -287,7 +287,7 @@
     {
       "path": "ext4_fig5_rnaseq/provenance_manifest.json",
       "size_bytes": 5177,
-      "sha256": "75560ea2e13644ce253a9c10980791421d3502aa396c9ac825c660031b1ea527"
+      "sha256": "559bb389c82f921587fe5f8c3c7283febd339a8aff37cb124cf34772587acf05"
     },
     {
       "path": "ext4_fig5_rnaseq/source/22_08_23_Script_TS.txt",
@@ -712,7 +712,7 @@
     {
       "path": "scripts/validate_release.py",
       "size_bytes": 7917,
-      "sha256": "6e93c21498ad16421bebd9b2e627bff739515502e9072d488810e2f06133876a"
+      "sha256": "9284a770e80b6436d5f2de324c91772378e52dab94057fcbf476ff52b100ff60"
     },
     {
       "path": "scripts/validate_repository.py",
