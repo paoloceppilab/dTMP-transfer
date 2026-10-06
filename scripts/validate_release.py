@@ -19,10 +19,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = Path("release_manifest.json")
-EXPECTED_CREATORS = [
-    ("Paolo", "Ceppi"), ("Mohammad A.", "Siddiqui"),
-    ("Anne Mette A.", "Rømer"), ("Vignesh", "Ramesh"), ("Mert", "Demirdizen"),
-]
+EXPECTED_CREATORS = [('Mert', 'Demirdizen'), ('Mohammad A.', 'Siddiqui'), ('Anne Mette A.', 'Rømer'), ('Vignesh', 'Ramesh'), ('Paolo', 'Ceppi')]
 ANALYSIS_DIRS = {'ext10_amplicon', 'ext4_fig5_rnaseq', 'fig2a_ext3_scrnaseq', 'fig2b_d_ext3f_visium', 'fig4j_cellstates'}
 
 
@@ -70,7 +67,7 @@ def check_metadata() -> None:
         fail("Zenodo creators/order do not match the agreed five authors")
     if [(c["given-names"], c["family-names"]) for c in cff["authors"]] != EXPECTED_CREATORS:
         fail("CITATION.cff authors/order mismatch")
-    if zenodo["title"] != cff["title"] or str(zenodo["version"]) != "1.0.1" or str(cff["version"]) != "1.0.1":
+    if zenodo["title"] != cff["title"] or str(zenodo["version"]) != "1.0.2" or str(cff["version"]) != "1.0.2":
         fail("citation title/version mismatch")
     if zenodo["upload_type"] != "software" or zenodo["license"] != "mit" or cff["license"] != "MIT":
         fail("software resource type or MIT metadata mismatch")
@@ -91,7 +88,7 @@ def check_scope() -> None:
     observed = {a["methods_heading"]: a["directory"] for a in scope["analyses"]}
     if observed != expected or len(scope["analyses"]) != 5:
         fail("Methods scope does not match the five supplied sections")
-    if scope["release_version"] != "1.0.1" or not re.fullmatch(r"[0-9a-f]{64}", scope["scope_source"]["sha256"]):
+    if scope["release_version"] != "1.0.2" or not re.fullmatch(r"[0-9a-f]{64}", scope["scope_source"]["sha256"]):
         fail("Methods source hash or version is invalid")
     directories = {p.name for p in ROOT.iterdir() if p.is_dir()
                    and p.name not in {".git", "scripts", "env", ".venv", ".venv-validation", "__pycache__", ".pytest_cache"}}
@@ -140,7 +137,7 @@ def main() -> None:
             fail(f"missing release file: {rel}")
     if args.write_manifest:
         records = [{"path": p.as_posix(), "size_bytes": (ROOT / p).stat().st_size, "sha256": digest(ROOT / p)} for p in paths]
-        data = {"schema_version": "1.0", "release_version": "v1.0.1", "hash_algorithm": "SHA256", "self_exclusion": MANIFEST.as_posix(), "files": records}
+        data = {"schema_version": "1.0", "release_version": "v1.0.2", "hash_algorithm": "SHA256", "self_exclusion": MANIFEST.as_posix(), "files": records}
         (ROOT / MANIFEST).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
     manifest = json.loads((ROOT / MANIFEST).read_text())
     records = manifest["files"]

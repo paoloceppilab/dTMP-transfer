@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "release_version": "v1.0.1",
+  "release_version": "v1.0.2",
   "hash_algorithm": "SHA256",
   "self_exclusion": "release_manifest.json",
   "files": [
@@ -17,12 +17,12 @@
     {
       "path": ".zenodo.json",
       "size_bytes": 1973,
-      "sha256": "513848199d927f3b9ba453895a1c1820b812653cf55b4c050d93179449ddb468"
+      "sha256": "c6a86434073449f71f5b1f132fedf928101b65408b596bac36e20e80b80d9278"
     },
     {
       "path": "CITATION.cff",
       "size_bytes": 1760,
-      "sha256": "e7cd1d9014e02f510a2667a43bd1f3f37349215ecaa5b9e3f2a0f7392408d3ae"
+      "sha256": "18e49769fa47da711adc3edfc24fa8cc73a13fbdc24a46547013a4787e5d28cd"
     },
     {
       "path": "LICENSE",
@@ -32,7 +32,7 @@
     {
       "path": "README.md",
       "size_bytes": 2996,
-      "sha256": "da1e380afe2b3f7eb662b6afeff61f3a6f1d2fd78f063de1f368cac0e598f3c2"
+      "sha256": "33d2fa6f91311bb9a2e75bafff11c1fa65ed6183c9222372192d249f5ec9dbc1"
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
@@ -42,7 +42,7 @@
     {
       "path": "analysis_scope.json",
       "size_bytes": 831,
-      "sha256": "8320a36b4f40ddd5eba3edc1fd53a6a646a8040766243c0276b7dc51b8d4a4bf"
+      "sha256": "f4e8471ecc0d79186e7a3b96e4bf1eaf9d7bac4f550c482a53dd21fa2da1d6a0"
     },
     {
       "path": "env/requirements-validation.lock.txt",
@@ -806,8 +806,8 @@
     },
     {
       "path": "scripts/validate_release.py",
-      "size_bytes": 7836,
-      "sha256": "28002e1ed258e7e2fe46de66d4aeda9ee8bd18d3aba3ba9bbd57fb71b6a843a0"
+      "size_bytes": 7825,
+      "sha256": "1b3b314414505bb06c312013abce614e053bfb47b6fb9e856998c0c1c14c103c"
     },
     {
       "path": "scripts/validate_repository.py",

@@ -52,7 +52,7 @@ archive-validation lockfile.
 ## Code availability and citation
 
 Public repository: https://github.com/paoloceppilab/dTMP-transfer.
-Publication package: **v1.0.1**. Citation metadata is in
+Publication package: **v1.0.2**. Citation metadata is in
 [CITATION.cff](CITATION.cff); Zenodo metadata is in `.zenodo.json`.
 
 ## License and attribution
